@@ -168,7 +168,57 @@ src="https://www.facebook.com/tr?id=1318169879492323&ev=PageView&noscript=1"/></
 
 <script defer>
 (function(){
-  // --- book_id from filename only ---
+  // ==========================================
+  // TRACKING & ATTRIBUTION SYSTEM
+  // ==========================================
+
+  // --- 1. Generate or retrieve external_id (persistent) ---
+  function getOrCreateExternalId() {
+    const STORAGE_KEY = 'sparke_external_id';
+    let externalId = localStorage.getItem(STORAGE_KEY);
+
+    if (!externalId) {
+      const timestamp = Date.now();
+      const random = Math.random().toString(36).substring(2, 15);
+      externalId = 'web_' + timestamp + '_' + random;
+      localStorage.setItem(STORAGE_KEY, externalId);
+    }
+
+    return externalId;
+  }
+
+  // --- 2. Extract Meta attribution parameters ---
+  function getCookie(name) {
+    const value = '; ' + document.cookie;
+    const parts = value.split('; ' + name + '=');
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  }
+
+  function getMetaAttribution() {
+    const urlParams = new URLSearchParams(location.search);
+    const fbclid = urlParams.get('fbclid');
+
+    // Get Meta cookies
+    const fbp = getCookie('_fbp');
+    let fbc = getCookie('_fbc');
+
+    // If no _fbc cookie but fbclid exists, construct it
+    if (!fbc && fbclid) {
+      fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+    }
+
+    return { fbp, fbc, fbclid };
+  }
+
+  // --- Generate event ID ---
+  function generateEventId(prefix) {
+    const timestamp = Date.now();
+    const random = Math.random().toString(36).substring(2, 15);
+    return prefix + '_' + timestamp + '_' + random;
+  }
+
+  // --- Get book_id from filename ---
   function getBookIdFromFilename() {
     const path = location.pathname.replace(/\/+$/,'');
     const last = path.split('/').pop() || '';
@@ -200,34 +250,101 @@ src="https://www.facebook.com/tr?id=1318169879492323&ev=PageView&noscript=1"/></
     return href.indexOf(name + '=') !== -1;
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const bookId = getBookIdFromFilename();
-    const c = getCampaignParams();
+  // ==========================================
+  // INITIALIZE TRACKING
+  // ==========================================
 
+  // Generate/retrieve persistent external_id
+  const externalId = getOrCreateExternalId();
+
+  // Get Meta attribution data
+  const metaAttr = getMetaAttribution();
+
+  // Get book and campaign data
+  const bookId = getBookIdFromFilename();
+  const campaignParams = getCampaignParams();
+
+  // --- 3. Fire ViewContent event on page load ---
+  window.addEventListener('load', function() {
+    try {
+      // Track ViewContent with external_id
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'ViewContent', {
+          content_name: bookId,
+          content_type: 'landing_page'
+        }, {
+          external_id: externalId
+        });
+      }
+    } catch(e) {
+      console.error('ViewContent tracking error:', e);
+    }
+  });
+
+  // ==========================================
+  // UPDATE CTA LINKS AND CLICKS
+  // ==========================================
+
+  document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href*="sparke.app.link"]').forEach(a => {
       let href = a.getAttribute('href') || '';
       if (!href.includes('sparke.app.link')) return;
 
       // 1) Update encoded deeplink_path book id: ...deeplink_path=book%2F<id>...
       if (bookId) {
-        // Replace existing book id if present
         const replaced = href.replace(/(deeplink_path=book%2F)([^%&]+)/, (_, p1) => p1 + encodeURIComponent(bookId));
         href = replaced;
       }
 
-      // 2) Build params to append (always with "&")
+      // 2) Build params to append
       const pairs = [];
+
+      // Book ID and campaign params (existing)
       if (bookId && !hasParam(href, 'book_id')) pairs.push('book_id=' + encodeURIComponent(bookId));
-      if (c.channel  && !hasParam(href, '~channel'))  pairs.push('~channel='  + encodeURIComponent(c.channel));
-      if (c.campaign && !hasParam(href, '~campaign')) pairs.push('~campaign=' + encodeURIComponent(c.campaign));
-      if (c.feature  && !hasParam(href, '~feature'))  pairs.push('~feature='  + encodeURIComponent(c.feature));
-      if (c.stage    && !hasParam(href, '~stage'))    pairs.push('~stage='    + encodeURIComponent(c.stage));
+      if (campaignParams.channel  && !hasParam(href, '~channel'))  pairs.push('~channel='  + encodeURIComponent(campaignParams.channel));
+      if (campaignParams.campaign && !hasParam(href, '~campaign')) pairs.push('~campaign=' + encodeURIComponent(campaignParams.campaign));
+      if (campaignParams.feature  && !hasParam(href, '~feature'))  pairs.push('~feature='  + encodeURIComponent(campaignParams.feature));
+      if (campaignParams.stage    && !hasParam(href, '~stage'))    pairs.push('~stage='    + encodeURIComponent(campaignParams.stage));
+
+      // 5) Add tracking data for app to use in CAPI
+      if (externalId && !hasParam(href, 'external_id')) pairs.push('external_id=' + encodeURIComponent(externalId));
+      if (metaAttr.fbp && !hasParam(href, 'fbp')) pairs.push('fbp=' + encodeURIComponent(metaAttr.fbp));
+      if (metaAttr.fbc && !hasParam(href, 'fbc')) pairs.push('fbc=' + encodeURIComponent(metaAttr.fbc));
+      if (metaAttr.fbclid && !hasParam(href, 'fbclid')) pairs.push('fbclid=' + encodeURIComponent(metaAttr.fbclid));
 
       if (pairs.length) {
         href += (href.endsWith('&') ? '' : '&') + pairs.join('&');
       }
 
       a.setAttribute('href', href);
+
+      // 4) Update onclick handler to include external_id + event_id
+      const originalOnclick = a.getAttribute('onclick') || '';
+
+      // Generate event_id for CTA Click
+      a.addEventListener('click', function() {
+        try {
+          const eventId = generateEventId('ctaclick');
+
+          // Track CTA Click with external_id and event_id
+          if (typeof fbq !== 'undefined') {
+            fbq('trackCustom', 'CTA Click', {
+              content_name: bookId,
+              cta: 'CTA Click'
+            }, {
+              eventID: eventId,
+              external_id: externalId
+            });
+          }
+
+          // TikTok tracking (unchanged)
+          if (typeof ttq !== 'undefined') {
+            ttq.track('ClickButton');
+          }
+        } catch(e) {
+          console.error('CTA Click tracking error:', e);
+        }
+      });
     });
   });
 })();
