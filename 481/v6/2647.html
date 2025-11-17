@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A Kiss in the Dark</title>
+    <link rel="icon" href="data:image/ico;base64,aWNv">
+    <link rel="apple-touch-icon" href="data:image/ico;base64,aWNv">
+    <meta name="ad.size" content="width=0,height=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <style>
+      * {padding: 0;margin: 0;box-sizing: border-box;}
+      body {}
+      .img-box {position: relative;}
+      .img {display: block;width: 100%;height: auto;}
+      .mask {position: absolute;bottom: 0;left: 0;width: 100%;height: 30%;background-image: linear-gradient(rgba(255, 255, 255, 0),  rgb(255, 255, 255, 90%), rgb(255 255 255), #ffffff);} 
+      .title {padding-left: 1.2rem;padding-right: 1.2rem;font-size: 1.8rem;font-weight: 500;color: #333;margin-bottom:10px;margin-top: -70px;position: relative;}
+      .desc {padding-left: 1.2rem;padding-right: 1.2rem;font-family: Georgia, sans-serif; font-size:20px;font-weight: 400;color: #333;line-height: 1.3rem;text-align: justify;padding-bottom: 0.5rem;}
+      .desc i {display: block;height: 0.6rem;}
+      .button:active {opacity: 0.8;}
+
+      /* Sticky CTA container — transparent background */
+      .bottom-box {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;   /* centers the button nicely */
+        padding: 0.55rem 0.34rem;
+        background: transparent;   /* removed white background */
+        z-index: 9999;
+        box-shadow: none;          /* no shadow either */
+      }
+
+      .button {
+          display: block;
+          background: #230a51;
+          border-radius: 1.5rem;
+          margin: 0 auto;
+          font-size: 0.9rem;
+          font-weight: bold;
+          padding: 0rem 3.4rem;
+          color: #FFFFFF;
+          text-align: center;
+          line-height: 2.59rem;
+          text-decoration: none;
+          border-width: 0;
+        }
+
+      /* Chapter visibility (no <p> required; preserves line breaks) */
+      .chapter{display:none;white-space: pre-wrap;}
+      .chapter.active{display:block}
+
+      /* Fix the bar to the top */
+      .top-nav{
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: var(--top-nav-h);
+        z-index: 10000;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        font-family: Georgia, sans-serif;
+      }
+
+      /* Layout inside the bar */
+      .top-nav__inner{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 10px 7px 10px;
+        gap: 12px;
+        align-items: center;   /* <— ensures full vertical centering */
+        height: 100%;
+      }
+
+      .top-nav__left{ display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+
+      .app-icon {
+          width: 1.7rem;
+          height: 1.7rem;
+          background-image: url(assets/app_icon_smaller_for_web1.png);
+          background-size: cover;
+      }
+      .nav-title{
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #333;
+        font-family: Helvetica;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .top-nav__btn{
+        display: inline-block;
+        font-size: 12px; font-weight: 400; line-height: 1;
+        padding: 7px 10px;
+        font-family: helvetica;
+        letter-spacing: 1px;
+        color: #fff; text-decoration: none;
+        background: #5c4489; border-radius: 999px; border: 1px solid rgba(0,0,0,0.05);
+      }
+      /* Add a subtle light sweep animation */
+.top-nav__btn {
+  position: relative;
+  overflow: hidden; /* clip the shine inside the button */
+}
+
+/* the moving light strip */
+.top-nav__btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%; /* start off to the left */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg); /* gives it a nice angled streak */
+  animation: shine 2s infinite;
+}
+
+/* keyframes for the movement */
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+    </style>
+
+    <script>var time=null;function setRem(){try{let t=0||document.documentElement.clientWidth||document.body.clientWidth,e=20;document.getElementsByTagName('html')[0].style.fontSize=t/e+'px'}catch(t){}}setRem();window.onresize=function(){window&&(setRem(),clearTimeout(time),(time=setTimeout(()=>{setRem()},1e3)))};</script>
+    
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D43OQNBC77U40Q0I7570');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+
+<!-- Meta Pixel Code (keep in <head>) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1318169879492323');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1318169879492323&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<script defer>
+(function(){
+  // --- book_id from filename only ---
+  function getBookIdFromFilename() {
+    const path = location.pathname.replace(/\/+$/,'');
+    const last = path.split('/').pop() || '';
+    const core = last.includes('.') ? last.split('.')[0] : last;
+    return /^[A-Za-z0-9_-]+$/.test(core) ? core : '';
+  }
+
+  // --- Normalize platform (Meta/TikTok variants) ---
+  function normalizePlatform(val) {
+    const p = (val || '').toLowerCase();
+    if (['fb','facebook','instagram','ig','messenger','audience_network','audiencenetwork'].includes(p)) return 'facebook';
+    if (p === 'tiktok' || p === 'tt') return 'tiktok';
+    return p || 'unknown';
+  }
+
+  // --- Gather campaign params from page URL ---
+  function getCampaignParams() {
+    const src = new URLSearchParams(location.search);
+    return {
+      channel:  normalizePlatform(src.get('site_source_name')),
+      campaign: src.get('campaign_id') || 'unknown_campaign',
+      feature:  src.get('adset_id')    || 'unknown_adset',
+      stage:    src.get('ad_id')       || 'unknown_ad'
+    };
+  }
+
+  // Quick check to avoid duplicate appends
+  function hasParam(href, name){
+    return href.indexOf(name + '=') !== -1;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const bookId = getBookIdFromFilename();
+    const c = getCampaignParams();
+
+    document.querySelectorAll('a[href*="sparke.app.link"]').forEach(a => {
+      let href = a.getAttribute('href') || '';
+      if (!href.includes('sparke.app.link')) return;
+
+      // 1) Update encoded deeplink_path book id: ...deeplink_path=book%2F<id>...
+      if (bookId) {
+        // Replace existing book id if present
+        const replaced = href.replace(/(deeplink_path=book%2F)([^%&]+)/, (_, p1) => p1 + encodeURIComponent(bookId));
+        href = replaced;
+      }
+
+      // 2) Build params to append (always with "&")
+      const pairs = [];
+      if (bookId && !hasParam(href, 'book_id')) pairs.push('book_id=' + encodeURIComponent(bookId));
+      if (c.channel  && !hasParam(href, '~channel'))  pairs.push('~channel='  + encodeURIComponent(c.channel));
+      if (c.campaign && !hasParam(href, '~campaign')) pairs.push('~campaign=' + encodeURIComponent(c.campaign));
+      if (c.feature  && !hasParam(href, '~feature'))  pairs.push('~feature='  + encodeURIComponent(c.feature));
+      if (c.stage    && !hasParam(href, '~stage'))    pairs.push('~stage='    + encodeURIComponent(c.stage));
+
+      if (pairs.length) {
+        href += (href.endsWith('&') ? '' : '&') + pairs.join('&');
+      }
+
+      a.setAttribute('href', href);
+    });
+  });
+})();
+</script>
+
+</head>
+<body>
+<a href="https://sparke.app.link/lp1?%24ios_deepview=false&%24deeplink_path=book%2F0000" class="top-nav-link" onclick="try{fbq('trackCustom', 'CTA Click', {cta:'CTA Click'});}catch(e){} try{ttq.track('ClickButton');}catch(e){}">
+<nav class="top-nav" role="navigation" aria-label="Download bar">
+  <div class="top-nav__inner">
+    <div class="top-nav__left">
+      <span class="app-icon" aria-hidden="true"></span>
+      <span class="nav-title">Download the entire book</span>
+    </div>
+    <div class="top-nav__btn">Download</div>
+  </div>
+</nav>
+</a>
+<div style="position: relative;">
+<div class="img-box">
+<img id="image" data-img="" class="img" src="assets/o_landing1.jpg" />
+<div class="mask"></div>
+</div>
+<h1 class="title">A Kiss in the Dark</h1>
+<div class="desc">
+<div class="chapter-index" data-chapter="1"></div>
+<div id="chapter1" class="chapter active">
+## Chapter 1
+
+Tuesday, 11:28 a.m.
+
+Samantha Jellicoe kept her head down, edging forward with her hands and her toes. Another ten feet should do it, and then she meant to take at least four showers. For crying out loud, just because most people didn’t spend time in air ducts didn’t mean they shouldn’t be kept reasonably clean. This was the crap people below would be breathing, after all.
+
+Ten feet. “Okay,” she panted into her walkie-talkie, “I’m at the far northwest corner, about four feet from the outer wall.”
+
+“No, you’re not,” a male voice returned crisply. “Midway along the south wall, twelve feet above the floor, arms out in front of you, ankles crossed.”
+
+She grinned. “Awesome. That makes this place as bulletproof as I can get it. I’m coming out. And stop looking at my boobs on the thermal, Kymo.”
+
+“They’re just hot blobs,” James Kymo commented. “Not enough to get my motor running.”
+
+“I’ll have you know these are very fine hot blobs. Somebody meet me with a towel before I mutate into the Toxic Avenger.”
+
+“Right, boss,” another male voice chimed in, South Florida thick in his voice. “I’m in the utility room now.”
+
+That would be Luke Bodrie, her most recent hire. If he was in there by himself, somebody was going to get their ass kicked. Probies didn’t go anywhere alone. Not under her watch. Thieves were experts at breaking into places and snatching things. That made them handy for security system installation, but it also meant they had to resist temptation. Sometimes, a lot of temptation. And some of these guys, whether they put “former” thief on their resumes or not, weren’t that great at resisting.
+
+Blowing out her breath, Samantha resumed inching her way through the ductwork. It was definitely doable as a way into the building’s inner offices, but only for people who ticked the petite box. Bruce Willis would never have survived the attack on Nakatomi Plaza if these had been the ducts he had to navigate. Still, it could happen. And if it did, security would now be able to see whoever it was scurrying through the air conditioning system, hot blobs and all. Yippy Kai Yay.
+
+By the time she emerged through the section of panel they’d taken down, she felt like a sweaty dust ball. Blech. Bodrie offered her a hand, and she squirmed out the last two feet and stood upright again. He stepped back again as Bobbi Camden moved up to hand her a bottle of water. Good. She’d chosen Camden to keep an eye on the newbie. In fact, Bobbi was proving to be somebody Samantha could see promoting to job supervisor. Go, girl power. “Thanks,” she said aloud, drinking sloppily, letting the cool wet run down her front.
+
+“You sure you’re Martin Jellicoe’s kid?” Bodrie asked, eyeing her as he tossed her a towel.
+
+“That’s the rumor,” she replied, wiping off as many layers of grime as the towel could handle. “We can’t all be glamorous cat burglars, I guess.”
+
+“True enough,” Bobbi said. “I may be getting dirtier than I did in my old gig, but I also don’t have to worry about getting shot or thrown in the slam after a day’s work.”
+
+“Exactly. Listen to Bobbi, Luke. She knows what she’s talking about.” Someone whose former career had mostly involved acting like a bimbo and getting men to spend cash on her, Bobbi Camden had managed to turn that into a skill for getting a bunch of macho guys to do what she told them to on site.
+
+Setting aside the water, Samantha stripped out of the formerly white painter’s garb she’d donned for her trip into the ductwork. Underneath it her jeans and T-shirt were damp with sweat, and she still felt like the grime had made its way beneath her skin.
+
+When she’d started this company eight months ago, word had spread fast that the daughter of Martin Jellicoe was hiring thieves looking for a chance to go legit. Retired safecrackers, a couple of thugs, a few con artists, and even a cat burglar or two had appeared, and with one exception she’d agreed to give them a chance. So far, they hadn’t disappointed her, but she wasn’t a charity. Jellicoe Security had been gaining lots of new business lately, but it would only take one guy lifting a Rolex or a sensitive file to put her out of work and derail her entire go-legit plan.
+
+Yep, new business was good, and the last three jobs had been recommended by previous clients, which was awesome. She knew as well as anybody that the first couple of security-installation jobs had been mostly courtesy of her boyfriend—and now fiancée—Rick Addison, recommending her to his fellow mill- and billionaire buds.
+
+The fact that her British gentleman had put his reputation on the line for her made it even more important that none of her employees screw up. So, ironically enough, to protect the guy trying to keep her on the straight and narrow, she was relying pretty heavily on Martin Jellicoe’s extremely crooked reputation to keep everyone else in line. She had to; she couldn’t use her own reputation for shit.
+
+She was one hundred percent legit now, and running out the clock on all of the statutes of limitation still hanging over her. Yeah, she’d done some exceptionally hairy things, and yeah, she’d been more successful at high-class thievery than even her legendary dad, but the reason she’d had the option to retire was that nobody knew who’d pulled any of the jobs she had under her belt. The rumor that it might have been her didn’t hurt, though—not with these guys, anyway.
+
+“So, what’s worth more in here?” Bodrie asked, leading the way back to the security room where they’d set up their base. “The technical stuff, or the artwork?”
+
+By “technical stuff,” she assumed he meant the business the people on the computers were doing, and not the computers themselves. The equipment was top-of-the-line, too, though, so she couldn’t be certain what he was thinking. “It doesn’t matter,” she said aloud. “Firewalls and passwords and shit are somebody else’s problem. We’re setting up a system to keep this place physically secure. As soon as we clean up our equipment, I’m calling that done.”
+
+“Yeah, but this is a fucking accounting firm, right? How do they afford a Picasso for the coffee room?” he blurted out, his Florida twang deepening.
+
+“First, it’s a Jasper Johns, not a Picasso. Second, this is an accounting firm that has some of the wealthiest guys and companies in the world for clients. Third, they hired us to protect their stuff, so that’s what we’re doing. Are we clear?”
+
+Luke shuffled his feet. “Yeah. It’s just that their stuff is…right there.” He gestured with his hands like a teenager grabbing his first pair of boobs.
+
+Samantha squared up on him. This was the thing she wasn’t used to—lecturing thieves about morality. Hell, she’d had her hands on a Jasper Johns painting or two in her time, even if her clients tended to favor the older, more classical works. “Luke. You get it, don’t you? That this is your one chance? Your last and only chance to do something you’re good at and still be able to work days, sleep nights, and not wake up every morning wondering if your shit has caught up to you?”
+
+The newbie grimaced, looking down at the floor before he nodded his head. “My dad keeps telling me the same thing. I screw up again, and he’s tossing me out. So I get it. No jobs while I’m on the job.”
+
+“No jobs at all while you’re in my employ,” she amended. “None. Not even shoplifting gum. And if you do some shit, I’ll know about it, because you leave a sloppy trail a mile wide. I know, because I looked. Can you do legal? And be honest, for fuck’s sake, and spare me the trouble of putting you on the payroll full time if you can’t keep your hands to yourself.”
+
+“O—”
+
+“I’m willing to give you guys a chance,” she said, deliberately interrupting. She knew the macho, self-confident attitude that went into being any kind of lawbreaker, that sense of superiority at being able to take other people’s stuff on a whim. Every one of these guys had at one time or another thought him or herself the smartest, most talented person in the room. “I figure maybe if my dad had had one good chance, he might not have died in prison. If I find out you lifted something during a job or if you break back into a place after you do an installation, I’ll do more than fire you. I will hunt you down and drag you into the nearest police station by your lovely golden locks. Do you believe me?”
+
+He looked at her for a minute, his pride clearly warring with what he knew and what he’d heard about her. “Yeah. I believe you. And I get it. The straight and narrow it is.”
+
+“Good. Bobbi, get the company credit card and take everybody out for a burger.”
+
+“You got it, boss. And you can tell Aubrey that I’ve learned my lesson and I will get a receipt.”
+
+Samantha grinned. “He’s a stickler, that Aubrey.”
+
+“He’s one of those guys you can’t con, because he’s way too concerned over the numbers to go with his heart.” Bobbi shook her head, managing to make her dark brown ponytail look sexy. “And it would take way too much effort to look prettier than he does, anyway.”
+
+Snorting, Samantha gestured for them to precede her. She didn’t know if Bobbi had tried to put the moves on Aubrey Pendleton or not, but she was pretty sure that Aubrey didn’t swing that way. Aside from that, he had to be in his mid-sixties, a good thirty years older than Bobbi Camden and forty years older than herself, but he did know how to put himself together. “I will never criticize anyone for knowing how to choose an outfit.”
+
+“Ha. You comin’ with us for lunch?”
+
+“I am going to go take a shower and then make sure that my next hire is somebody smaller than I am, so I don’t have to go duct crawling anymore.”
+
+The curvy woman with way bigger hot blobs than she had laughed. “You should have thought of that before.”
+
+“Yes, I should have. Pack up the truck first.”
+
+With mock salutes Bobbi and Luke went off to collect the rest of the gang from the security room. Samantha finished off her bottle of water and sent a text to the head of security that they were wrapping up here and that James Kymo would be on site for the rest of the week to teach and demonstrate the security system. If she hadn’t been covered with yuck, she would have told him in person, but according to her office manager, grimy people didn’t make a good impression. And in addition to being a snappy dresser, Aubrey Pendleton was the Superman of knowing how to impress people.
+
+Official stuff done, she headed out to the parking garage, put the towel on the seat of Rick’s night-blue Porsche 718 Boxster, and hopped behind the wheel. Yeah, she generally chose to drive something that didn’t stand out, but here in rich-people central West Palm Beach, Florida, the Boxster fit in pretty well. Aside from that, it was damn nifty.
+
+Once she had the top down, she zipped out onto the street, heading for Worth Avenue and her office and wondering if she was leaving a stream of dust and dirt, Indiana Jones style, behind her. Before she could even turn the corner, her phone rang to the tune of “Heigh Ho” sung by the Seven Dwarfs. Off to work, she went. “Hey, Aubrey,” she said, hitting the answer button on the steering wheel. “We just finished up. I’m heading in to take a shower. And then another shower.”
+
+“I’ve got a call for you,” her office manager and sometime professional escort for mature West Palm Beach single ladies said in his soft, Colonel Sanders drawl. “Anne Hughes, with Sotheby’s New York.”
+
+“Ooh. Put her through.”
+
+Sotheby’s was one of the key words, along with castle, auction, priceless, museum, and treasure. When somebody uttered one of those, Aubrey knew to find her and put the call through. “Here she is.”
+
+“Sam Jellicoe speaking,” Samantha said, adopting her most professional persona and straightening in her seat a little.
+
+“Hello, Ms. Jellicoe. This is Anne Hughes, with Sotheby’s New York. I’m told you are the woman to go to when valuables need to be protected.”
+
+Samantha pumped her free fist in the air as she stopped at a light. “That’s me,” she answered coolly. “What can I help you with?”
+
+“I am preparing a collection for exhibition and auction here in New York, and I would like to hire your firm to handle security.”
+
+Yes! As soon as the light went green, Samantha changed lanes and pulled over in front of the Mark Borghi Fine Art shop. Tiffany’s was next door, and petty or not, she always wanted to give the blue-box store the finger—Rick had gotten her engagement ring from Harry Winston, and it had immediately become her favorite piece of jewelry, ever. Even better than the Hope Diamond. “I’m happy to hear that,” she said aloud, putting up the Porsche’s roof to cut down on the street noise. “Out of curiosity, how did you hear about us? Jellicoe Security is based in Florida.”
+
+“I spoke with Joseph Viscanti at the Met, and he said you’ve done some work for them. You specialize in both protection and recovery, yes?”
+
+“Yes, I do. We do.”
+
+“Joseph spoke very highly of you. But I want to make it clear, Ms. Jellicoe—I wish to hire you. Your expertise. Your presence on site.”
+
+“Understood. What’s your time frame?”
+
+“The exhibition opens in ten days. The auction is in two weeks.”
+
+Samantha blinked. “That’s not much of a heads-up. I can’t advise you on security if you already have your displays set up.”
+
+Silence. “I don’t,” Ms. Hughes finally said. “I have a venue and I’ve tried to begin setting it up, but I’ve…I have had issues with burglary before, and I have a great deal on the line with this project. I…could use your assistance, Ms. Jellicoe. Sotheby’s could use your expertise, and they have already agreed to fund the extra security.”
+
+Swiftly Samantha ran the name Anne Hughes through her memory. It sounded vaguely familiar, but then if Hughes worked for Sotheby’s, that made sense. She’d hit them a couple of times. Mentally crossing her fingers that she wasn’t the one who’d caused that tremble in Ms. Hughes’s voice and that karma wouldn’t therefore be throwing a bowling ball at her head, she took a quick breath. “I can be there first thing in the morning. Where do you want to meet?”
+
+“Oh, thank you. Um, I’ll email you the details. Does that work?”
+
+“Yep. And call me Sam.”
+
+“Sam. And I’m Anne, of course. Thank you. Thank you so much.”
+
+“You’re welcome. See you in the morning.”
+
+Hanging up, she checked over her shoulder and pulled back into traffic. “Hey, Siri, dial work.”
+
+Siri responded, and a second later Aubrey picked up. “Well? Do we have a job?”
+
+“We do. Will you book me a flight to New York for sometime this afternoon? I’m meeting her in the morning. She’s emailing the details to us—forward them to me, please.”
+
+“You have a private jet, you know.”
+
+“Rick has a private jet. I’ll fly commercial.”
+
+She could almost hear his eyebrows furrow. “Samantha, y—”
+
+“This job probably wouldn’t pay for the fuel for the jet, Aubrey. Business class. Me. Today. I’m being fiscally responsible.”
+
+“I can’t argue with that. Give me ten minutes.”
+
+“Will do. I’m heading home to pack and take all my showers, not necessarily in that order. The crew is having lunch and should have the truck and the credit card back this afternoon.”
+
+“Ten-four. I’m still doing the ‘how to talk nicely to people’ seminar in the morning, if that’s okay.”
+
+“Sure. Send out a text this afternoon to remind everybody. The sooner they can get it through their thick heads that not everybody is a mark, the better.”
+
+The fact that Aubrey had volunteered to teach some etiquette to her Jellicoe Security squad had initially surprised her, but then he kind of made his living by knowing the right thing to say at the right moment to the right person. Aside from that, Mr. Pendleton had been supremely helpful since he’d decided to start showing up at her office. He might not be so slick at figuring out how to store things in—on?—the Cloud, but the man knew how to talk to people. And like Bobbi had said, he was good at crunching numbers.
+
+Whatever the reason he’d decided to employ himself at Jellicoe Security (and she still really didn’t like that name), he’d figured out some things that probably never would have occurred to her. After all, while she’d had a legit job or two in her life, employee withholding taxes, insurance—that was just Mars alien language, and she was glad enough he’d shouldered that shit that she’d been relieved to put him on the payroll. She supposed being a social escort left him a lot of time on his hands; the social season in West Palm Beach was like three or four months long, at most. So, win-win.
+
+Like now, when she could drive home for a shower and have somebody else make her plane reservations, and she wouldn’t owe him a favor for doing it, because it was part of his job. That was kind of cool.
+
+Aubrey Pendleton tapped the button on his earpiece to disconnect from the call with Miss Samantha. Maybe an earpiece was a bit much for a small outfit like Jellicoe Security, but it freed his hands up to do filing or printing or make some fresh iced tea in the office’s small kitchen, and it looked both official and high-tech, which was a good image for the company.
+
+Lately business had been ticking up, anyway, to the point that the earpiece was actually useful rather than just lending him an air of authority. And the authority angle was helpful, too, considering some of the questionable characters Miss Samantha had been bringing into the business. Mostly they stayed on the straight and narrow, but he knew enough to realize that these men—and a few women—had some credentials. The bad kind of credentials. But they’d already done their time, or were trying to go straight, and he couldn’t fault that.
+
+Spinning his chair around clockwise, he sent the computer looking for nonstop flights from Palm Beach to New York. With this short notice tickets would be ridiculously expensive, but Miss Samantha seemed mostly to operate on short notice. Sotheby’s. That was big, the kind of job that would keep Jellicoe Security elevated far above the rest of the three-letter-acronym security installation companies.
+
+Of course, it also sent her to New York, where he wouldn’t be of much use except to give more of his how-to-deal-with-humans talks in the office. As he’d discovered when she and Addison had jetted off to Scotland a couple of weeks ago, he didn’t like being that far out of the loop. Hell, she’d sent for Walter Barstone, but good ole Aubrey had been stuck in West Palm Beach answering phones.
+
+On the tail of that thought the phone rang, a number he recognized but had never put into the system. Miss Samantha answered her own phones from time to time, after all. “Jellicoe Security,” he said, leaning into his southern gentleman drawl. “How can we help?”
+
+“Aubrey Pendleton, my old friend,” a familiar, much crisper voice with just the tiniest bit of Boston in its vowels said expansively. “Did I catch you at a good time?”
+
+“I’m alone in the office,” Aubrey answered, glancing toward the door anyway, “but I’m expecting a team back in about half an hour.” Scrolling down the list of flights on the computer screen, he found a direct flight and checked the available seats. Samantha would probably fly in the cheap seats, but that would feel too much like he’d failed his mission. She’d said business class, and that was what he would find for her.
+
+“You do remember you’re not a secretary, right?”
+
+Aubrey sighed. “Yes, because I’m an office manager. Why are you calling, anyway? There isn’t anything scheduled, and I’m getting some information for the boss.”
+
+“‘The boss’? Well, your other boss wants some information, too. You remember that guy?”
+
+Pulling off the headphone, he glared at it for a second before he put it back on again. “What would be good is if you would tell me what you’re after and stop trying to act like some wannabe mob enforcer, Dean. I’m doing my job. Miss Samantha’s only been back from Scotland for two weeks, and she has three security installation jobs going, plus a line on a fourth. So, once again, what do you want?”
+
+“What we want, Aubrey, is for you to get us something we can use to make an actual arrest. She’s Martin Jellicoe’s damn daughter, for fuck’s sake. We know he didn’t pull all those jobs by himself, and we know he didn’t pull some of those jobs that he took credit for. You’ve been doing her filing for eight months now. You said she trusts you.”
+
+“I also said she’s legit,” Aubrey retorted. Damn bureaucrats. No interest in people or personalities or projects of self-improvement. It was all about political points and trying to outmaneuver each other for the juiciest assignments. “If she wasn’t before, she is now. And I don’t know anything about the before. I’m not going to lie about something.”
+
+The voice on the other end of the call went so silent he would bet it had been muted. Dean Frankle wasn’t alone in his office. Which meant Ling Wu was in there, too, listening. They were supposed to be a damn team, not a bunch of hyenas looking to eat members of their own pack. Jeez, maybe he was getting old, remembering the good old days that really hadn’t been all that different from what they were now.
+
+“Okay,” Dean’s voice returned, “look at it this way. Samantha Jellicoe decided to announce that she exists, and you got the assignment to figure out all of her befores. Eight months in, and all you’ve told us is that she’s legit today. No leads pointing to her or to anyone else. That’s—”
+
+“What about Gabriel Toombs?” Aubrey broke in. “She found him. He ripped off the Met, and we caught him red-handed.”
+
+“Richard Addison caught him, and then Toombs’s house burned down before we could dig any deeper. Considering that obsessed as he was with Jellicoe, he probably had some dirt on her, I don’t really call that a win.”
+
+“He was a sick fuck, stalking a woman just trying to go about her life, you mean,” Aubrey muttered. And now he wasn’t. And he was in jail, and about to go away to prison for a very long time. A definite win, in Aubrey’s book.
+
+“The fact is,” a second, deeper voice took up, “she is probably the biggest fish to come our way in a decade. Maybe longer. Yes, you have seniority in this office. But eight months on a case where we’ve assigned a half-dozen agents, and we have exactly nothing? We have no choice but to assess whether a…younger agent might fit better in her circle and gain us more results.”
+
+“Have you looked at her circle, Wu? And considered how Addison would react to some young stud showing up and elbowing his way into a friendship? We’d never find the damn body.”
+
+“You’re not getting any results there, Aubrey. And we have other concerns that could use a boost. The office in Omaha could use somebody with your experience, for example. There’s some kind of medical billing scam going on at their Immanuel Village, and you’re the guy most likely to not make waves snooping around. Not a demotion; just a reassignment.”
+
+He knew what that meant. “I’m not going undercover at the Nebraska version of the fucking Villages, Wu, just because you’re looking for a big-enough score to move you out of an office that overlooks CVS. I’ve been keeping a lid on West Palm Beach for ten years. It takes someone the older ladies trust. Nobody else can do what I do here. You couldn’t, no matter how much you want to get noticed so you can move to the bay office.”
+
+“This isn’t about promotions, or office views, Aubrey. It’s about results. You keep saying you’re digging, but this isn’t just some old lady stealing her neighbor’s earrings or guys cooking up a pyramid scheme at a fancy society party. Maybe it’s time to admit that this will take more than what you’ve got.”
+
+“Keep in mind that for ten years nobody’s had any idea who’s ratting out the old ladies or the grifters, and I’m still invited to all those society parties. I am digging. If there’s anything to find, I will find it. And do so with some finesse, which, I believe, is why you gave me the assignment in the first place. But you have to consider that if I don’t find anything, there might not be anything here in Palm Beach—other than the old ladies and the pyramid schemers—to find.”
+
+“True enough,” Ling Wu returned in his smooth, professional tone. “It’s also true that the FBI doesn’t have unlimited funds for investigations that don’t go anywhere. And you can thumb your nose at Nebraska, but we’re talking millions of dollars going somewhere it shouldn’t be. So this is it, Aubrey; give us enough to get an arrest warrant on Samantha Jellicoe or somebody who’ll flip on her, or start packing for snow.”
+
+The line went dead before Aubrey could do the honors himself. Shit in a bucket. Palm Beach was his territory. And while he didn’t particularly care if he reported to the so-called “CVS Office” rather than to the newer “Bay Office” half a mile to the east that overlooked Lake Worth, Ling Wu did. That was probably because Ling spent most of his time in his pharmacy-adjacent office, and his view was for shit. On the other hand, Aubrey had spent most of the last decade undercover, discretely putting away bored trophy wives snagging each other’s jewelry or husbands, the odd stockbroker reporting an art theft to collect the insurance money, and the usual Russian oligarch money-laundering schemes.
+
+That had been easy. It had even gotten a little boring, to the point that he’d started to consider retirement from the Bureau. The sudden appearance of Miss Samantha Jellicoe had been like Christmas, Halloween, and a dozen birthdays all rolled into one. Or it had been at first. Now it was a damn nightmare.
+
+Until she’d stood up and said hey, all anybody, Interpol included, had had was rumors that Martin Jellicoe even had a partner-slash-kid. Just the fact that she’d so effortlessly stayed off the grid until she chose to reveal herself had had all the agencies hopping. Nobody stayed that anonymous and hidden just for fun. There had to be a reason for it. Everybody in the FBI, CIA, Interpol, and Treasury Department knew what the reason had to be, but nobody—nobody—had any proof of anything.
+
+No fingerprints, no CCTV footage, nothing but a long string of high-end cat burglaries dating back nearly a decade with no evidence at all attached to them. Just a few rumors, some blame thrown by other, less-skilled cats, and her family name. Her family legacy.
+
+Shaking himself, Aubrey finished booking the flight to New York and texted Miss Samantha the details. For the thousandth time he speculated that if she’d surfaced calling herself Samantha Jones and partnered with Richard Addison, it would only have been the entertainment news trying to figure her out, and nobody at the Bureau would have so much as blinked.
+
+The way he looked at it, she’d wanted to be honest with Addison, and as high profile as he was, that had exploded everything. She’d wanted to go legit, whatever her history. And it hadn’t been lip service, either. Just after she’d appeared, she’d taken down a couple of art forgers and nearly gotten herself killed in the process. But the FBI didn’t like when civilians solved big cases, and they didn’t trust that she hadn’t been behind the entire mess in the first place. Now they wanted her taken down for everything they assumed she’d done and whatever she could possibly, potentially, be doing now, and they’d picked him to do it.
+
+After ten years of acting as a sought-after society walker, he’d been called in to the fancy state FBI headquarters in Tampa and told to nail Samantha Jellicoe for every high-end art or jewel theft they’d never been able to solve. They’d teamed with Interpol on the international cases. And all because a reclusive young woman had stood up and said her name—and then brought down a handful of other criminals.
+
+Hell, in just over a year she’d caught a murderer, stopped a heist at the Metropolitan Museum of Art, recovered stolen Samurai armor, and helped Addison open a museum in England showcasing the art the billionaire had spent most of his adult life collecting.
+
+As Aubrey finished filing paid invoices, a walkie-talkie call came in from Andy Guttierez, asking if the replacement A/V cables had come in for the Hernandez job. “Not yet,” he replied. “I checked again this morning, and they said Friday at the earliest. And I know you know, but do not remove the old wiring before the new stuff arrives.”
+
+“Yeah, I know. Sam’s rules. We don’t leave a house unprotected, even if what it’s got is ten years out of date.”
+
+“Roger that.” Setting down the walkie-talkie in its cradle, Aubrey returned to the filing cabinet.
+
+Damn it. Was it his fault that sitting in this office, doing filing and giving pep talks, felt…significant? Because yeah, Samantha Jellicoe done some high-end cat burglaries. Okay, not some. A lot. He knew it, probably better than anyone in Tampa, or Langley. Proving it would be tricky, because she’d never come out and admitted to stealing anything to him, but she talked about various security systems like someone who’d dismantled them, and she’d described how cold and windy it could be hanging on the outside of a thirty-story building.
+
+The thing was, she didn’t do it any longer. He couldn’t name another crook who’d given up that life without being caught and forced into bar-surrounded honesty. But she had. And she’d started a company that specialized in keeping other thieves at bay, plus recovering things if anyone did manage to steal them. She had to know she was taking a risk, because until the statute of limitations ran out on every job she’d ever pulled, everything was a risk.
+
+Maybe if she’d been some rough, boozy, arrogant old man, digging around enough to stop her would have been easier—on his conscience, if not in fact. The thing of it all was, though, he liked her. He even admired her. He liked Addison, too, and the risks the billionaire was clearly willing to take to keep her in his life.
+
+Did he like her more than he liked this comfortable assignment in Palm Beach, though? Did he like her more than he detested the idea of being sent to Nebraska—which his boss had mentioned not because he had the most experience in insurance fraud, but because he was the damn oldest agent he knew?
+
+He slammed his fist against the top of the file cabinet, making a dent that rebounded with a loud metallic thud. Yeah, he could turn Miss Samantha in. Now. Today. Except that he wasn’t ready to do that. Not quite yet.
+<div class="bottom-box">
+  <a href="https://sparke.app.link/lp1?%24ios_deepview=false&%24deeplink_path=book%2F0000" class="button cta" id="cta" onclick="try{fbq('trackCustom', 'CTA Click', {cta:'CTA Click'});}catch(e){} try{ttq.track('ClickButton');}catch(e){}">👉 Continue Reading 👈</a>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

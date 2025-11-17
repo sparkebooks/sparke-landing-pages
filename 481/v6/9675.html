@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The First</title>
+    <link rel="icon" href="data:image/ico;base64,aWNv">
+    <link rel="apple-touch-icon" href="data:image/ico;base64,aWNv">
+    <meta name="ad.size" content="width=0,height=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <style>
+      * {padding: 0;margin: 0;box-sizing: border-box;}
+      body {}
+      .img-box {position: relative;}
+      .img {display: block;width: 100%;height: auto;}
+      .mask {position: absolute;bottom: 0;left: 0;width: 100%;height: 30%;background-image: linear-gradient(rgba(255, 255, 255, 0),  rgb(255, 255, 255, 90%), rgb(255 255 255), #ffffff);} 
+      .title {padding-left: 1.2rem;padding-right: 1.2rem;font-size: 1.8rem;font-weight: 500;color: #333;margin-bottom:10px;margin-top: -70px;position: relative;}
+      .desc {padding-left: 1.2rem;padding-right: 1.2rem;font-family: Georgia, sans-serif; font-size:20px;font-weight: 400;color: #333;line-height: 1.3rem;text-align: justify;padding-bottom: 0.5rem;}
+      .desc i {display: block;height: 0.6rem;}
+      .button:active {opacity: 0.8;}
+
+      /* Sticky CTA container — transparent background */
+      .bottom-box {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;   /* centers the button nicely */
+        padding: 0.55rem 0.34rem;
+        background: transparent;   /* removed white background */
+        z-index: 9999;
+        box-shadow: none;          /* no shadow either */
+      }
+
+      .button {
+          display: block;
+          background: #230a51;
+          border-radius: 1.5rem;
+          margin: 0 auto;
+          font-size: 0.9rem;
+          font-weight: bold;
+          padding: 0rem 3.4rem;
+          color: #FFFFFF;
+          text-align: center;
+          line-height: 2.59rem;
+          text-decoration: none;
+          border-width: 0;
+        }
+
+      /* Chapter visibility (no <p> required; preserves line breaks) */
+      .chapter{display:none;white-space: pre-wrap;}
+      .chapter.active{display:block}
+
+      /* Fix the bar to the top */
+      .top-nav{
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: var(--top-nav-h);
+        z-index: 10000;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        font-family: Georgia, sans-serif;
+      }
+
+      /* Layout inside the bar */
+      .top-nav__inner{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 10px 7px 10px;
+        gap: 12px;
+        align-items: center;   /* <— ensures full vertical centering */
+        height: 100%;
+      }
+
+      .top-nav__left{ display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+
+      .app-icon {
+          width: 1.7rem;
+          height: 1.7rem;
+          background-image: url(assets/app_icon_smaller_for_web1.png);
+          background-size: cover;
+      }
+      .nav-title{
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #333;
+        font-family: Helvetica;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .top-nav__btn{
+        display: inline-block;
+        font-size: 12px; font-weight: 400; line-height: 1;
+        padding: 7px 10px;
+        font-family: helvetica;
+        letter-spacing: 1px;
+        color: #fff; text-decoration: none;
+        background: #5c4489; border-radius: 999px; border: 1px solid rgba(0,0,0,0.05);
+      }
+      /* Add a subtle light sweep animation */
+.top-nav__btn {
+  position: relative;
+  overflow: hidden; /* clip the shine inside the button */
+}
+
+/* the moving light strip */
+.top-nav__btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%; /* start off to the left */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg); /* gives it a nice angled streak */
+  animation: shine 2s infinite;
+}
+
+/* keyframes for the movement */
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+    </style>
+
+    <script>var time=null;function setRem(){try{let t=0||document.documentElement.clientWidth||document.body.clientWidth,e=20;document.getElementsByTagName('html')[0].style.fontSize=t/e+'px'}catch(t){}}setRem();window.onresize=function(){window&&(setRem(),clearTimeout(time),(time=setTimeout(()=>{setRem()},1e3)))};</script>
+    
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D43OQNBC77U40Q0I7570');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+
+<!-- Meta Pixel Code (keep in <head>) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1318169879492323');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1318169879492323&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<script defer>
+(function(){
+  // --- book_id from filename only ---
+  function getBookIdFromFilename() {
+    const path = location.pathname.replace(/\/+$/,'');
+    const last = path.split('/').pop() || '';
+    const core = last.includes('.') ? last.split('.')[0] : last;
+    return /^[A-Za-z0-9_-]+$/.test(core) ? core : '';
+  }
+
+  // --- Normalize platform (Meta/TikTok variants) ---
+  function normalizePlatform(val) {
+    const p = (val || '').toLowerCase();
+    if (['fb','facebook','instagram','ig','messenger','audience_network','audiencenetwork'].includes(p)) return 'facebook';
+    if (p === 'tiktok' || p === 'tt') return 'tiktok';
+    return p || 'unknown';
+  }
+
+  // --- Gather campaign params from page URL ---
+  function getCampaignParams() {
+    const src = new URLSearchParams(location.search);
+    return {
+      channel:  normalizePlatform(src.get('site_source_name')),
+      campaign: src.get('campaign_id') || 'unknown_campaign',
+      feature:  src.get('adset_id')    || 'unknown_adset',
+      stage:    src.get('ad_id')       || 'unknown_ad'
+    };
+  }
+
+  // Quick check to avoid duplicate appends
+  function hasParam(href, name){
+    return href.indexOf(name + '=') !== -1;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const bookId = getBookIdFromFilename();
+    const c = getCampaignParams();
+
+    document.querySelectorAll('a[href*="sparke.app.link"]').forEach(a => {
+      let href = a.getAttribute('href') || '';
+      if (!href.includes('sparke.app.link')) return;
+
+      // 1) Update encoded deeplink_path book id: ...deeplink_path=book%2F<id>...
+      if (bookId) {
+        // Replace existing book id if present
+        const replaced = href.replace(/(deeplink_path=book%2F)([^%&]+)/, (_, p1) => p1 + encodeURIComponent(bookId));
+        href = replaced;
+      }
+
+      // 2) Build params to append (always with "&")
+      const pairs = [];
+      if (bookId && !hasParam(href, 'book_id')) pairs.push('book_id=' + encodeURIComponent(bookId));
+      if (c.channel  && !hasParam(href, '~channel'))  pairs.push('~channel='  + encodeURIComponent(c.channel));
+      if (c.campaign && !hasParam(href, '~campaign')) pairs.push('~campaign=' + encodeURIComponent(c.campaign));
+      if (c.feature  && !hasParam(href, '~feature'))  pairs.push('~feature='  + encodeURIComponent(c.feature));
+      if (c.stage    && !hasParam(href, '~stage'))    pairs.push('~stage='    + encodeURIComponent(c.stage));
+
+      if (pairs.length) {
+        href += (href.endsWith('&') ? '' : '&') + pairs.join('&');
+      }
+
+      a.setAttribute('href', href);
+    });
+  });
+})();
+</script>
+
+</head>
+<body>
+<a href="https://sparke.app.link/lp1?%24ios_deepview=false&%24deeplink_path=book%2F0000" class="top-nav-link" onclick="try{fbq('trackCustom', 'CTA Click', {cta:'CTA Click'});}catch(e){} try{ttq.track('ClickButton');}catch(e){}">
+<nav class="top-nav" role="navigation" aria-label="Download bar">
+  <div class="top-nav__inner">
+    <div class="top-nav__left">
+      <span class="app-icon" aria-hidden="true"></span>
+      <span class="nav-title">Download the entire book</span>
+    </div>
+    <div class="top-nav__btn">Download</div>
+  </div>
+</nav>
+</a>
+<div style="position: relative;">
+<div class="img-box">
+<img id="image" data-img="" class="img" src="assets/scen3_abd_3.jpg" />
+<div class="mask"></div>
+</div>
+<h1 class="title">The First</h1>
+<div class="desc">
+<div class="chapter-index" data-chapter="1"></div>
+<div id="chapter1" class="chapter active">
+## Chapter 1
+
+Falls Edge has a way of making a person feel small. Human. A tiny speck between a majestic panorama of clouds and the valley floor. The mountains take up the middle ground and stare down on us—silent, imposing, arms wide in all their wonder. I’ve spent my life wrapped in these arms, year after year being a humble little speck, serving martinis and Old Fashioneds to the country’s elite on the veranda that stretches from one end of the red-roofed Falls Edge Hotel to the other. And no matter how many women in pearls and white pants snip at me for this or that, all I can ever feel is blessed that of all places, this is where I call home.
+
+Hundreds of thousands of patrons have passed through the hotel over the years. Presidents have lain in its beds. Captains of industry have graced its bars and ballrooms. And I’ve been working the veranda serving these patrons every summer since I turned thirteen and Daddy decided I needed to start being a part of the family business. Now I help him with the books, cover shifts between my classes at the local college, and put out fires on our busy weekends. I can’t imagine doing it all on my own, but one day the hotel will be mine, the same way it was once my mother’s.
+
+For now, though, we’re booked full and the veranda is at capacity. Every white wicker couch and lounge chair is occupied by an eager customer, and I’m doing all I can to keep up and smile while I do.
+
+*Pellegrino. Two glasses. Dirty martini. Straight up. No olives. Shirley Temple. Extra cherries.*
+
+I silently chant the last requests in my head as I pass through the wide double doors into Eve’s, the bar named after the hotel’s original owner.
+
+“McCasker, what the *hell *are you doing here?” My father’s tone is less than courteous.
+
+I peek around the corner just as Edwin McCasker passes through the front doors. The old oak floors creak under his boots. Daddy circles the reception desk like he means to turn him around and send him back to the other side of the valley. But Edwin doesn’t seem affected. He walks into the lobby, all dirty jeans and matching denim work shirt. His eyes are clever, a searing blue, and his smile has always melted any animosity my father would rather I hold toward him.
+
+“Gerald Bell. Always a pleasure.” Edwin nods in my direction and shoots me that smile. His hands are tucked casually into his jeans. “June.”
+
+I bite my lip to keep from returning his smile. Daddy stands in front of him, arms crossed as tightly as his navy blazer will allow. He’s a few inches shorter and infinitely more high-strung than the man in front of him.
+
+“I said, what are you doing here?” My father’s tone is hushed now. No guests seem to have noticed his earlier outburst.
+
+“I thought I’d stop by. See how the better half lives.”
+
+My father scoffs. “The better half. I’ve earned every dime and put damn near all of it back into making this a better place for our guests and our town. We’re not fat and happy hogs up here. If you haven’t noticed—and I know you haven’t because you’re an ignorant fool—that we’re employing half the damn town here. No thanks to you.”
+
+Edwin’s easy smile doesn’t falter. “I feel like all these years we’ve just been misunderstanding each other, Ger.”
+
+“I feel like all these years you’ve been misunderstanding simple arithmetic, and if you’d get your head out of the clouds and see that rundown farm for what it is, a⁠—”
+
+“An impediment to you lining your wallet with a little bit more of Falls Edge tourist dollars. Am I right?”
+
+“You’re dead wrong, as usual. We both know it’s a wasted opportunity to not expand on the one thing that keeps the tourists coming to our town. How many head of cattle you have there? They’re doing nothing but stinking up the main road.”
+
+“Those stinking cows are my livelihood, Ger. We can’t all be living a life of luxury like your guests.”
+
+“You could retire on the sale of the land, you idiot!”
+
+My father’s face is a fierce red. His arms, no longer crossed, are tight along his sides, ending in balled fists that I know he’d never use to hurt another human being. To my knowledge he’s never been a violent man, but for some reason, I bet if he broke his streak, it’d be on Edwin McCasker.
+
+I’ve only ever known the man as my father’s worst enemy and lifelong rival. He also happens to be our neighbor. Over the past four years, my father has been trying to buy the McCasker land to develop an expansion of the hotel. At first Edwin had agreed, but once my father lined up the investors to fund the exchange, McCasker backed out.
+
+Edwin looks through the windows that offer a view of the veranda and the majestic mountains beyond. “Pretty day.”
+
+My father wrinkles his brows. “It’s more than a pretty day. It’s a holiday weekend, and we’re busy. Unless you’re here to make good on the deal, you can turn on around and let us get back to work.”
+
+“I realize there’s nothing you want more than to buy up the land like we talked about. The truth is, the decision isn’t entirely mine. It never has been.”
+
+“Like hell it’s not.”
+
+Edwin raises his hands in surrender. “Honest to God. I considered your offer, and I thought it was the best thing too. Then Kase left for school, and things changed. I realized that me making a decision for both of us wasn’t really fair. He’s entitled to have a say in his future.”
+
+The mere mention of Edwin’s son has my heart beating faster.
+
+“He’s home now,” I say quietly.
+
+It’s not a question, because I knew the day he stepped foot back in Falls Edge. Somehow I got wind of it every time he came home, even if he never stayed long enough for us to cross paths.
+
+Edwin nods. “He’s home, and he’s here to stay. He wants to work the farm. Take over where I’ve fallen short. Turn it profitable again.”
+
+“Certainly he’s got more sense than you do,” my father says. “Send him up here. I’ll explain everything. The benefits to the town and to your family are clear. You’d have a stake in the profits going forward.”
+
+Edwin’s expression takes on a seriousness I’ve never seen before.
+
+“I’m sure you could explain it very well. Doesn’t change the fact that he’s decided to keep the land in our family. It’s his legacy too. I have to respect that.”
+
+“Nonsense!”
+
+My father goes toward him, but I race up to his side.
+
+“Daddy, wait. It’s not his fault.”
+
+“Not his fault! You have no sway with the boy?”
+
+“A bit, sure. But he’s grown. He’s seen a world beyond this valley, and I’m not about to tell him I know any better.” His gaze flickers up to me. “I have a lot of faith in the next generation. It’s a different world, a better world because of them. And it’s his decision as much as it is mine now.”
+
+My father opens his mouth to speak again, but I start before he can.
+
+“Mr. McCasker, if Kase wants to make Falls Edge his home, the expansion my father planned would ensure our town had a bright future. A future that could benefit him too. I’m sure he can see reason.”
+
+He’s quiet a moment. “You know, June, he always liked you.” He rubs his fingertips over the creases in his forehead.
+
+Daddy’s frown deepens. I’m holding my breath. Maybe because all this talk of Kase has me thinking about how his eighteen-year-old lips felt against mine all those years ago. The hotel sits on hundreds of acres of land, but the hidden grove where we stole a kiss and a few fevered touches under the stars is still my favorite spot.
+
+One kiss. That’s all I got before he left.
+
+“Maybe you could talk to him. Hell, I’ve been wanting to bury this hatchet for years,” Edwin says quietly.
+
+My father grimaces, but I put my hand on the lapel of his blazer before he can speak.
+
+“Daddy, why don’t you let me show Edwin out. I’ll just be a minute. I think someone may need your help at the front desk.”
+
+His grimace flattens into a friendlier customer-service expression once he notices a young couple waiting to check out. He gives me a short nod and walks briskly toward them. A wave of relief forces me to exhale. I gesture toward the door, and Edwin and I move side by side onto the wide front porch.
+
+Our valet, Marty, tips his hat as we pass. I recognize Edwin’s truck parked down the narrow winding drive. It’s an old, white Chevy pickup with McCasker Farms painted in faded blue lettering on the doors.
+
+“I appreciate you coming by,” I say.
+
+He shoots me a crooked grin that I’m certain Kase inherited. “Not sure your daddy shares your appreciation.”
+
+“He’s not always an easy man to deal with, but he means well. I can assure you his heart is in the right place.”
+
+Edwin sighs and stares ahead. The crisp dusky air willows over us. “I sure hope so. That land has been in my family for five generations. No part of giving it up would be easy.”
+
+We slow as we near his truck. He takes out his keys, bouncing them in his callused palms a few times before making eye contact.
+
+“You really think the expansion would be good for Falls Edge? For our family?”
+
+I see years of hard work on his face, in the lean but tired muscles that fill out his work clothes. And I see equal measures of doubt and hope in his eyes.
+
+“I do,” I say. I mean it. I’ve seen the numbers, and I’ve watched the demand for accommodations in our little mountain town steadily grow over the years. “My mother put everything she had into keeping the hotel going through every downturn. I’m committed to doing what’s best, the same way she would have.”
+
+Edwin purses his lips and looks down at his boots. “Your mother was a very special woman. Hard worker with an incredible heart. She made everyone around her a better person.”
+
+A heavy silence passes between us, and I almost ask him about her. My father never says much. I suspect he’s been brokenhearted since she died when I was a baby. Still, I savor every tidbit I can get to somehow know her better. Then Edwin looks up, and something about his expression gives me pause. I recognize the heartache there before he softens with a smile.
+
+“I meant what I said about Kase. You should talk to him.”
+
+I swallow hard. “Do you think he would…you know…reconsider?”
+
+Edwin reaches in the truck, smooths back his golden-brown hair with his other hand, and tugs on a hat that bears the same McCasker Farms logo. “Come by tonight. He’s been working himself into the ground since he got home. Would be a healthy distraction for him in any case.”
+
+I offer a tentative nod, but the prospect of seeing Kase has already set off a cyclone of nerves and anxiety in my belly. He hasn’t sought me out for four years. Why would he want to see me now?
+
+Before I can come up with an excuse to back out, Edwin’s in the driver’s seat, slamming the heavy door behind him. He winks at me through the window and sets off down the long drive toward the main road.
+<div class="bottom-box">
+  <a href="https://sparke.app.link/lp1?%24ios_deepview=false&%24deeplink_path=book%2F0000" class="button cta" id="cta" onclick="try{fbq('trackCustom', 'CTA Click', {cta:'CTA Click'});}catch(e){} try{ttq.track('ClickButton');}catch(e){}">👉 Continue Reading 👈</a>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

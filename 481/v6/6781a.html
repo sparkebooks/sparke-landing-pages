@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sundrops and Shadows</title>
+    <link rel="icon" href="data:image/ico;base64,aWNv">
+    <link rel="apple-touch-icon" href="data:image/ico;base64,aWNv">
+    <meta name="ad.size" content="width=0,height=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <style>
+      * {padding: 0;margin: 0;box-sizing: border-box;}
+      body {}
+      .img-box {position: relative;}
+      .img {display: block;width: 100%;height: auto;}
+      .mask {position: absolute;bottom: 0;left: 0;width: 100%;height: 30%;background-image: linear-gradient(rgba(255, 255, 255, 0),  rgb(255, 255, 255, 90%), rgb(255 255 255), #ffffff);} 
+      .title {padding-left: 1.2rem;padding-right: 1.2rem;font-size: 1.8rem;font-weight: 500;color: #333;margin-bottom:10px;margin-top: -70px;position: relative;}
+      .desc {padding-left: 1.2rem;padding-right: 1.2rem;font-family: Georgia, sans-serif; font-size:20px;font-weight: 400;color: #333;line-height: 1.3rem;text-align: justify;padding-bottom: 0.5rem;}
+      .desc i {display: block;height: 0.6rem;}
+      .button:active {opacity: 0.8;}
+
+      /* Sticky CTA container — transparent background */
+      .bottom-box {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;   /* centers the button nicely */
+        padding: 0.55rem 0.34rem;
+        background: transparent;   /* removed white background */
+        z-index: 9999;
+        box-shadow: none;          /* no shadow either */
+      }
+
+      .button {
+          display: block;
+          background: #230a51;
+          border-radius: 1.5rem;
+          margin: 0 auto;
+          font-size: 0.9rem;
+          font-weight: bold;
+          padding: 0rem 3.4rem;
+          color: #FFFFFF;
+          text-align: center;
+          line-height: 2.59rem;
+          text-decoration: none;
+          border-width: 0;
+        }
+
+      /* Chapter visibility (no <p> required; preserves line breaks) */
+      .chapter{display:none;white-space: pre-wrap;}
+      .chapter.active{display:block}
+
+      /* Fix the bar to the top */
+      .top-nav{
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: var(--top-nav-h);
+        z-index: 10000;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        font-family: Georgia, sans-serif;
+      }
+
+      /* Layout inside the bar */
+      .top-nav__inner{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 10px 7px 10px;
+        gap: 12px;
+        align-items: center;   /* <— ensures full vertical centering */
+        height: 100%;
+      }
+
+      .top-nav__left{ display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+
+      .app-icon {
+          width: 1.7rem;
+          height: 1.7rem;
+          background-image: url(assets/app_icon_smaller_for_web1.png);
+          background-size: cover;
+      }
+      .nav-title{
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #333;
+        font-family: Helvetica;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .top-nav__btn{
+        display: inline-block;
+        font-size: 12px; font-weight: 400; line-height: 1;
+        padding: 7px 10px;
+        font-family: helvetica;
+        letter-spacing: 1px;
+        color: #fff; text-decoration: none;
+        background: #5c4489; border-radius: 999px; border: 1px solid rgba(0,0,0,0.05);
+      }
+      /* Add a subtle light sweep animation */
+.top-nav__btn {
+  position: relative;
+  overflow: hidden; /* clip the shine inside the button */
+}
+
+/* the moving light strip */
+.top-nav__btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%; /* start off to the left */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg); /* gives it a nice angled streak */
+  animation: shine 2s infinite;
+}
+
+/* keyframes for the movement */
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+    </style>
+
+    <script>var time=null;function setRem(){try{let t=0||document.documentElement.clientWidth||document.body.clientWidth,e=20;document.getElementsByTagName('html')[0].style.fontSize=t/e+'px'}catch(t){}}setRem();window.onresize=function(){window&&(setRem(),clearTimeout(time),(time=setTimeout(()=>{setRem()},1e3)))};</script>
+    
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D43OQNBC77U40Q0I7570');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+
+<!-- Meta Pixel Code (keep in <head>) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1318169879492323');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1318169879492323&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+</head>
+<body>
+<a href="https://sparke.app.link/lp1%24ios_deepview=false&%24deeplink_path=book%2F3106?book_id=3106&~channel=facebook~campaign=123&~feature=1234&~stage=12345" class="top-nav-link">
+<nav class="top-nav" role="navigation" aria-label="Download bar">
+  <div class="top-nav__inner">
+    <div class="top-nav__left">
+      <span class="app-icon" aria-hidden="true"></span>
+      <span class="nav-title">Download the entire book</span>
+    </div>
+    <div class="top-nav__btn">Download</div>
+  </div>
+</nav>
+</a>
+<div style="position: relative;">
+<div class="img-box">
+<img id="image" data-img="" class="img" src="assets/werewolf_face1.jpg" />
+<div class="mask"></div>
+</div>
+<h1 class="title">Sundrops and Shadows</h1>
+<div class="desc">
+<div class="chapter-index" data-chapter="1"></div>
+<div id="chapter1" class="chapter active">
+## Chapter 1
+
+Estrella
+
+The morning after the Haze in Dun’s Crossing, my body aches deliciously. The scent of my mate fills the tent–cool mint and that brown liquor they served at dinner here. After months of running out into the Haze back home, panting and wanting and finding no one, I am finally sated. I can feel my wolf inside me, grinning at the memory of last night. We are closer than ever, just like Mother promised.
+
+My head slams into the ground as the warm pillow underneath me shoots back.
+
+“Ow!” I sit up, rubbing my head. The blanket pools around my waist. I look toward the disappearing pillow.
+
+And see the pale Dun’s Crossing prince I met at the docks only yesterday. Anwen–that’s his name. His naked body is all trim muscle, the line of his waist leading my eye to a thatch of light hair and the lengthy cock between his legs. I lick my lips. There is a welcome breakfast this morning—my parents and his brother decided attempting to fit a diplomatic meal in between the descending Haze wouldn’t be clever—but I think there may be enough time for another round before we have to leave.
+
+“Desperate, huh?” he says. “I knew you were a virgin.”
+
+Instantly, my mating bite burns. I yank my gaze up to his face. He’s got diamond-sharp cheekbones, so different from what I’m used to in Sundrop Gem, but his ice-blue eyes are hard.
+
+“What?” I ask.
+
+He rolls his eyes. “Look, I don’t know how you pulled this off, but obviously, this is a political ploy to strengthen the alliance. I’m not stupid, and I’m not falling for it.”
+
+His words hit like a slap to the face. Did he not feel what I felt last night? The Moon Goddess’s hand was on my shoulders, pushing me toward him. I had never felt so close to Her, so right. I grab the blanket around my waist and pull it up to my chest, hiding myself from his eyes.
+
+“If you think I affected the Haze, then you are very stupid,” I reply.
+
+“I would be careful how you speak to me.” His voice whips through the tent with another pulse of pain from the bite where my shoulder meets my neck.
+
+I put my hand on it. The skin is warm as if inflamed. “Turn around, if you’re so certain. Show me you don’t have the mating bite.”
+
+He spins insolently, and I wrestle my wolf not to look at his ass in the cold light of day. The more he speaks, the more I hope he’s right somehow, that the Haze was manipulated. The man cannot be my mate.
+
+But there, on the back of his shoulder, still surrounding the pink-red circle of teeth marks, is a pale sun. A mating mark. The same one I’ve seen on Mother’s neck all my life.
+
+“Well?” he asks roughly.
+
+“It’s not as if you don’t know,” I reply. “You can feel the pain of your own rejection.”
+
+He snorts and turns back around. “If you think that hurts, Princess, I’d love to have lived your life.”
+
+I told Father my thoughts when we received the letter. Everyone knew King Gavin was a monster. Even on the other side of the Lonely Sea, the rumors reached us. We heard of the packs he decimated, one after the other, spreading across the land like a disease. I told him that nothing good could come of his son leading Dun’s Crossing. A man like King Gavin could not have raised a better son. But Mother spoke to our holy woman, Yana, and she said the day we received the letter was a day of forgiveness. That if we did not reconsider the old feud, we would risk angering the Moon Goddess. And Father and Mother have always been two halves of the same whole, so when Mother believed it, the decision was made.
+
+Finding my mate was supposed to be like that. I was supposed to fall into the arms of a man who would lead my people alongside me and love me. Not this hard-eyed prince that confirms all my worst suspicions about Dun’s Crossing.
+
+I stand, the blanket clutched around my chest. He doesn’t deserve to see me. And I won’t use my nudity like he is, like a challenge. “I am certain you would have loved to live my life, if even half the stories I’ve heard about your father are true.”
+
+He snarls at me, and it’s like a knife through my mark. I nearly stumble with the pain.
+
+“Don’t speak about him like that.” Anwen takes a step forward, mere inches from me. “In fact, don’t speak about him at all.”
+
+My hurt and confusion starts to fade, and the pride my parents taught me surges in its place. I am the crown princess of Sundrop Gem. Our pack cares nothing for gender in our leaders, just the wisdom that comes with age. I am older than this sneering prince, who will only inherit if the child in Queen Raven’s stomach dies. And he ought to understand who he’s talking to.
+
+I close the distance between us, the blanket the only thing separating our naked bodies. My wolf howls with want. His cool, deep scent threatens to overwhelm me. But I hold strong.
+
+“You don’t tell me what to say,” I hiss. “In fact, you don’t tell me anything at all.”
+
+Anwen glares down at me, fire finally burning in those icy eyes. He grabs my arm hard enough that I think it might bruise, and want coils between my legs.
+
+“I’m going to walk out of here”—his voice is low and dangerous—“and sneak back to the castle. I’m going to cover my mark and tell every single person I see that I ended this Haze alone. If you like, Princess, we can find out who the people of Dun’s Crossing believe more.”
+
+The pain that rips through me from his words is nothing like the sweet pain of his touch. It’s sickening, knee-weakening. I slump in his grasp until he’s the only thing keeping me on my feet.
+
+“My parents would have you searched for the bite,” I murmur.
+
+“And I would pitch a fit until our healer got to do the inspection, and Fleming would hide anything I asked.” He smirks. “So either we keep this quiet, or the rest of the world enjoys laughing at the mad, desperate princess of Sundrop Gem. Your choice.”
+
+He releases me, and I barely catch my feet before I stumble. Whatever else this prince might be, he seems to be right that the pain doesn’t impress him. Only a sneer mars his expression. For a single moment, I wonder what growing up under a man who would burn his enemies to death must be like.
+
+Then, Anwen sneers, and I decide that I don’t care.
+
+“That’s a good idea.” I straighten and turn for the spare clothes the prim people of Dun’s Crossing leave in their civilized little Haze tents. Were we in Sundrop, I would march naked into my home, wearing my mark proudly, and my people would cheer. Everything here is twisted.
+
+“Of course it is.” Still, he sounds confused at my change of heart.
+
+“Yes.” I lift the simple dress and drop the blanket with my back to him. I couldn't care less if he looks at me. “I think there would be nothing worse for my reputation, or for the future of Sundrop Gem, than being mated to you.” I slide the dress on over my head. “So thank you, Prince Anwen, for ensuring the safety of my pack with your gracious offer.”
+
+“Not wanting to throw my life away on a random virgin because a cloud told me to doesn’t make me a bad leader,” he splutters.
+
+I turn to him with a soft smile that I have to hold onto by the tips of my claws. “The Moon Goddess told you to. And no, it's your reaction that tells me everything I need to know.”
+
+A bell clangs in the distance. Anwen jerks his head up.
+
+“Fuck. That’s the breakfast call.” He lunges for the other pile of clothes. “We have to move. If we show up in these, everyone will know.”
+
+“I wish you luck with that.” I curtsy to the man that should be my mate and step out of the tent with my mark burning. No matter what he wants, I’m not racing through his precious palace to change. I’ll tell my parents I stayed in the Haze all night and claimed a tent to sleep if I must. I would rather do anything in the world more than please Prince Anwen Solberg.
+
+But as I walk through a forest I don’t know, foreign smells clouding my nose, the sounds of other couples fill the air. Laughter. A few soft moans. Happy, celebratory noises from people who found their fated mates and are ready to settle into a life together.
+
+Tears fill my eyes, but I hold my head high. I am Princess Estrella Sollabella, and I have a breakfast to attend.
+
+## Chapter 2
+
+Anwen
+
+After Estrella leaves, I abandon the morning-after clothes and shift. If the bell’s already ringing, I’m fucked for time, so I’ll be better off seeming like I stayed out all night and asking the gate guards for something to wear. I take a breath and start running. Today, even my wolf can’t stop my racing mind.
+
+Fuck, fuck, fuck. I can’t believe I found my mate during my first fucking Haze! Sure, that happens for most people, but my first Haze had to fall the day after this stupid delegation arrives? That’s the only situation that would’ve landed me here, biting my mate’s head off for mentioning Father.
+
+Pain rips through my shoulder. The things I said to her made her almost fall over. I watched a haze of hurt fill her gray eyes, and I damn near ripped my heart out of my chest and gave it to her in apology.
+
+A howl tears from my lips, and I hope the Moon Goddess hears it. She’s got a sick sense of humor, at least when it comes to the Solbergs, and I’m not going to be her laughingstock.
+
+The plan is simple. We just can’t be mated right now. This alliance is fragile, and I know Kieran needs it. But if we’re not mated now, judging by the way Estrella tried to attack me, we never will be. So, I’ll just avoid Estrella until her family leaves, and then I’ll go to Fleming and figure out how to deal with the rejection pain for the rest of my life.
+
+Simple. And goddamn lonely.
+
+‘Anwen!’ Baz, my would-be Beta, calls through the mind-link.
+
+I can taste the disappointment in his thoughts.
+
+‘What?’ I snap.
+
+‘No success, then?’ He sighs. ‘Me either. You have something important, or can you go get drunk and complain with me?’
+
+‘Something important,’ I reply shortly.
+
+‘Damn.’
+
+I wheel away from the gate. If I ask the guards for clothes, I’ll have to shift, and Baz might see me. Good thing Father only bothered with me when Kieran was too busy doing kingly shit for someone else, so I spent my childhood learning this castle like the back of my hand. I lope around the outer walls, find a place low enough to leap over, take a different passageway than the one we used to re-enter the castle after Father’s death, and creep up to my room.
+
+A few minutes later, I’ve showered, dressed, and I’m skidding into the main dining room. Kieran and Bla—Raven are already there, wearing their royal robes.
+
+“Any news?” Kieran asks. “Quickly, the Sollabellas are waiting outside. And the Winters so Snowcrest doesn’t get the feeling they’re being left out.”
+
+I wrinkle my nose. Nessa Winter has been quieter since Raven sent her ass down the hallway, but no less annoying when she does talk.
+
+A small voice in the back of my mind suggests I could ask Kieran for advice on Estrella. He and Raven obviously didn’t start out with a strong bond. But that suggests I want to try to fix what happened this morning, and I know there’s no chance.
+
+“None.”
+
+Kieran shrugs. “A mating bond with their princess would’ve made today easier, but perhaps it’s better.”
+
+Raven puts a hand on his arm. “And your mate is not less important than the kingdom’s politics, whoever she is.”
+
+Kieran inclines his head to her in agreement. I swallow an eye roll. Sure, I get why Raven’s not grieving, but I’m tired of her magnanimous act. She made sure to tell me she forgives me for everything that happened before. I don’t buy it, and waiting for her to crack is exhausting.
+
+‘Why am I here and not our other siblings?’ I ask Kieran.
+
+‘You’re the crown prince now,’ he replies. ‘And I know your ears. Listen, remember, try not to make an impression.’
+
+So, keep my mouth shut. That, I can do.
+
+My mark aches. 
+
+Hopefully, I can do it.
+
+Kieran and Raven take seats at the head of the table, and Kieran waves his hand. Servants open the doors as I sit to his right. Others bring in platters piled with food. First, Nessa and her father, Floyd, parade in. Nessa is wearing that awful, bright pink thing she insisted on buying when she was trying to impress Mother, but she keeps her head down. Floyd’s been at our court long enough that he wears a doublet in our style, with only a light-blue sash to mark him as an envoy of Alpha King Andri’s court. They greet us formally and sit on the left side.
+
+“Thank you for this consideration.” Floyd helps himself to some bacon. “I’m sure King Andri will be interested in the reintegration of Sundrop Gem into broader politics.”
+
+Kieran nods politely as he fills his own plate. I reach for the sausages and—
+
+Her smell hits me, overpowering everything on the table. Something sweet baking and that flower I can’t name. Every nerve in my body lights, and my cock responds. I cram one of my hands in my lap before anyone can notice.
+
+The royal family of Sundrop Gem enters the room. Just like last time, King Isai and Queen Suniva are arm-in-arm. Are they really that close, or are they trying to seem like they’re closer than they are? The two of them bow in unison, and the shoulder of Queen Suniva’s wrapped, colorful dress slips. King Isai fixes it without a word. Actually close, then.
+
+I force my gaze to Prince Castor next. He wears a broad-shouldered tunic like his father but in more sedate colors, jewel tones instead of bright ones. No crown, no obvious marker of status beyond his ramrod-straight bearing. But his bow is awkward. He’s not used to being paraded around. Least-loved second son, perhaps?
+
+There’s no reason to look at Estrella. This morning, her gray eyes flashing, her luscious body hidden from me beneath that blanket, told me everything I need to know.
+
+She sits down across from me. I nearly gag on my sip of coffee.
+
+‘All right?’ Kieran asks.
+
+I send him the mind-link equivalent of a thumb’s up and struggle to listen to the conversation.
+
+“So,” Kieran says, “you mentioned an alliance on the docks yesterday. What does that mean to you?”
+
+King Isai swallows a bite of bacon. “In truth, I’m not quite sure. We don’t come with any great issue. Sundrop Gem thrives in isolation, and we’re out of practice dealing with others.”
+
+“As are we.” Kieran smiles. “Did the stories of King Gavin reach you across the sea?”
+
+King Isai frowns. “Enough.”
+
+I glance down the table at Floyd. He’s watching this back-and-forth with sharp eyes I’ve always found more ferrety than wolflike. Of course, his job is simply to spy on us for King Andri, a role Father allowed because Floyd likes the high life in the palace enough that he wouldn’t do anything to jeopardize it.
+
+“I learned of them recently myself.” Kieran takes Raven’s hand. “My wife is the crown princess of Escuro, one of the lands my father demolished in his quest for power. In falling for her, I discovered many new things about the history of this kingdom, and I wish to right them.”
+
+I clench my hands under the table. Father was cruel, and he fought dirty. I sided with Kieran for a reason. But Father did win. He did give us good lives. And no one seems to remember that anymore.
+
+“Your letter contained the same sentiment,” King Isai says.
+
+“In the same words,” Estrella adds.
+
+My breath catches. Her voice is like a symphony, high and sweet with a tempting rasp.
+
+“Forgive me,” Kieran says. “I spent a great deal of time writing that letter, and I’m new to leadership. But, if it’s not too personal a question, I can’t help noticing you’ve got on the dress of someone who spent a night in one of the Haze tents. Have you mated with someone here in Dun’s Crossing?”
+
+I jerk my head up before I can stop myself. Her dark curls flow loose over her shoulders, tousled from a night in my arms like she didn’t even touch them when she arrived back at the castle. Her heart-shaped face doesn’t bear a trace of cosmetics, and her full lips look kiss-bitten. And she’s still wearing the plain brown dress from the tent. My chest squeezes as she shifts in her seat and the neckline of the dress shifts to reveal the barest edge of the mark I left on her shoulder. It’s like she’s fucking taunting me, like she wants to get caught.
+
+Estrella meets my gaze, her gray eyes hard. “No. But I had such a wonderful time running through your forests that I stayed out all night. I can’t imagine how you spend your days inside when you’ve got such enchanting woods out there.”
+
+I swallow. Everything in me screams to leap across the table, yank her dress aside, and display her to the world as mine. But now we’ve both lied. And I know as soon as I’m out from under the influence of her eyes, I’ll remember why lying seemed like such a good idea in the first place.
+
+“You’ll—” Raven pales and presses a hand to her mouth.
+
+Kieran looks at her sharply, then nods. “Apologies. The early days of pregnancy don’t agree with Queen Raven.”
+
+Estrella looks away from me, and the rest of the world fades back into focus. Nessa and Floyd are both watching Raven intently. Castor picks at his food.
+
+“Come to my chambers sometime,” Queen Suniva says. “I know a few tricks.”
+
+Raven smiles but doesn’t look up from her empty plate. I cram food into my mouth, hoping that will dampen the fire that lit in me when Estrella denied me.
+
+Kieran clears his throat. “Well, I suppose there’s no reason to continue beating around the bush. Solberg family legend says there is a feud between our two packs.”
+
+“In Sundrop Gem, we go into a fair bit more detail than that.” King Isai laughs. “But my queen tells me the day your letter arrived was a day for forgiveness. I don’t care much for the arguments of our great-great-grandfathers. Do you?”
+
+I study the king. He has Estrella’s coloring—sandy skin, darker hair, gray eyes—and her same soft profile. He looks like a weak man, except for his eyes. They’re not intense, powerful like Father’s were, but they have a certain unshakeable confidence.
+
+‘He’s not lying,’ I tell Kieran. Part of me hopes I’m wrong. My very simple plan may become far less simple if our kingdoms become allies.
+
+“I would love to know the story someday,” Kieran says, “but I see no reason not to proceed.”
+
+King Isai laughs. “Our holy woman tells it better, but I’ll answer any questions you have.”
+
+Across the table, Estrella won’t look at me.
+<div class="bottom-box">
+  <a href="https://sparke.app.link/lp1%24ios_deepview=false&%24deeplink_path=book%2F3106?book_id=3106&~channel=facebook~campaign=123&~feature=1234&~stage=12345" class="button cta" id="cta">👉 Continue Reading 👈</a>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
