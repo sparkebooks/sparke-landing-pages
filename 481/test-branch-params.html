@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Branch.io Parameter Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; background: #f5f5f5; border-radius: 5px; }
+        .url-display { 
+            background: #333; 
+            color: #0f0; 
+            padding: 10px; 
+            font-family: monospace; 
+            font-size: 12px; 
+            word-break: break-all;
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+        .param-type { font-weight: bold; margin: 10px 0; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Branch.io URL Parameter Test</h1>
+    
+    <div class="test-section">
+        <h2>Test Scenarios</h2>
+        <button onclick="testScenario1()">Test 1: With book_id in URL</button>
+        <button onclick="testScenario2()">Test 2: Without book_id (use filename)</button>
+        <button onclick="testScenario3()">Test 3: With all tracking params</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Generated URL</h2>
+        <div id="urlDisplay" class="url-display">Click a test button to see the generated URL</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Parameter Breakdown</h2>
+        <div id="paramBreakdown"></div>
+    </div>
+
+    <script>
+        // Copy the getBookId function from the main page
+        function getBookId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromParam = urlParams.get('book_id');
+            if (fromParam) return fromParam;
+
+            // Fallback: extract from filename
+            const fn = (location.pathname.split('/').pop() || '').toLowerCase();
+            const m = fn.match(/^(\d+)\.html?$/);
+            return m ? m[1] : '';
+        }
+
+        function generateBranchUrl(trackingPayload) {
+            const baseUrl = 'https://9bik5.app.link/lp1';
+            const trackingParams = new URLSearchParams();
+            
+            // Get book_id
+            const bookId = getBookId() || '3106';
+            
+            // CUSTOM DATA (no prefix) - passed to app
+            trackingParams.set('book_id', bookId);
+            trackingParams.set('landing_page', '481');
+            
+            // Facebook tracking parameters as custom data
+            if (trackingPayload.fbclid) trackingParams.set('fbclid', trackingPayload.fbclid);
+            if (trackingPayload.ad_id) trackingParams.set('ad_id', trackingPayload.ad_id);
+            if (trackingPayload.adset_id) trackingParams.set('adset_id', trackingPayload.adset_id);
+            if (trackingPayload.campaign_id) trackingParams.set('campaign_id', trackingPayload.campaign_id);
+            if (trackingPayload.creative_id) trackingParams.set('creative_id', trackingPayload.creative_id);
+            if (trackingPayload.placement) trackingParams.set('placement', trackingPayload.placement);
+            if (trackingPayload.site_source_name) trackingParams.set('site_source_name', trackingPayload.site_source_name);
+            
+            // UTM parameters as custom data
+            if (trackingPayload.utm_source) trackingParams.set('utm_source', trackingPayload.utm_source);
+            if (trackingPayload.utm_campaign) trackingParams.set('utm_campaign', trackingPayload.utm_campaign);
+            if (trackingPayload.utm_medium) trackingParams.set('utm_medium', trackingPayload.utm_medium);
+            if (trackingPayload.utm_content) trackingParams.set('utm_content', trackingPayload.utm_content);
+            if (trackingPayload.utm_term) trackingParams.set('utm_term', trackingPayload.utm_term);
+            
+            // Facebook Browser ID and Pixel ID
+            if (trackingPayload.fbc) trackingParams.set('fbc', trackingPayload.fbc);
+            if (trackingPayload.fbp) trackingParams.set('fbp', trackingPayload.fbp);
+            
+            // BRANCH ANALYTICS FIELDS (~ prefix)
+            if (trackingPayload.utm_source) trackingParams.set('~channel', trackingPayload.utm_source);
+            if (trackingPayload.utm_campaign) trackingParams.set('~campaign', trackingPayload.utm_campaign);
+            if (trackingPayload.utm_medium) trackingParams.set('~feature', trackingPayload.utm_medium);
+            
+            // Add tags for additional tracking
+            const tags = [];
+            if (trackingPayload.deviceType) tags.push(trackingPayload.deviceType);
+            if (trackingPayload.os) tags.push(trackingPayload.os);
+            if (tags.length > 0) trackingParams.set('~tags', tags.join(','));
+            
+            // DEEP LINK BEHAVIOR ($ prefix)
+            // Set deep link path to just the book_id for the app to handle
+            trackingParams.set('$deeplink_path', bookId);
+            
+            // Additional custom data
+            if (trackingPayload.fingerprint) trackingParams.set('fingerprint', trackingPayload.fingerprint);
+            if (trackingPayload.session_id) trackingParams.set('session_id', trackingPayload.session_id);
+            
+            return baseUrl + '?' + trackingParams.toString();
+        }
+
+        function displayUrl(url, params) {
+            document.getElementById('urlDisplay').textContent = url;
+            
+            // Break down parameters by type
+            let breakdown = '<div class="param-type">🔹 Custom Data (no prefix - passed to app):</div><ul>';
+            params.forEach((value, key) => {
+                if (!key.startsWith('~') && !key.startsWith('$')) {
+                    breakdown += `<li><strong>${key}</strong>: ${value}</li>`;
+                }
+            });
+            breakdown += '</ul>';
+            
+            breakdown += '<div class="param-type">🔸 Branch Analytics (~ prefix):</div><ul>';
+            params.forEach((value, key) => {
+                if (key.startsWith('~')) {
+                    breakdown += `<li><strong>${key}</strong>: ${value}</li>`;
+                }
+            });
+            breakdown += '</ul>';
+            
+            breakdown += '<div class="param-type">🔷 Deep Link Behavior ($ prefix):</div><ul>';
+            params.forEach((value, key) => {
+                if (key.startsWith('$')) {
+                    breakdown += `<li><strong>${key}</strong>: ${value}</li>`;
+                }
+            });
+            breakdown += '</ul>';
+            
+            document.getElementById('paramBreakdown').innerHTML = breakdown;
+        }
+
+        function testScenario1() {
+            // Add book_id to URL
+            window.history.pushState({}, '', '?book_id=1234');
+            
+            const mockPayload = {
+                utm_source: 'facebook',
+                utm_campaign: 'summer_campaign',
+                utm_medium: 'social',
+                deviceType: 'mobile',
+                os: 'android'
+            };
+            
+            const url = generateBranchUrl(mockPayload);
+            const params = new URLSearchParams(url.split('?')[1]);
+            displayUrl(url, params);
+        }
+
+        function testScenario2() {
+            // Clear URL params
+            window.history.pushState({}, '', window.location.pathname);
+            
+            const mockPayload = {
+                utm_source: 'google',
+                utm_campaign: 'winter_campaign',
+                utm_medium: 'cpc',
+                deviceType: 'mobile',
+                os: 'ios'
+            };
+            
+            const url = generateBranchUrl(mockPayload);
+            const params = new URLSearchParams(url.split('?')[1]);
+            displayUrl(url, params);
+        }
+
+        function testScenario3() {
+            // Add book_id to URL
+            window.history.pushState({}, '', '?book_id=5678&fbclid=123456&ad_id=789');
+            
+            const mockPayload = {
+                fbclid: 'IwAR123456789',
+                ad_id: '123456789',
+                adset_id: '987654321',
+                campaign_id: '111222333',
+                creative_id: '444555666',
+                placement: 'feed',
+                site_source_name: 'facebook',
+                utm_source: 'facebook',
+                utm_campaign: 'full_test',
+                utm_medium: 'paid_social',
+                utm_content: 'variant_a',
+                utm_term: 'romance+books',
+                fbc: 'fb.1.1234567890.AbCdEf',
+                fbp: 'fb.1.1234567890.1234567890',
+                fingerprint: 'fp_abc123def456',
+                session_id: 'session_123_abc',
+                deviceType: 'mobile',
+                os: 'android'
+            };
+            
+            const url = generateBranchUrl(mockPayload);
+            const params = new URLSearchParams(url.split('?')[1]);
+            displayUrl(url, params);
+        }
+    </script>
+</body>
+</html>

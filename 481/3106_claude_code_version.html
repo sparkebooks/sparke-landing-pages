@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shared by the Sexy Billionare Twins</title>
+    <link rel="icon" href="data:image/ico;base64,aWNv">
+    <link rel="apple-touch-icon" href="data:image/ico;base64,aWNv">
+    <meta name="ad.size" content="width=0,height=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <style>* {padding: 0;margin: 0;box-sizing: border-box;}body {}.img-box {position: relative;}.img {display: block;width: 100%;height: auto;}.mask {position: absolute;bottom: 0;left: 0;width: 100%;height: 40%;background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.5), #ffffff);}.title {padding-left: 1.2rem;padding-right: 1.2rem;margin-bottom: 1rem;font-size: 1.2rem;font-weight: bold;color: #000000;}.desc {padding-left: 1.2rem;padding-right: 1.2rem;font-size: 0.8rem;font-weight: 400;color: #000000;line-height: 1.22rem;text-align: justify;white-space: pre-wrap;padding-bottom: 0.5rem;}.desc i {display: block;height: 0.6rem;}.button:active {opacity: 0.8;}.bottom-box {opacity: 0;display: flex;position: fixed;bottom: 0;left: 0;width: 100%;padding: 0.67rem 0.34rem;background-color: #ffffff;box-sizing: border-box;}.button {display: block;width: 14.67rem;height: 2.59rem;background: #E12121;border-radius: 1rem;margin: 0 auto;font-size: 1rem;font-weight: bold;color: #FFFFFF;text-align: center;line-height: 2.59rem;text-decoration:none;}.bottom-box.showTextBox .button{width: 6.5rem;height: 1.8rem;line-height: 1.8rem;}.bottom-box input {display: none;}.placeholder {height: 4.44rem;}.model_1 {display: none;}.bottom-box.showTextBox #textbox{display: block;padding-left: 0.2rem;padding-right: 0.2rem;margin-right: 0.37rem;width: 80%;font-size: 0.6rem;}</style>
+
+    <script>var time=null;function setRem(){try{let t=0||document.documentElement.clientWidth||document.body.clientWidth,e=20;document.getElementsByTagName('html')[0].style.fontSize=t/e+'px'}catch(t){}}setRem();window.onresize=function(){window&&(setRem(),clearTimeout(time),(time=setTimeout(()=>{setRem()},1e3)))};</script>
+    
+    <!-- FingerprintJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@4/dist/fp.min.js"></script>
+    
+    <!-- Advanced User Tracking Script -->
+    <script>
+        (function() {
+            'use strict';
+            
+            // Initialize tracking data object
+            window.UserTrackingData = {
+                timestamp: Date.now(),
+                sessionId: 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                pageUrl: window.location.href,
+                referrer: document.referrer || 'direct',
+                userAgent: navigator.userAgent,
+                language: navigator.language || navigator.userLanguage,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                screenResolution: screen.width + 'x' + screen.height,
+                viewportSize: window.innerWidth + 'x' + window.innerHeight,
+                deviceMemory: navigator.deviceMemory || 'unknown',
+                hardwareConcurrency: navigator.hardwareConcurrency || 'unknown',
+                platform: navigator.platform,
+                cookieEnabled: navigator.cookieEnabled,
+                doNotTrack: navigator.doNotTrack || 'unknown',
+                fingerprint: null,
+                fingerprintComponents: null
+            };
+            
+            // Extract URL parameters
+            function getUrlParams() {
+                const params = {};
+                const urlParams = new URLSearchParams(window.location.search);
+                for (const [key, value] of urlParams) {
+                    params[key] = value;
+                }
+                return params;
+            }
+            
+            // Extract Facebook tracking parameters
+            function getFacebookParams() {
+                const urlParams = getUrlParams();
+                return {
+                    fbclid: urlParams.fbclid || null,
+                    ad_id: urlParams.ad_id || null,
+                    adset_id: urlParams.adset_id || null,
+                    campaign_id: urlParams.campaign_id || null,
+                    creative_id: urlParams.creative_id || null,
+                    placement: urlParams.placement || null,
+                    site_source_name: urlParams.site_source_name || null,
+                    utm_source: urlParams.utm_source || null,
+                    utm_medium: urlParams.utm_medium || null,
+                    utm_campaign: urlParams.utm_campaign || null,
+                    utm_content: urlParams.utm_content || null,
+                    utm_term: urlParams.utm_term || null
+                };
+            }
+            
+            // Get IP address and location data
+            async function getIPData() {
+                try {
+                    const response = await fetch('https://ipapi.co/json/');
+                    const data = await response.json();
+                    return {
+                        ip: data.ip || 'unknown',
+                        country: data.country_name || 'unknown',
+                        countryCode: data.country_code || 'unknown',
+                        region: data.region || 'unknown',
+                        city: data.city || 'unknown',
+                        postal: data.postal || 'unknown',
+                        latitude: data.latitude || 'unknown',
+                        longitude: data.longitude || 'unknown',
+                        timezone: data.timezone || 'unknown',
+                        isp: data.org || 'unknown'
+                    };
+                } catch (error) {
+                    console.log('IP data fetch failed:', error);
+                    return {
+                        ip: 'unavailable',
+                        country: 'unavailable',
+                        countryCode: 'unavailable',
+                        region: 'unavailable',
+                        city: 'unavailable',
+                        postal: 'unavailable',
+                        latitude: 'unavailable',
+                        longitude: 'unavailable',
+                        timezone: 'unavailable',
+                        isp: 'unavailable'
+                    };
+                }
+            }
+            
+            // Get Facebook Browser ID (fbc) from cookie
+            function getFBC() {
+                const cookies = document.cookie.split(';');
+                for (let cookie of cookies) {
+                    const [name, value] = cookie.trim().split('=');
+                    if (name === '_fbc') {
+                        return value;
+                    }
+                }
+                return null;
+            }
+            
+            // Get Facebook Pixel ID (fbp) from cookie
+            function getFBP() {
+                const cookies = document.cookie.split(';');
+                for (let cookie of cookies) {
+                    const [name, value] = cookie.trim().split('=');
+                    if (name === '_fbp') {
+                        return value;
+                    }
+                }
+                return null;
+            }
+            
+            // Detect mobile device type
+            function getDeviceInfo() {
+                const userAgent = navigator.userAgent.toLowerCase();
+                let deviceType = 'desktop';
+                let os = 'unknown';
+                
+                if (/android/.test(userAgent)) {
+                    deviceType = 'mobile';
+                    os = 'android';
+                } else if (/iphone|ipad|ipod/.test(userAgent)) {
+                    deviceType = 'mobile';
+                    os = 'ios';
+                } else if (/mobile/.test(userAgent)) {
+                    deviceType = 'mobile';
+                }
+                
+                return { deviceType, os };
+            }
+            
+            // Generate user fingerprint using FingerprintJS
+            async function generateFingerprint() {
+                try {
+                    // Wait for FingerprintJS to load
+                    if (typeof FingerprintJS === 'undefined') {
+                        console.log('FingerprintJS not loaded, waiting...');
+                        return await waitForFingerprintJS();
+                    }
+                    
+                    // Initialize FingerprintJS
+                    const fp = await FingerprintJS.load();
+                    
+                    // Get the visitor identifier
+                    const result = await fp.get();
+                    
+                    // Store both the visitor ID and component details
+                    const fingerprintData = {
+                        visitorId: result.visitorId,
+                        confidence: result.confidence.score || 'unknown',
+                        components: {}
+                    };
+                    
+                    // Extract key components for additional tracking
+                    if (result.components) {
+                        const keyComponents = [
+                            'fonts', 'audio', 'canvas', 'webgl', 'timezone', 
+                            'languages', 'colorDepth', 'deviceMemory', 
+                            'hardwareConcurrency', 'screenResolution'
+                        ];
+                        
+                        keyComponents.forEach(component => {
+                            if (result.components[component]) {
+                                fingerprintData.components[component] = result.components[component].value;
+                            }
+                        });
+                    }
+                    
+                    return fingerprintData;
+                    
+                } catch (error) {
+                    console.log('Fingerprinting failed:', error);
+                    return {
+                        visitorId: 'fingerprint_failed_' + Date.now(),
+                        confidence: 0,
+                        components: {},
+                        error: error.message
+                    };
+                }
+            }
+            
+            // Wait for FingerprintJS to load
+            function waitForFingerprintJS(maxAttempts = 50) {
+                return new Promise((resolve, reject) => {
+                    let attempts = 0;
+                    const checkInterval = setInterval(() => {
+                        attempts++;
+                        if (typeof FingerprintJS !== 'undefined') {
+                            clearInterval(checkInterval);
+                            FingerprintJS.load().then(fp => fp.get()).then(resolve).catch(reject);
+                        } else if (attempts >= maxAttempts) {
+                            clearInterval(checkInterval);
+                            reject(new Error('FingerprintJS failed to load'));
+                        }
+                    }, 100);
+                });
+            }
+            
+            // Create tracking payload
+            async function createTrackingPayload() {
+                const fbParams = getFacebookParams();
+                const deviceInfo = getDeviceInfo();
+                const ipData = await getIPData();
+                const fingerprintData = await generateFingerprint();
+                
+                return {
+                    ...window.UserTrackingData,
+                    ...fbParams,
+                    ...deviceInfo,
+                    ...ipData,
+                    fingerprint: fingerprintData.visitorId,
+                    fingerprintConfidence: fingerprintData.confidence,
+                    fingerprintComponents: fingerprintData.components,
+                    fingerprintError: fingerprintData.error || null,
+                    fbc: getFBC(),
+                    fbp: getFBP(),
+                    allUrlParams: getUrlParams()
+                };
+            }
+            
+            // Encode tracking data for clipboard/URL
+            function encodeTrackingData(data) {
+                try {
+                    return btoa(JSON.stringify(data));
+                } catch (error) {
+                    console.log('Encoding failed:', error);
+                    return btoa(JSON.stringify({ error: 'encoding_failed', timestamp: Date.now() }));
+                }
+            }
+            
+            // Initialize tracking on page load
+            async function initializeTracking() {
+                try {
+                    const trackingPayload = await createTrackingPayload();
+                    const encodedData = encodeTrackingData(trackingPayload);
+                    
+                    // Store in global variable for CTA access
+                    window.TRACKING_DATA = encodedData;
+                    window.TRACKING_PAYLOAD = trackingPayload;
+                    
+                    // Store in localStorage as backup
+                    localStorage.setItem('userTrackingData', encodedData);
+                    localStorage.setItem('trackingPayload', JSON.stringify(trackingPayload));
+                    
+                    console.log('Tracking initialized successfully');
+                } catch (error) {
+                    console.log('Tracking initialization failed:', error);
+                    // Fallback minimal tracking
+                    const fallbackData = {
+                        timestamp: Date.now(),
+                        error: 'tracking_failed',
+                        userAgent: navigator.userAgent,
+                        url: window.location.href
+                    };
+                    window.TRACKING_DATA = btoa(JSON.stringify(fallbackData));
+                }
+            }
+            
+            // Initialize tracking when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeTracking);
+            } else {
+                initializeTracking();
+            }
+            
+        })();
+    </script>
+    
+    <!-- CTA Handler Script -->
+    <script>
+        function handleCTAClick(element, event) {
+            try {
+                // Fire Facebook Pixel event
+                if (typeof fbq !== 'undefined') {
+                    fbq('trackCustom', 'CTA Click', { cta: 'CTA Click' });
+                }
+                
+                // Get tracking data
+                const trackingData = window.TRACKING_DATA || localStorage.getItem('userTrackingData') || '';
+                const trackingPayload = window.TRACKING_PAYLOAD || JSON.parse(localStorage.getItem('trackingPayload') || '{}');
+                
+                if (trackingData) {
+                    // Copy tracking data to clipboard for app to read
+                    copyToClipboard(trackingData);
+                    
+                    // Get book_id using the existing getBookId function
+                    const bookId = getBookId() || '3106'; // Default to 3106 if not provided
+                    
+                    // Update the base URL to include book_id
+                    const baseUrl = element.href.split('?')[0];
+                    const trackingParams = new URLSearchParams();
+                    
+                    // CUSTOM DATA (no prefix) - passed to app
+                    trackingParams.set('book_id', bookId);
+                    trackingParams.set('landing_page', '481');
+                    
+                    // Facebook tracking parameters as custom data
+                    if (trackingPayload.fbclid) trackingParams.set('fbclid', trackingPayload.fbclid);
+                    if (trackingPayload.ad_id) trackingParams.set('ad_id', trackingPayload.ad_id);
+                    if (trackingPayload.adset_id) trackingParams.set('adset_id', trackingPayload.adset_id);
+                    if (trackingPayload.campaign_id) trackingParams.set('campaign_id', trackingPayload.campaign_id);
+                    if (trackingPayload.creative_id) trackingParams.set('creative_id', trackingPayload.creative_id);
+                    if (trackingPayload.placement) trackingParams.set('placement', trackingPayload.placement);
+                    if (trackingPayload.site_source_name) trackingParams.set('site_source_name', trackingPayload.site_source_name);
+                    
+                    // UTM parameters as custom data
+                    if (trackingPayload.utm_source) trackingParams.set('utm_source', trackingPayload.utm_source);
+                    if (trackingPayload.utm_campaign) trackingParams.set('utm_campaign', trackingPayload.utm_campaign);
+                    if (trackingPayload.utm_medium) trackingParams.set('utm_medium', trackingPayload.utm_medium);
+                    if (trackingPayload.utm_content) trackingParams.set('utm_content', trackingPayload.utm_content);
+                    if (trackingPayload.utm_term) trackingParams.set('utm_term', trackingPayload.utm_term);
+                    
+                    // Facebook Browser ID and Pixel ID
+                    if (trackingPayload.fbc) trackingParams.set('fbc', trackingPayload.fbc);
+                    if (trackingPayload.fbp) trackingParams.set('fbp', trackingPayload.fbp);
+                    
+                    // BRANCH ANALYTICS FIELDS (~ prefix)
+                    // Map UTM parameters to Branch analytics fields
+                    if (trackingPayload.utm_source) trackingParams.set('~channel', trackingPayload.utm_source);
+                    if (trackingPayload.utm_campaign) trackingParams.set('~campaign', trackingPayload.utm_campaign);
+                    if (trackingPayload.utm_medium) trackingParams.set('~feature', trackingPayload.utm_medium);
+                    
+                    // Add tags for additional tracking
+                    const tags = [];
+                    if (trackingPayload.deviceType) tags.push(trackingPayload.deviceType);
+                    if (trackingPayload.os) tags.push(trackingPayload.os);
+                    if (tags.length > 0) trackingParams.set('~tags', tags.join(','));
+                    
+                    // DEEP LINK BEHAVIOR ($ prefix)
+                    // Set deep link path to just the book_id for the app to handle
+                    trackingParams.set('$deeplink_path', bookId);
+                    
+                    // Additional custom data
+                    if (trackingPayload.fingerprint) trackingParams.set('fingerprint', trackingPayload.fingerprint);
+                    if (trackingPayload.fingerprintConfidence) trackingParams.set('fp_confidence', trackingPayload.fingerprintConfidence);
+                    trackingParams.set('session_id', trackingPayload.sessionId || '');
+                    trackingParams.set('tracking_data', trackingData);
+                    
+                    // Update the link
+                    const finalUrl = baseUrl + '?' + trackingParams.toString();
+                    element.href = finalUrl;
+                }
+                
+                // Allow the click to proceed
+                return true;
+                
+            } catch (error) {
+                console.log('CTA click handling error:', error);
+                // Fire Facebook Pixel event as fallback
+                if (typeof fbq !== 'undefined') {
+                    fbq('trackCustom', 'CTA Click', { cta: 'CTA Click' });
+                }
+                return true; // Allow click to proceed even if tracking fails
+            }
+        }
+        
+        // Copy to clipboard function
+        function copyToClipboard(text) {
+            try {
+                // Modern approach
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(text).catch(err => {
+                        console.log('Clipboard write failed:', err);
+                        fallbackCopyTextToClipboard(text);
+                    });
+                } else {
+                    fallbackCopyTextToClipboard(text);
+                }
+            } catch (error) {
+                console.log('Clipboard copy error:', error);
+                fallbackCopyTextToClipboard(text);
+            }
+        }
+        
+        // Fallback clipboard copy
+        function fallbackCopyTextToClipboard(text) {
+            try {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                textArea.style.top = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            } catch (error) {
+                console.log('Fallback clipboard copy failed:', error);
+            }
+        }
+        
+        // Ensure tracking is ready before user interaction
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pre-warm the tracking data
+            setTimeout(function() {
+                if (!window.TRACKING_DATA && localStorage.getItem('userTrackingData')) {
+                    window.TRACKING_DATA = localStorage.getItem('userTrackingData');
+                }
+                if (!window.TRACKING_PAYLOAD && localStorage.getItem('trackingPayload')) {
+                    try {
+                        window.TRACKING_PAYLOAD = JSON.parse(localStorage.getItem('trackingPayload'));
+                    } catch (e) {
+                        console.log('Failed to parse tracking payload from localStorage');
+                    }
+                }
+            }, 1000);
+        });
+    </script>
+    
+        <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1318169879492323');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1318169879492323&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+    <div style="height: 100vh; overflow-y: auto;position: relative;">
+        <div class="img-box">
+            <img id="image" data-img="" class="img" src="assets/465657279.jpg" />
+            <div class="mask"></div>
+        </div>
+        <h1 class="title">Shared by the Two Hot Billionare Twins</h1>
+        <div class="desc"><div class="chapter-index" data-chapter="1"></div>
+"Bend over, Mia, it's time for your puni**ment", Mia's new boss tells her. Her body aches for his touch as she leans over the desk and waits for him to move behind her.
+
+Good girl Mia took a secretarial job in the big city after her mother dies, hoping to make a new start. But when she meets her boss, Sam, she realizes she's not actually his secretary. She's his toy.
+
+And even though she's still innocent (if you know what I mean) she finds that she really likes the way he taunts and teases her. When he finally starts to touch her, it sets her core ablaze with a fire only he can extinguish.
+
+But then, there's his twin brother, Beau, the sweet man who got her the job to begin with. 
+
+It's clear that Beau has caught feelings for her, and Mia likes him, too. In fact, he's everything she's ever wanted in a man. Clearly, she can't have them both, though, so eventually, she will have to choose. 
+
+Will she continue to work as Sam's secretary, knowing she's nothing more than a play thing to him? Or will she give Beau her heart and find a new job so they can finally be together?
+ 
+## Chapter 1
+
+The waiting room was crowded. Mia Eaton wasn’t sure where to sit. She didn’t really want to get into anyone else’s personal space, but she didn’t have much of a choice. The receptionist barked at her, “I said you can take a seat.”
+
+Mia turned and smiled at her, having heard her the first time, but still pondering where to sit. Finally, she decided to take the chair between a large busted blonde and an older brunette who looked as nervous as Mia felt. It was a tight squeeze because the chairs were so close together. With her small build, it was easy to wedge her way in, but it was still uncomfortable. She sat with her legs squeezed together, her meager resume clutched tightly within the leather binder she’d borrowed from her neighbor, praying one of the girls sitting next to her was called back soon.
+
+“Linda McKay!” a short woman with a severe haircut shouted from the door next to the receptionist. An attractive redhead sitting across the room stood up and walked to the door her head held high as if she had plenty of experience applying for secretarial positions and knew exactly what to expect. Mia sucked in air. She did not.
+
+In fact, she’d never had any sort of secretarial job before at all. She’d dropped out of college after finishing her sophomore year to take care of her sick mother. She’d had to support both of them, too, and she’d done that by working as a cashier at a gas station near their home in a suburb of Chicago. But now that her mother had passed away, and Mia had sold everything in order to afford the first few months of rent on a small apartment, she knew it was now or never.
+
+She had been on a few interviews but not for secretarial positions. Just a sales and a custodial position she almost hoped she didn’t get. She knew she wouldn’t be able to sell water to a man dying in the dessert, and she wouldn’t want to clean up after the residents in the nursing home either. No, as badly as she needed a job, she sort of hoped it wouldn’t be any of those.
+
+Secretarial work seemed easy enough. She’d been a marketing major in college, before she’d been forced to drop out. She’d done well in her classes, so when she’d seen there was a secretarial opening at Whitaker and Whitaker Marketing Firm, she’d called right away. That was yesterday. They’d told her to be there at 3:00 today, and she’d arrived at 2:45. As many people as there were in the waiting room, she wondered how long it might take. Apparently, she hadn’t been the only one told to be there at that specific time.
+
+It didn’t take long for Linda McKay to come back out. She didn’t look nearly as confident walking back this way as she had when she was headed in. A few seconds later, the severe woman was back. “Bridgette Duncan!” she yelled.
+
+The girl a few chairs down from Mia stood. She was wearing a very short skirt, and the top three buttons of her blouse were unbuttoned. She had on heels that had to be at least six inches high and pencil thin.
+
+She didn’t even make it over to the door before the woman looked her up and down and said, “No.”
+
+Bridgette stood there for a second, as if she couldn’t quite believe her ears, but then she turned and slunk away. The woman shut the door, and Mia sucked in air, wondering what the woman done wrong. Had it been the outfit or something else?
+
+Mia definitely wasn’t wearing an outfit like that, though her clothes were nothing to be proud of. The beige skirt had been her mother’s, and it was a size or two too big. Mia had safety pinned it earlier that morning when she’d left her apartment. It seemed to be holding up even though she’d spent a great deal of time at a coffeeshop trying to find other places to apply. The white button down shirt she wore was her own, but she’d had it for a few years, and it was a little stretched. Still, she thought she looked nice. She’d touched up her makeup and brushed out her long black hair before she rode up to the sixty-ninth floor on the elevator.
+
+“Sandy Wilcox!” the woman shouted, the door hardly open this time.
+
+The blonde next to Mia got up, giving her a small amount of room for a moment, but then another girl walked in, checked with reception, and came to sit next to Mia, causing her to tense up again.
+
+A few people were staring at their phones, but Mia was too nervous to let go of her binder. Her bag was by her feet, and all she could think about was the worn spot on the leather toward the zipper. She almost didn’t realize her name was being called until the woman said it again. “Hello? Mia Eaton? Anyone?”
+
+“So sorry,” Mia said, shaking her head as she grabbed her belongings and stood, almost dropping her binder. She pulled her purse over her arm and tucked the binder under her arm and approached the door, certain she was about to be sent out the door like that poor woman in the stilettos.
+
+Severe Haircut looked her up and down, huffed, and gestured for her to follow behind.
+
+Mia took a deep breath and went through the door, praying she hadn’t already ruined her chances before she even got to the interview.
+
+## Chapter 2
+
+“My name is Veronica Smithers. I’m Mr. Whitaker’s personal assistant. I do most everything for him. It is important that whomever fills this position realizes that it isn’t just about answering phones and sending correspondence. You may be asked to perform any sort of task throughout the day, some you could easily think of, such as making coffee or running to the nearest coffeeshop. Others may never cross your mind until the question is raised.” Veronica turned and looked at her, and Mia nodded, feeling pricks of ice radiate through her veins as she attempted to decipher what that might mean.
+
+They were walking through a vast space of cubicles and offices with people working in groups, pairs, and all alone, but Mia was struggling to keep up with Veronica and hardly had a chance to look around her. Eventually, they reached a small office, and Veronica walked in, stepping behind an organized desk with a huge stack of papers on it. She gestured for Mia to take a seat, which she did, and that’s when she realized the papers were all resumes.
+
+Veronica thrust her hand foreword, clearly wanting something. Still stunned by the enormous stack of applicants, Mia was confused. She looked at Veronica’s open palm and then up to her eyes. “Resume?” the woman said, practically rolling her eyes at her.
+
+“Of course. I apologize. I’m a little nervous.” Mia fumbled for the zipper on the side of her leather portfolio case. It snagged, stuck, and nearly broke. She took a deep breath, tried to smile, and tried again, catching her nail and ripping it. The sting wasn’t as bad as the embarrassment. Veronica was growing impatient.
+
+The third try was the charm; she managed to get her portfolio open and work the single page resume out, handing it over with what she hoped was a confident smile. Compared to the page on the top of the stack, it looked as if Mia had never worked before. The other girl’s resume was nearly full and looked well-organized. Mia had put hers together the afternoon before in the library and printed it for ten cents on the high quality library copy paper.
+
+It only took Veronica a moment to look over the resume. She sat it aside. “What are your strengths?”
+
+“Well, I, uh… love marketing,” Mia began, smiling and hoping she could get her nerves under control. “I studied it in college. I’m a hard worker. I’m always pleasant. Easy to get along with.”
+
+“Uh huh. And other than your complete lack of any work experience even remotely related to the secretarial field, what are your weaknesses?”
+
+Doing her best to disregard the low blow, Mia kept her smile in place. “I am very trusting, which is sometimes seen as gullible,” she admitted. “I do have a bit of a problem with distractions from time to time, though it’s nothing I can’t work through.” She looked Veronica in the eyes and knew there was no way she was getting this job. Mia blew out a long breath. “But… as you mentioned, I’ve never done secretarial work before. I can type fast and accurately. I’m very friendly on the phone, and I’m willing to learn.”
+
+“I take it you’d finished answering my question about your weaknesses before that last part.”
+
+Veronica looked annoyed that Mia had strayed from her initial question. “Yes, ma’am. I apologize.”
+
+“Uh huh,” the woman said, still scowling. Her eyes flickered down the resume again, but then she looked back at Mia, seeming to study her. “If you were to get the position, when could you start?”
+
+“Right away,” Mia said with a confident nod. “I just moved here, so I don’t have a job yet—”
+
+Veronica didn’t care. “And you understand that the salary is base plus bonuses you may earn for taking on additional tasks and for performance that Mr. Whitaker deems above and beyond?”
+
+“Yes, Ms. Smithers,” she said with a nod. The salary, even with no bonuses, was enough for her to pay her rent, as well as her other bills, and still put some money back each month.
+
+Ms. Smithers cleared her throat and picked up the telephone next to her elbow. She punched the top number and waited a second. Mia wasn’t sure what to do. It seemed odd she’d be calling someone in the middle of her interview.
+
+Though she couldn’t make out what was being said, it was clear a male’s voice was speaking on the other end of the phone. It was a deep tenor, raspy, gravelly. Mia crossed her legs and tried not to twist her long black hair around her finger.
+
+“Yes. Thank you,” Veronica said and hung up the phone. “You may go.”
+
+Mia was shocked at such a quick dismissal. Granted, she’d seen the other women coming and going so quickly, she’d been shocked Veronica had kept her this long.
+
+“Please, Ms. Smithers, if you give me a chance—”
+
+“You. May. Go!”
+
+“Yes, ma’am.” Realizing there was nothing else she could do, Mia gathered her bag and tucked her portfolio under her arm, half wishing she could ask for her resume back so she wouldn’t have to waste another dime getting a new one for her next interview. Clearly, this one would wither away in that immense stack of papers for a few days before it died a horrible death in the shredder. “Thank you for your time.”
+
+Veronica only nodded, and Mia got up, headed back the way she came. The only problem was, she had no idea how she got there. Since Veronica had not followed her out, she didn’t know which direction to turn. She went down a hall, thinking maybe it was that way, but that ended up at a dead end. She turned back around and went the other direction, thinking she’d just ask someone when she ran right into a solid wall of muscle.
+
+“Are you lost?”
+
+Mia looked up into bright blue eyes, and all the breath left her lungs as she stammered for an answer. If she wasn’t lost before, she was now.
+
+## Chapter 3
+
+“Can I help you?”
+
+Mia knew she was staring, that the man with the gorgeous blue eyes was speaking to her, that she’d looked up after the collision but hadn’t backed away, so the foot or so between them was due to him retreating while she still hadn’t found her voice or her ability to move.
+
+“Are you lost?”
+
+“Uh… yeah,” she finally managed, snapping out of it. She took a giant step backward and ran her hand through her hair. It happened to be the hand her purse was swung over, so when she did that, it swung back and forth violently before falling off of her shoulder. She caught it on her wrist momentarily, but then it fell to the floor. “Dang it!”
+
+“Let me get that for you,” he said, stooping to get it, but by then, Mia had already gone to retrieve it herself. She hit her head on his shoulder hard. “Oh, God. Are you okay?”
+
+Wincing, Mia rubbed her head. How strong was this man that hitting her head on his shoulder was like ramming her head into a brick wall? “I’m fine.”
+
+He picked up her bag, and the two of them stood, though Mia could tell he was being careful to give her plenty of space. “Here you go.”
+
+“Thank you.” She took the bag and slung it back over her shoulder, trying not to roll her eyes at how stupid she must look. It was probably a good thing that she wasn’t going to be getting a job here or else she might literally run into this guy again. Or do something else stupid in front of him. “Can you tell me how to get out?”
+
+He smirked at her, as if he could tell just how badly she wanted to get away. “I’ll show you. It can be a little tricky.”
+
+“Thanks.” She wondered if any of the other candidates had gotten lost and assumed they hadn’t.
+
+Following him back the way she’d come, she couldn’t help but notice how nice he looked from the back. She had to pull her eyes away from his perfectly sculpted bottom when they entered the area where so many other workers were sitting. She didn’t want to seem like a scumbag, but then, she’d never seen a man like this one before—not in real life—not that she could remember.
+
+“Did you apply for a position here?” he asked as they were walking along, stopping to wait for her.
+
+“I did,” Mia admitted, coming even with his shoulder. He was at least a foot taller than her. “But I’m pretty sure I didn’t get it.”
+
+“Oh? Why is that?” he asked, looking disappointed. Mia figured he was just being overly polite.
+
+She shrugged. “The interview only took about twenty seconds. I’m probably not even qualified.”
+
+They rounded another corner, and she could see the exit now. “What position did you apply for?”
+
+“It’s a secretarial position,” she said, stopping and looking down at her shoes. It was almost impossible to continue to look into his eyes without feeling drained.
+
+“Anyone can do that,” he said. “What makes you think you’re not qualified?”
+
+“I don’t know. I’ve never done it before.”
+
+“What have you done before?”
+
+Something about the way he asked the question made her wonder if he was still talking about work. His cologne was spicy, a hint of sandalwood blending with cedar, and she had a feeling there was a note in his masculine scent that was all him. Mia bit her bottom lip and tried to get her head together. “Uh… nothing.”
+
+“Nothing?” He lifted a dark eyebrow. Her answer seemed to intrigue him for reasons she couldn’t let herself contemplate.
+
+“Not really. I worked as a cashier at a gas station while I took care of my mom.”
+
+“Was she ill?” His tone changed to something less suggestive and more concerned.
+
+Mia nodded. Her mother had been dead for almost six months, but she still missed her terribly. “She passed away, so I moved to the big city.”
+
+“I’m so sorry for your loss.”
+
+He seemed to sincerely mean that, and Mia felt a tear coming to her eye. So many people said it but it was just something one said off the cuff, as if they didn’t really feel it. She could tell by his eyes that he did. “Thank you.”
+
+A heavy silence fell over them. Mia struggled for something else to say, but there wasn’t any more. He’d shown her to the exit; she wasn’t getting this job anyway. She’d never see him again.
+
+He seemed at a loss for words as well, which she guessed was out of character for him. “Well, I hope you get the job,” he said with a small smile, and she almost thought he meant it.
+
+“I appreciate that. Thank you. And thanks for showing me out.” She gestured toward the door with a thumb over her shoulder.
+
+“You bet. Maybe I’ll see you around…?”
+
+He was waiting for her name. This gorgeous, sexy man with beautiful blue eyes and the kind of grin that morphed between boy-next-door and sp**k you till you can’t breathe wanted to know her name.
+
+The only problem was… she couldn’t remember it.
+
+“I’m sorry—I didn’t catch your name,” he said, prompting her.
+
+Too bad she hadn’t grabbed that copy of her resume. It was probably on there. “My… uh….” Oh, yeah—duh—that was it. “Mia. My name is Mia.”
+
+That grin was back, the mischievous crooked one. “Mia?”
+
+“Yes.”
+
+He stuck out his right hand, and she stared at it for a moment, wondering what sorts of things it was capable of before she slipped her tiny palm inside. His touch was light at first, but then firm and commanding as he shook her hand and electric pulses shot up her arm. “I’m Beau.”
+
+“Beau.” As in beautiful, she thought to herself. “It’s nice to meet you, too.”
+
+“Take care, Mia.”
+
+She smiled and then turned to go, almost smacking into the doorway but catching herself and not daring to turn and look at him again to see if he’d noticed. He had to have—she could practically feel his eyes on the back of her.
+
+Back in the waiting room, she ignored the sighs from everyone else who likely assumed she’d been interviewing that whole time, rather than just wandering aimlessly. She couldn’t help but smile, though. Even if she never saw Beau again, the encounter had been memorable. Maybe he’d get his wish, and she would come to work there. Then what? She didn’t know, but she was looking forward to finding out.
+
+## Chapter 4
+
+Walking into his brother’s office, Beau Whitaker waited for Sam to get off of the phone before he said anything at all. When Sam finally hung up and looked up at him, Beau wasn’t even sure where to begin.
+
+He wanted to seem nonchalant, but the girl he’d met in the hallway—Mia—was so beautiful, so intriguing, he wanted to make sure Sam was aware that Beau wouldn’t mind it if he hired her as his new secretary. In fact, if he had any say in it at all, Mia already had the job.
+
+“What’s up, little brother?” Sam asked, making a note on a sticky before attaching it to a file and moving it across his desk. “Need something?”
+
+Beau snickered. He didn’t come into Sam’s office often, unless he needed something. There was usually no need to. Sam handled new accounts; Beau handled existing accounts. If they ever needed to meet, their offices had an adjoining conference room where they could discuss whatever they needed to. The view out the floor to ceiling windows of downtown Chicago was breathtaking, but Beau had a similar view out his own window. So… the fact that he was standing there at all was telling.
+
+“I hear you’re looking for a new secretary,” he finally said, running his fingers along the edge of Sam’s large, finely finished mahogany desk.
+
+“I don’t have a choice,” Sam replied, clicking his pen a few times as he leaned back in his chair. “Since Bridgette quit, I have to have someone around here to answer the phones.”
+
+Beau snickered. They both knew Bridgette’s jobs had been plentiful, but answering the phones was rarely one of the duties Sam tasked her with. “Hazards of dating a co-worker, I guess. You break up with her, she’s gotta go.”
+
+“I’d hardly say we were dating,” Sam argued, sweeping his shaggy dark bangs out of his eye. The brothers looked very similar—same build, same dark hair, but Sam was slightly shorter, a little broader in the shoulders, and his eyes were a jade green while Beaus were the same shade that their mother’s had been.
+
+“True. That’s hardly what I’d call it either, but I was trying to be polite, I guess.”
+
+Sam gestured with his arms wide. “For whose benefit?”
+
+Knowing he was wasting his breath in further explanation, Beau sank down on the edge of one of the two leather upholstered chairs across from his brother’s desk. “Any prospects?”
+
+“A ton,” Sam said, sighing as if he was the one who had to dig through the stack of applicants or even do any of the interviews. “I’ve been keeping an eye on things.”
+
+“How?”
+
+Sam picked up a tablet off of his desk, flipped it on, and handed it over.
+
+Veronica’s office came into view. It was clear she was wearing a lapel pen that allowed Sam to drop in any time. Across from his assistant, Beau could see a beautiful woman with long, blonde hair sat across from her. It was on mute, but it would’ve been easy for Beau to listen to the interview if he wanted to. “So… what’s your method here?” He offered the iPad back to his brother.
+
+Sam took it and sat it down on his desk in front of him, only glancing at it briefly. “If it’s a girl Veronica thinks I might be interested in, she calls me, I drop in, check her out, and let Veronica know.”
+
+“How many girls have you been interested in?”
+
+Shrugging, Sam said, “I don’t know. Five or six.”
+
+“Do you know their names?”
+
+Now, Sam knew something was up. “Why do you want to know?”
+
+Beau couldn’t keep the smirk off of his face. “I may have ran into one of your potential candidates in the hall, and I was hoping… maybe you’d consider hiring her.”
+
+Leaning forward in his seat, Sam stared at Beau for a few moments before he said, “Considering the types of services I ask my secretary to perform, why would you want me to hire a woman you’re obviously interested in?”
+
+It was a good question. “I guess… I just want to see her again.”
+
+“You want her phone number?”
+
+Beau chuckled. “No.” He ran a hand through his hair. He felt ridiculous. Why not just call Mia himself. He pulled himself up out of the chair. “Never mind.”
+
+“What? Why?” Sam asked, his hands stretched out again. “You like her or not? Since when are you so shy?”
+
+“I’m not.” He walked toward the door. “I’m not. I just… wanted to know what you thought, I guess.”
+
+Sam still had a smirk on his face. “What’s her name?”
+
+Beau didn’t even want to tell him. “It’s… uh… Mia.”
+
+Sam’s countenance changed completely as he studied Beau’s face for a moment. Then, tapping his pen against his chin a few times, he asked, “Long, black hair? Petite—unassuming? Maybe a little lost? Potentially innocent in every way?”
+
+Swallowing hard at the objectivity his brother had just used to describe the sweet, beautiful girl he’d found wandering the hallways, Beau blew out a deep breath. “Yeah, that’s her.”
+
+A rich chuckle emanated from Sam’s throat. “Funny. When I saw her, I thought she looked like the sort of girl you’d be excited about.”
+
+Shaking his head, Beau turned back toward the door. Maybe he should go get Mia’s number from Veronica. It would be stupid and potentially dangerous for him to let Mia work for Sam anyway. He definitely did know what his older brother, by mere minutes, asked his secretaries to do, and little of it was secretarial.
+
+“She’s one of my five or six,” Sam shouted as Beau walked halfway out the door. “You still want me to hire her? Maybe we can ask her to handle secretarial services for both of us.”
+
+Hearing what Sam wasn’t saying, Beau hesitated. He rarely dated women like Mia. His brother had been right about her unassuming personality appealing to him, but he dated rich, elite women, aspiring models, daughters of well-respect businessmen. Not girls who just relocated to the city and had safety pins holding their skirts up.
+
+But he’d liked her immediately. If she worked here, he wouldn’t necessarily have to date her to see her. If she was the sort of girl that would bend to Sam’s expectations, he might not have to date her to receive her services either.
+
+Realizing his inner thoughts reflected he was a bit more like his brother than he was willing to admit, Beau found himself nodding. “Yeah, I want you to hire her.”
+
+## Chapter 5
+
+Mia had her Chromebook open on her lap as she looked through job postings. After the disaster a few hours ago, it was clear to her that she couldn’t let up on the job hunt. The Chromebook was old and didn’t stay connected to the Wi-Fi she was “borrowing” from her neighbor very well, but it was better than looking through the newspaper, which she also did on a regular basis.
+
+She was just contemplating contacting a used car dealership, wondering if she could ever really sell cars, when her cell phone rang.
+
+Picking it up, she studied the number. It wasn’t familiar to her, and there was no name to let her know who it might be, but she had to answer anyway. It could be one of the other places she’d recently applied to. “Hello?”
+
+“May I speak to Mia Eaton, please?”
+
+The voice sounded vaguely familiar. It was a middle-aged woman. “This is she.”
+
+“Hello, Ms. Eaton. This is Veronica Smithy from Whitaker and Whitaker.”
+
+A lump immediately formed in Mia’s throat as she considered she might’ve actually gotten the job. But then reality sunk in and she reminded herself there was no way that was the case. She shook her head and thought about how she was going to thank Ms. Smithy for her kindness in letting her know that she hadn’t been selected. It must take her days to call back everyone in that stack. “Yes?” she said, not sure what else to do to fill the silence.
+
+“I’m calling to let you know you’ve been selected to fill the vacancy. Congratulations. Mr. Whitaker is looking forward to having you fill his secretarial needs.”
+
+Mia wasn’t sure what to say—she truly hadn’t been expecting that at all. In fact, if someone had asked her five minutes ago what she thought her chances of getting the job where, she would’ve said one in a million. “I got… the job?”
+
+“Yes,” Ms. Smithy said in a very matter-of-fact tone. “Now, I will forward your contract to you via courier. You will receive it in an hour or so. Look over it carefully. Read it word for word. Make sure you understand everything that it says. We would like for you to begin working on Monday, but if you need more time to have a lawyer look over the contract, then let us know, and we will give you a few extra days. Do you understand?”
+
+“Y—yes,” Mia stammered. How odd. She hadn’t taken a lot of jobs in her time, but she’d never heard of anyone being so thoroughly warned about reading a contract. She didn’t even know a lawyer, and if she did, she wouldn’t be able to afford one.
+
+“With your contract, Mr. Whitaker has also decided to send you a gift card in order to ensure your work wardrobe is appropriate to our expectations.”
+
+Glancing down at her sweatpants and T-shirt, Mia thought about the outfit she’d warn earlier, the one with the safety pin holding the skirt on. Perhaps she shouldn’t feel offended by the comment, but it stung a little.
+
+Ms. Smithy continued. “The prepaid card will be sufficient for you to buy several new outfits, shoes, bags, whatever you need, and all of the items will be yours to keep. You will not have to pay the money you spend back unless you stop working for Whitaker and Whitaker within the first six months. If you should quit early, you’ll be contractually bound to pay back every penny.”
+
+“All right,” Mia said. That shouldn’t be a problem. She intended to stay at Whitaker and Whitaker for long term. Even if her salary was the low end of the range, she’d be making far more money than she needed to pay her bills. The idea of making that sort of money had her mind wandering momentarily. She was sitting on a couch her mother had purchased in the mid-‘80s. She’d be able to buy new furniture, even save up for a better place, an apartment closer to work.
+
+“Your duties will require some travel as well, so keep that in mind as you make your considerations. Do you have any questions?”
+
+Nothing popped into Mia’s mind. “No, ma’am.”
+
+“Very well, let me confirm your address, and I’ll send this over. Should questions arise, call me anytime. Unless I hear otherwise from you, I’ll expect to you see you at the office at 9:00 on Monday. You may bring the contract and your other documentation required to begin working here.” Mia knew she meant her identification and that sort of thing.
+
+“Okay, thank you,” Mia said, still sounding a little more shocked than she liked.
+
+“Miss Eaton, please remember I suggested you read over the documents carefully. If you have questions, the time to ask them is before you sign. Do you understand?”
+
+“Yes, thank you.” The warning in her voice seemed so odd, Mia wasn’t sure what to make of it.
+
+Ms. Smithy clicked off, and Mia sat her phone down, finally letting herself smile. She couldn’t believe her luck, that she’d actually gotten the job! Not only was this potentially an opportunity for her to work her way up with a great company, but the money was unbelievable.
+
+And then there was that guy—the one she’d literally ran into in the hallway….
+
+Mia would be lying if she didn’t admit she’d spent most of the afternoon thinking about him. He’d had such beautiful eyes, such an easy smile. She couldn’t remember ever seeing such a sexy man in real life. She’d even caught a whiff of his cologne on her clothes when she’d come home… and spent a few minutes sniffing it before she’d remembered she wasn’t crazy and let it go.
+
+Would this job mean she’d get to see him on a daily basis? Mia leaned her head back against the couch and thought about what that might be like. A smile came to her face, and she couldn’t help but wonder if maybe he would be the one she would finally give herself to… all of herself.
+</div>
+
+
+<!-- CTA Branch -->
+        <div class="placeholder"></div>
+            <div class="bottom-box" style="opacity: 1;">
+                <a
+                        href="https://sparke.app.link/lp1"
+                        id="ctaButton"
+                        style="
+                            background: #e12121;
+                            color: #ffffff;
+                            font-size: 1.1733333333333333rem;
+                            border: none;
+                            padding: 10px 20px;
+                            cursor: pointer;
+                                  display: flex;
+                        align-items: center;
+                        justify-content: center;
+          "
+                        class="button"
+                        onclick="handleCTAClick(this, event);"
+                >
+                    💛Continue Reading💛
+                </a>
+        </div>
+
+    </div>
+</body>
+
+</html>

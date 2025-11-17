@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secrets of the Mafia King</title>
+    <link rel="icon" href="data:image/ico;base64,aWNv">
+    <link rel="apple-touch-icon" href="data:image/ico;base64,aWNv">
+    <meta name="ad.size" content="width=0,height=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <style>
+      * {padding: 0;margin: 0;box-sizing: border-box;}
+      body {}
+      .img-box {position: relative;}
+      .img {display: block;width: 100%;height: auto;}
+      .mask {position: absolute;bottom: 0;left: 0;width: 100%;height: 30%;background-image: linear-gradient(rgba(255, 255, 255, 0),  rgb(255, 255, 255, 90%), rgb(255 255 255), #ffffff);} 
+      .title {padding-left: 1.2rem;padding-right: 1.2rem;font-size: 1.8rem;font-weight: 500;color: #333;margin-bottom:10px;margin-top: -70px;position: relative;}
+      .desc {padding-left: 1.2rem;padding-right: 1.2rem;font-family: Georgia, sans-serif; font-size:20px;font-weight: 400;color: #333;line-height: 1.3rem;text-align: justify;padding-bottom: 0.5rem;}
+      .desc i {display: block;height: 0.6rem;}
+      .button:active {opacity: 0.8;}
+
+      /* Sticky CTA container — transparent background */
+      .bottom-box {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;   /* centers the button nicely */
+        padding: 0.55rem 0.34rem;
+        background: transparent;   /* removed white background */
+        z-index: 9999;
+        box-shadow: none;          /* no shadow either */
+      }
+
+      .button {
+          display: block;
+          background: #230a51;
+          border-radius: 1.5rem;
+          margin: 0 auto;
+          font-size: 0.9rem;
+          font-weight: bold;
+          padding: 0rem 3.4rem;
+          color: #FFFFFF;
+          text-align: center;
+          line-height: 2.59rem;
+          text-decoration: none;
+          border-width: 0;
+        }
+
+      /* Chapter visibility (no <p> required; preserves line breaks) */
+      .chapter{display:none;white-space: pre-wrap;}
+      .chapter.active{display:block}
+
+      /* Fix the bar to the top */
+      .top-nav{
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: var(--top-nav-h);
+        z-index: 10000;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        font-family: Georgia, sans-serif;
+      }
+
+      /* Layout inside the bar */
+      .top-nav__inner{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 10px 7px 10px;
+        gap: 12px;
+        align-items: center;   /* <— ensures full vertical centering */
+        height: 100%;
+      }
+
+      .top-nav__left{ display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+
+      .app-icon {
+          width: 1.7rem;
+          height: 1.7rem;
+          background-image: url(assets/app_icon_smaller_for_web1.png);
+          background-size: cover;
+      }
+      .nav-title{
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #333;
+        font-family: Helvetica;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .top-nav__btn{
+        display: inline-block;
+        font-size: 12px; font-weight: 400; line-height: 1;
+        padding: 7px 10px;
+        font-family: helvetica;
+        letter-spacing: 1px;
+        color: #fff; text-decoration: none;
+        background: #5c4489; border-radius: 999px; border: 1px solid rgba(0,0,0,0.05);
+      }
+      /* Add a subtle light sweep animation */
+.top-nav__btn {
+  position: relative;
+  overflow: hidden; /* clip the shine inside the button */
+}
+
+/* the moving light strip */
+.top-nav__btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%; /* start off to the left */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg); /* gives it a nice angled streak */
+  animation: shine 2s infinite;
+}
+
+/* keyframes for the movement */
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+    </style>
+
+    <script>var time=null;function setRem(){try{let t=0||document.documentElement.clientWidth||document.body.clientWidth,e=20;document.getElementsByTagName('html')[0].style.fontSize=t/e+'px'}catch(t){}}setRem();window.onresize=function(){window&&(setRem(),clearTimeout(time),(time=setTimeout(()=>{setRem()},1e3)))};</script>
+    
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D43OQNBC77U40Q0I7570');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+
+<!-- Meta Pixel Code (keep in <head>) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1318169879492323');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1318169879492323&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<script defer>
+(function(){
+  // --- book_id from filename only ---
+  function getBookIdFromFilename() {
+    const path = location.pathname.replace(/\/+$/, '');
+    const last = path.split('/').pop() || '';
+    const core = last.includes('.') ? last.split('.')[0] : last;
+    return /^[A-Za-z0-9_-]+$/.test(core) ? core : '';
+  }
+
+  // --- Normalize platform (Meta/TikTok variants) ---
+  function normalizePlatform(val) {
+    const p = (val || '').toLowerCase();
+    if (['fb','facebook','instagram','ig','messenger','audience_network','audiencenetwork'].includes(p)) return 'facebook';
+    if (p === 'tiktok' || p === 'tt') return 'tiktok';
+    return p || 'unknown';
+  }
+
+  // --- Gather campaign params from page URL ---
+  function getCampaignParams() {
+    const src = new URLSearchParams(location.search);
+    return {
+      channel:  normalizePlatform(src.get('site_source_name')),
+      campaign: src.get('campaign_id') || 'unknown_campaign',
+      feature:  src.get('adset_id')    || 'unknown_adset',
+      stage:    src.get('ad_id')       || 'unknown_ad'
+    };
+  }
+
+  // --- Quick check to avoid duplicate appends ---
+  function hasParam(href, name){
+    return href.indexOf(name + '=') !== -1;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const bookId = getBookIdFromFilename();
+    const c = getCampaignParams();
+
+    document.querySelectorAll('a[href*="sparke.app.link"]').forEach(a => {
+      let href = a.getAttribute('href') || '';
+      if (!href.includes('sparke.app.link')) return;
+
+      // 1) Update encoded deeplink_path book id: ...deeplink_path=book%2F<id>...
+      if (bookId) {
+        href = href.replace(/(deeplink_path=book%2F)([^%&]+)/, (_, p1) => p1 + encodeURIComponent(bookId));
+      }
+
+      // 2) Build params to append (always with "&")
+      const pairs = [];
+      if (bookId && !hasParam(href, 'book_id')) pairs.push('book_id=' + encodeURIComponent(bookId));
+      if (c.channel  && !hasParam(href, '~channel'))  pairs.push('~channel='  + encodeURIComponent(c.channel));
+      if (c.campaign && !hasParam(href, '~campaign')) pairs.push('~campaign=' + encodeURIComponent(c.campaign));
+      if (c.feature  && !hasParam(href, '~feature'))  pairs.push('~feature='  + encodeURIComponent(c.feature));
+      if (c.stage    && !hasParam(href, '~stage'))    pairs.push('~stage='    + encodeURIComponent(c.stage));
+
+      if (pairs.length) {
+        href += (href.endsWith('&') ? '' : '&') + pairs.join('&');
+      }
+
+      a.setAttribute('href', href);
+
+      // 3) Inject or update onclick for AddToCart tracking with correct book_id
+      const baseOnclick = `
+        try {
+          fbq('track', 'AddToCart', {
+            content_ids: ['${bookId || 'unknown'}'],
+            content_type: 'book',
+            content_name: 'Book ${bookId || 'unknown'}',
+            value: 0.1,
+            currency: 'USD'
+          });
+        } catch(e) {}
+        try { ttq.track('ClickButton'); } catch(e) {}
+      `.trim();
+
+      // If the link already has an onclick, preserve it and prepend ours
+      const existing = a.getAttribute('onclick');
+      if (existing && !existing.includes("fbq('track'")) {
+        a.setAttribute('onclick', baseOnclick + '; ' + existing);
+      } else if (!existing) {
+        a.setAttribute('onclick', baseOnclick);
+      } else {
+        // If existing onclick already contains placeholders, update them
+        let updated = existing
+          .replace(/content_ids:\s*\['[^']*'\]/, `content_ids: ['${bookId}']`)
+          .replace(/content_name:\s*'Book [^']*'/, `content_name: 'Book ${bookId}'`);
+        a.setAttribute('onclick', updated);
+      }
+    });
+  });
+})();
+</script>
+
+
+</head>
+<body>
+  
+<a href="https://sparke.app.link/lp1%24ios_deepview=false&%24deeplink_path=book%2F0000" class="top-nav-link" onclick="try {
+    fbq('track', 'AddToCart', {
+      content_ids: ['0000'],
+      content_type: 'book',
+      content_name: 'Book 0000',
+      value: 0.1,
+      currency: 'USD'
+    });
+  } catch(e){} try{ttq.track('ClickButton');}catch(e){}">
+
+<nav class="top-nav" role="navigation" aria-label="Download bar">
+  <div class="top-nav__inner">
+    <div class="top-nav__left">
+      <span class="app-icon" aria-hidden="true"></span>
+      <span class="nav-title">Download the entire book</span>
+    </div>
+    <div class="top-nav__btn">Download</div>
+  </div>
+</nav>
+</a>
+<div style="position: relative;">
+<div class="img-box">
+<img id="image" data-img="" class="img" src="assets/scen1_abd_1.jpg" />
+<div class="mask"></div>
+</div>
+<h1 class="title">Secrets of the Mafia King</h1>
+<div class="desc">
+<div class="chapter-index" data-chapter="1"></div>
+<div id="chapter1" class="chapter active">
+## Chapter 1
+
+[Tony]
+
+The cold glass touches my lips as I sip from my whiskey, my eyes watching Estella over the rim. She’s dancing in front of a group of fucking loud guys who came here for a bachelor party. I’m in my usual booth at Aphrodite’s Lounge, and even though she’s a hell of a dancer, I can’t seem to keep my focus on her for more than a few seconds tonight.
+
+This is a clear sign that I’m losing interest in her, no matter how hot and good in bed she is. In all honesty, I’m getting bored of her.
+
+And it’s not like I should feel guilty about it since I know she only likes my money anyway—like all of them do. But as much as I like to have women keep me company every once in a while–especially when I need to blow off some steam–Estella isn’t managing to entertain me any longer.
+
+I rub my temples, trying to make this fucking headache that’s been gnawing at me for the past three days go away. Estella’s gaze finds mine from across the club, and I fight the urge to look away. I have no intention of indulging her tonight, but I don’t want to be rude either.
+
+A couple of patrons walk past my booth and wave at me, drinks in hand as they head to the VIP section at the far end of the room. I greet them by raising my glass, recognizing them from a few nights ago, but not bothering to give them a hint of a smile.
+
+Estella’s dance is coming to an end. I can tell that by the way those fucking losers are waving their dollar bills at her, one of them attempting to slide one under the strap of her thong. She smiles seductively at them, practically counting the money she’ll be taking home.
+
+If I want to escape her tonight, I need to get out of here before the song ends. I won’t be able to tell her no if she approaches this booth and sits on my lap, no matter how bored I am of her.
+
+I pour the remnants of my drink down my throat, feeling the liquid burning my windpipe, and stand up, heading toward the back door without turning around. I pop open the button on my suit jacket, feeling it too tight and uncomfortable all of a sudden.
+
+My black SUV is in the club’s private parking lot, and thankfully, I don’t bump into anyone on my way out. I ponder heading home, but there’s still work to be done tonight that can’t be postponed anymore. For the past four years, it has felt like my days are endless and filled with countless shit to handle. It’s a fucking rollercoaster with no end in sight.
+
+Whenever I come close to having a glimpse of peace, something happens to start a war all over again.
+
+Another problem to be solved; another business deal to close….
+
+It never ends.
+
+So, with that in mind, I go back to Lou’s Deli instead.
+
+I haven't gotten out of that hole yet. In fact, as much as I hated it when I took over from Dante as the new head of the Saints, the space kind of grew on me with time. I don’t even gag at the smell of cold cuts anymore. I don’t even notice it, to be fair, my nose already used to it by now.
+
+It is spacious after all, and after looking over the entire city for a better place, nothing seemed to convince me to move our headquarters from here, so we simply stayed. It’s been serving us just fine so far.
+
+The street is dark and empty as I step out of the car and walk inside. It’s so damn late, I shouldn’t be expecting the place to be fully functional. It feels odd to find this place completely empty, without a single soul around.
+
+As soon as I get to the deli’s basement, I notice there’s no one here either.
+
+It’s better this way anyway. I work better on my own with just utter silence keeping me company–and the voices in my head reminding me of darker times and nightmares from the past. Seb’s voice is one of them, still visiting me when I least expect it. My visions of him are not as frequent as they used to be, but I still see him.
+
+I walk over to my office and round my desk, finding it covered with stacks of paperwork. I shuffle through them, searching for what I need to work on tonight. The inventory being shipped out tomorrow has to be checked and approved before heading off to the port, so I need to handle this before going home.
+
+It’s lost on me why I procrastinated so long to do this, but it’s no one else’s fault but my own. This file has been on my desk for at least a week now, so I can’t put the blame on anyone else.
+
+When I finally find the document I need, I plop down in my chair, urging my brain to function properly so I don’t make any mistakes. I fucking hate the detailed and thorough part of this job. But as much as I’d love to have one of the guys do it for me, there are things that require my eyes only. No one else’s.
+
+So, I lose myself in the endless list of numbers and names, papers in one hand and a pen in the other.
+
+Footsteps echoing on porcelain tiles a few minutes later–or has it been hours?–make me snap my head up and crease my brows in confusion. I glance at my watch, which reads 3:00 A.M.
+
+Who the fuck is here at this hour?
+
+"I figured I’d find you here." Armando’s voice reaches me before I can even see him. My second steps through the doorway, his face hooded by shadows since I only have one lamp illuminating my desk. I can tell he’s tired by the way the dark circles under his eyes are evident even from this distance, but he’s looking sleek as always in his black suit.
+
+"Aren’t you supposed to be at home with your wife and kids?" I ask with a frown, leaning back in my chair, watching as he walks inside the room. His footsteps are heavy and loud, especially since I’ve been hearing nothing but the ticking of the clock and the shuffling of papers for the past two hours.
+
+"I’m afraid I have some bad news that couldn’t wait until tomorrow, Boss," he tells me, sitting in the chair across from me.
+
+"Couldn’t you have called?"
+
+Armando shakes his head, his jaw clenched slightly. "It’s delicate news, so I thought you’d prefer that I delivered it personally."
+
+He’s right. Armando is extremely attentive to how I like things to be done, not to mention overly cautious, which is a good quality to have in this type of business.
+
+"All right, just fucking tell me then. What happened?" I press, getting impatient with all his rambling and unnecessary suspense.
+
+"I just got a call from Nicky Bertolucci," he starts gloomily. "Apparently, Carlo had a heart attack this afternoon and died at his house in Miami."
+
+I stare blankly at him, taking in the news. Not that I cared too much about Carlo because I damn well know he didn’t like me. When I took over the Saints, he didn’t agree with me being the new boss. So, faster than lightning, he retired and moved to Miami with his wife and daughter.
+
+He worked with Dante’s father for longer than I’ve been alive. He had good networking and good insight on how things were done, so it was a great loss to our businesses.
+
+But if he didn’t trust me, he was better off elsewhere. I couldn’t risk having someone with me who might stab me in the back at any moment.
+
+But I do feel sorry for his wife and daughter.
+
+Nicky and Chloe Bertolucci.
+
+Pale skin, cornflower blue eyes—Chloe.
+
+Chloe–who I haven’t seen since we met on a ferry going into the city and drunkenly ended up having sex with–Chloe.
+
+"The Bertolucci family has a plot in the local cemetery, and the mob wives are getting together in the morning to start planning the funeral," Armando continues, pulling me back from my trip down memory lane. "Nicky is having his body shipped back for the burial. I wasn’t sure if you knew about it or not yet. That’s why I came here to tell you.”
+
+Again, he did the right thing. It never hurts to be too careful.
+
+It’s not like our lives are a fucking fairy tale.
+
+One missed step, and we’re as good as dead.
+
+I rub my neck, trying to think of what to do.
+
+"Tell them I’ll pay for the funeral," I say bluntly, not wanting to go further into details. I don’t want to know about any of it now. I don’t want to know about how Chloe is. It’s been two fucking years since I heard from her, and it is better this way. “In fact, I’ll charter a private jet for the Bertolucci women and Carlo’s body.”
+
+I still find myself daydreaming about her, against my will, and I don’t know if it’s a good thing or not that I can barely remember the night we spent together. I still find myself wanting to remember the details of her lying naked in my bed, the soft feel of her skin under mine, the way her smooth hair felt on my fingers, the way she moaned my name over and over until she was out of breath and wasted beneath me.
+
+I haven’t been able to stop thinking about her since, wondering how she is and if she ever thinks about me the same way. I feel like a fucking teenager fantasizing about having her again and again. Night after night.
+
+No matter how many dancers I have in my bed, none of them make me forget her. Her sweet, floral scent. That’s one thing that I could never forget.
+
+It hurt my ego to not have her reach out to me and come looking for me after that night, but I can’t blame her for not wanting to have anything to do with this life anymore.
+
+Moving away from this city–and from me–was the best thing she could have done.
+
+Armando is looking at me with an enigmatic face, but he knows better than to ask me about whatever it is he’s thinking.
+
+"See that they have everything they need." I carry on, ignoring the way my stomach twists when I imagine Chloe’s blue eyes filled with tears as she mourns her father. "And let me know when it’s happening so I can be there to offer my condolences."
+
+"You’re going to be there?" Armando asks, his tone serious but wary. "Do you think that’s wise? Who knows who might show up, Boss?"
+
+It’s not like I can miss the funeral of a former member of the Saints. Not as their new boss.
+
+I nod. "Carlo used to work for the Saints. I need to pay my respects. It’s the right thing to do."
+
+I don’t tell him that I’m also secretly eager to see Chloe again, even if I have to watch her crying from afar, not able to do anything to comfort her.
+
+## Chapter 2
+
+[Chloe]
+
+
+Memories of the past couple of years pass before my eyes as I stare into my now empty bedroom in our family home in Miami. When Dad decided to move away from New York and come here, I was upset to leave my old life behind, but the idea of starting anew, of getting away from all that craziness, was somewhat exciting.
+
+So much has happened since that I still can’t decide if this was indeed a good idea or not.
+
+So much has changed.
+
+And now, Dad is no longer here to protect us. To tell us what to do. To comfort me with words of wisdom and experience whenever I need to hear them.
+
+He’s gone. In the blink of an eye.
+
+One moment he was here, and the next… *pfft*, gone.
+
+All that was left are the memories we created together.
+
+And some of them will remain behind as soon as we walk out the door and move back to New York.
+
+", sweetheart?" Mom’s sweet voice calls me from the door. I look over my shoulders, my eyes blurry with unshed tears. "Come on, baby. The car is waiting outside," she tells me kindly.
+
+I nod, turning back to look at the spacious room, feeling nostalgic. "I’ll meet you downstairs in a second, Mom.”
+
+She doesn’t say anything else before I hear her footsteps fading down the hallway. I glance around once more, taking in my old bedroom for the last time before leaving.
+
+And then I realize I’m actually thankful we won’t live here any longer. This place doesn’t feel safe anymore. It doesn’t feel like *home*. Without my dad here, I don't feel like we belong in Miami.
+
+So, determined and ready for a new beginning, I take a deep breath and walk out the door, meeting my mom in the hallway.
+
+In her arms she holds my most precious treasure—Ellie. Her dark hair is tied up in two tiny ponytails on top of her head, and her big, round blue eyes–exactly like mine–are looking up at me as I finish descending the stairs.
+
+She lets out a high-pitched squeak as she sees me, saying, “Mama,” and I smile at her, taking her from my mom’s arms and gently rocking her back and forth.
+
+"Hey, baby," I whisper to her. "Ready to go? We’re going to mommy’s old house in New York. Are you excited?"
+
+She mumbles a “Yes,” something she learned a month ago, as if she understands my question, and I look at my mom, unspoken words being conceived in the form of an understanding glance.
+
+For a moment, Nicky Bertolucci doesn’t resemble the woman I know. The strong leader of the mob wives. For a brief second, she allows me to see her vulnerability. She looks exhausted, the black Chanel suit she’s wearing representing the darkness in our hearts. Her thin form looks like she carries the weight of the world on her shoulders, but her chin is raised in determination, and the fire in her eyes tells me that she is not giving up.
+
+My mother is one of the strongest women I know, and if there’s anyone who can reassure me that everything will be fine, it's her.
+
+Just as quick as it comes, her vulnerability disappears as if it had been just a glimpse from my imagination. She gives me a sharp nod and gestures for us to go.
+
+We get settled into the car, Ellie in her car seat and Mom by my side as the driver takes us to the airport. I get lost in my own thoughts all the way, watching the beach pass by us in a blur outside the window.
+
+"It will be nice to be home, don’t you think?" my mother asks me. I turn to look at her, and even though her words are meant to convey relief, she seems nervous.
+
+I know *I’m *nervous. But probably not for the same reasons as her.
+
+Last night, she told me that Tony would be sending a private jet to pick us up and take us to New York. I don’t know how I feel about that. Everything involving him makes me nervous.
+
+"Yeah, I guess so," I finally answer, not sure what else I should say. I’m still trying to comprehend my own feelings. I can’t offer her any reassurance or comfort right now.
+
+We remain silent for the rest of the ride, except from occasional yelling and mumbling of random words from Ellie.
+
+As soon as the driver rolls up to the hangar, I see Tony’s private jet already waiting for us. The driver and some of the airport staff help us with the luggage, and Mom takes Ellie, who’s now sleeping, from my arms. It’s a good thing she's out because I’m not sure how she’ll behave on the flight since this is the first time I’ve traveled with her by plane, and I'm not in the right state of mind to deal with her crying for the next three hours.
+
+We're about to get on the plane when I spot a black SUV pulling up behind our car. I instantly tense up. I glance at my mom, my fists tightened beside me.
+
+"Take Ellie inside, Mom. I’ll be right there with you," I urge her as soon as I see Eduardo stepping out of the car.
+
+My mother’s eyes dart to him and back at me. "Hurry up," she warns me, and then she climbs the stairs to the plane with my daughter safely in her arms.
+
+I’m instantly relieved, but we're not out of harm's way yet.
+
+*Will we ever be?*
+
+"Ms. Bertolucci," Eduardo greets me in his serious tone as he approaches me. "I must tell you my boss is not happy about you leaving without saying goodbye."
+
+"Mateo has no right to be happy or angry about anything concerning me any longer," I tell him bitterly.
+
+Eduardo sneers, the sound causing shivers to run down my spine. "Right," he mumbles. "Well, I hope you enjoy your *short *vacation in New York, Ms. Bertolucci." He tilts his head toward the plane and grins at me.
+
+I hate the way it makes me feel–vulnerable, insecure, as if there is no place in this world where I can escape from Mateo’s claws.
+
+"He expects you to be back in Miami within a few days,” he adds, his hands instantly darting to his belt where his gun is holstered. He’s obviously trying to scare me, but I won't let him.
+
+"Mateo already knows I'm not coming back," I reply with my chin up, not willing to show him how easily he can affect me.
+
+Eduardo stares at me expressionlessly. "My boss takes care of his own. If you think you can take his daughter away from him, or yourself, for that matter, you’re sorely mistaken."
+
+I gulp, unsure of what to say to that. In fact, I shouldn't say anything. Mateo and I already went through this conversation. Sure, he didn't agree to it, but there’s no way he's telling me what to do any longer. I'm tired of it. I'm tired of letting other people control my every move, my decisions, my life.
+
+Especially Mateo.
+
+So, instead of coming up with a witty remark, I simply turn my back on Eduardo, leaving him standing on the tarmac as I board the plane. I try to ignore the way my legs are shaking as if they have turned into jelly. My heart rate is so fast right now that I fear it might burst out of my chest at any minute.
+
+But I need to remain strong.
+
+For Ellie. For Mom. For myself.
+
+I can’t give in. I can't let Mateo win.
+
+"I'll see you soon, Ms. Bertolucci!” Eduardo yells from behind me, and I briefly close my eyes, taking a deep breath and trying to steady myself.
+
+My mom is already in her seat, her seatbelt fastened, by the time I step inside. Ellie is still peacefully sleeping in her arms.
+
+"Is everything okay?" Mom asks me with a concerned expression on her face.
+
+I sit across from her, settling down in my seat so the plane can depart.
+
+I don’t trust my voice yet, so I simply nod at her in response. I know she can tell I'm not okay, but thankfully, she doesn't insist.
+
+"Miss, please tell the pilot we're ready to leave," my mother tells the young flight attendant who nods at her and goes into the cabin.
+
+I look out the window and find Eduardo in the same spot I left him. He's Mateo's right hand, the guy who does all his dirty work with no guilt in his conscience. He’s just as scary as Mateo, and that's saying a lot.
+
+I watch as he reaches for his phone, sliding his finger on the screen to answer an incoming call. I don’t need to see it to know who's calling him. Eduardo’s eyes find mine from across the distance, and as much as I want to look away, I still don't want him to see how scared I am.
+
+This move has been a bold one on my part. I never thought I'd have the courage to move away from Mateo, to leave him behind, but after my father died, it was our best chance of surviving.
+
+Eduardo waves at me, wiggling his fingers in a mocking way. I fight the urge to vomit. I close my eyes again, inhaling sharply through my nose and letting it out through my mouth.
+
+"We're safe now, sweetheart," Mom reassures me in a soft voice, her eyes studying me. "No one can touch us when we're back in New York and under the protection of the Saints. They’ll look after us."
+
+Her words are soothing, but why don't I feel safe? Why can't I believe her?
+
+I look down at my arms, spotting the bruises on my wrists and the tiny scars on the skin of my forearms. My throat tightens.
+
+It's been less than a month since I told my mother the truth. For too long, I was mad at her for not seeing what was so evident, happening right under her nose. Why couldn’t she save me from the nightmare I was living in? But it isn’t fair of me to put this on her.
+
+It isn’t anyone's fault but my own.
+
+And Mateo’s
+
+However, once I told her everything, she proved to be a safe harbor for both Ellie and me.
+
+I can’t imagine doing this without her. I could never step away from Mateo without her encouragement.
+
+"I really hope you're right," I answer.
+
+In the back of my mind, I still wonder if moving back home is the right choice. What if we’re just delaying the inevitable?
+
+Mateo is not the type of man to be messed with. He doesn’t like to share. And he certainly doesn’t like his "toys" making a run for it.
+
+He's incredibly possessive over me and Ellie.
+
+It scares the shit out of me just imagining what he’s capable of doing to get us both back under his wing.
+
+I don't know how long I stay awake, looking out the window, feeling the peace the clouds and the orange sky offer me. Eventually I nod off into a dreamless sleep. Before long, I'm waking up to see the Manhattan skyline before me.
+
+And an instant feeling of belonging washes over me.
+
+*He will protect us. I know it.*
+
+## Chapter 3
+
+[Tony]
+
+
+It’s a very cloudy day in New York, suitable for a funeral. It’s as if God knows people are mourning the loss of a beloved member of their family. I'm not necessarily grieving, but I can't help but feel sad. I know the reason behind it, but I choose to think my emotions have everything to do with the fact that Carlo was one of us–and are not because of his daughter.
+
+I park my car in front of the church and brace myself for what's to come. It's been a few days since I heard about his death, so it’s understandable why there are so many people here. Everyone’s had enough time to make it to New York, even the ones who live far away.
+
+The church is surrounded by a crowd in black, chattering and waiting for the service to start. I take a deep breath and step out of my SUV, heading inside the church. I blend into a sea of black suits and crying women, greeting everyone I know on my way.
+
+I'm not surprised to see Carlo had a lot of friends who have come to say goodbye. Dante told me once that his father trusted Carlo like his own flesh and blood. I’ve learned in my time as boss that that means more than having a trusted capo at your side. Having a brother, even one birthed by the streets instead of by blood, is often the difference between life and death when things go south.
+
+Most of the Saints are also here–except the ones I have out in the field, doing their rounds and keeping us safe.
+
+I have to give it to Armando, handling everything and helping the wives to prepare the funeral service–which included shipping the old man's body to New York so he could be buried in his hometown. That was the least I could do for Chloe and Nicky. It’s my job to take care of them now, after all.
+
+The church looks nice and peaceful, with the colorful stained glass windows casting a rainbow of beams on the wooden floor, making it look almost ethereal. I notice a table filled with flowers in the corner, many expressing the condolences of those who couldn't attend. I glance over the signed cards and a familiar name catches my attention.
+
+Dante and Eleni sent their condolences in the form of a huge bouquet of yellow tulips, apparently Carlo's favorite. Dante told me he wouldn't be able to be here since Eleni is due to have their third child any day now. That's a lot of kids to take care of. I have no idea how Dante does it, but he seems to have adjusted to his new life just fine.
+
+Sounds kind of boring if you ask me, but who am I to judge?
+
+I lift my head to take in the familiar–and not so familiar–faces around me. There’re a lot of people here I've only seen once or twice, who I can't even remember the names of. And others that I see every fucking day.
+
+One in particular has me grinning and walking away from the table. The boss of the Irish Kings in New York, Cal, waves at me, his dark red hair slicked back with gel, his light brown eyes widening slightly.
+
+"Didn't think you'd be here today," he says in his Irish accent as a way of greeting when I approach him and pats me on the shoulder with more strength than necessary. I bite my lip so as not to curse him in church.
+
+Cal and I have become close friends during the time I've been running the Saints and even closer allies. He's proven to be a reliable businessman more times than I can count and an even better company during evenings when I need a fucking drink.
+
+"It comes with the job," I muse in response, shrugging.
+
+Cal grunts in agreement. "Brought a few o'me men to pay their respects, too," he tells me, looking around. "Is the daughter of the old man the same one you brought to the club that night a couple o’ years ago? The pretty lass?" he emphasizes, reminding me of that same day I can't seem to get out of my mind, no matter what I do.
+
+"What are you talking about?" I feign ignorance, even though I know exactly what he's talking about.
+
+He sneers, the freckles on his face crinkling across his nose.
+
+*Why is this fucking service taking so long to start?*
+
+"Don't mess with me, lad. I recognize a pretty face when I see one."
+
+I roll my eyes, but then Cal points at someone behind my back, and when I turn on my heel to see what this is about, I can no longer play dumb.
+
+Because there, in the middle of the crowd of wives, stands the most beautiful woman I've ever seen.
+
+"The pretty lass," he repeats close to my ear as if I'm deaf. I can hear the note of sarcasm in his voice, and I fight the urge to punch him in the face, even if we're inside a church.
+
+As my eyes roam over Chloe, it feels as though the entire world around me fades away and time stands still. It's been two years since the last time I saw her, and somehow, she looks even more stunning than before. Her smooth light brown hair cascades over her shoulders and down her back, her alabaster skin glowing against her black dress. Even though there's nothing remarkable about her gown, it hugs her in the right places while maintaining the decency required for such a respectful event.
+
+I can't tell if she's wearing any makeup, but again, she’s so effortlessly beautiful that I wouldn't be surprised if she weren't. Her lips are a bit pale though, and her intoxicating blue eyes are swollen and red from crying.
+
+As if summoned by my staring, Chloe's gaze meets mine, and it's like I'm being pulled into a whirlpool. How come she still holds this much power over me? It's fucking ridiculous. I'm not one to be controlled…by anyone.
+
+But she seems to hold this *force *over me that I can't escape from.
+
+I notice that her lips tremble a bit, and unexplainably, I think it has something to do with me. But why would it? Of course, she's just sad because her father died.
+
+*Get your shit together, .*
+
+I think about offering her a comforting smile from afar, but before I know it, my legs are working on their own accord.
+
+"Excuse me," I say to Cal. He mumbles some shit to me that sounds like *"I knew it,”* but I ignore him. My focus is solely on Chloe as I wade through the crowd to get to her.
+
+But as if fate is laughing at me, the organ starts playing this lugubrious song, and we're all requested to take a seat so the service can start.
+
+*Great timing.*
+
+I take a detour from where I was heading and find a spot at the back of the church. I'm not very fond of funerals. I don't think anyone is, actually, but in any case, I prefer to stay off the radar.
+
+The service doesn't take long. Neither does the graveside service outside in the cemetery, and soon, we're gathering in a reception hall a few blocks away. Drinks are served and there's this huge table with all sorts of food, but I'm not in the mood for either. I wish I could go home, but I don't want to be disrespectful.
+
+I check my surroundings, looking for that one particular person I so desperately want to talk to. And when I spot her, heading toward the exit, I simply follow.
+
+Before I can get close to the door, though, someone walks in my way, halting me in my steps.
+
+It's another beautiful woman, but not the one I’m looking for. It's her older version.
+
+"Nicky," I say, pursing my lips and pretending I’m annoyed to be interrupted. Again. "I'm really sorry for your loss."
+
+The woman smiles at me briefly. "Thank you. And thank you so much for this beautiful service, ," she replies. "It means a lot to me and Chloe."
+
+I nod. "Of course. It was the least I could do."
+
+"You know, we lived a very good life in Miami after Carlo retired," Nicky carries on, and I glance over to the door and realize I’ve lost Chloe. I take a deep breath, hopeful that I’ll have the opportunity to talk to her before I leave. "He gave us all an extravagant life, but I must confess I'm happy to finally be home. I never wanted to move in the first place." She chuckles, lowering her voice as if she's telling me a secret.
+
+My eyebrows furrow in confusion. What does she mean? Is she implying she’s moved back to the city for good? "You're staying in New York?" I finally ask, trying not to show my surprise through my voice or expression.
+
+"Yes. Carlo and I never sold our old house. This was actually something I wanted to discuss with you, in a more… proper setting, but I decided to take advantage of the opportunity,” she tells me, gripping my arm so I give her all my attention.
+
+"What is it?" I press.
+
+Nicky clears her throat, her eyes filled with determination. "Would you allow Chloe and I back into the circles of women? We can help out with the families of the Saints or whatever you need."
+
+"Of course, Nicky. What made you think I would be against that? The Saints will always take care of their own, so you have nothing to worry about," I reassure her.
+
+She widens her smile at me, and even though I've known Nicky for being this self-assured, confident, and empowered woman, she looks relieved that I gave her my word.
+
+"Thank you, . You have no idea how much this means to all of us. It will be great for Ellie, too, to grow up in a safe environment."
+
+"Who’s Ellie?" I counter bluntly.
+
+"Ah, she's Chloe's daughter." She dismisses it with a wave of her hands, as if she didn't just drop an enormous bomb on me.
+
+I’m at a loss for words, unable to form a coherent sentence. Before she can give me more information, Val calls her, and she excuses herself, apparently unaware of how stricken and confused I am.
+
+Chloe has a daughter? Since when?
+
+Does that mean she's also married?
+
+I look at the door I saw her walking through a few minutes ago and debate with myself whether I should follow her and sort this out.
+
+But maybe I shouldn't. She *is *better off without me. What good would it do if I followed her? What if she tells me she is married? So what?
+
+Nothing will change, and there's a reason why we didn't contact each other back then after we slept together.
+
+It’s better this way. Or at least, that's what I'm trying to convince myself of.
+
+So, in the end, I give up going after her, making a sharp turn and returning to the reception.
+<div class="bottom-box">
+<a href="https://sparke.app.link/lp1%24ios_deepview=false&%24deeplink_path=book%2F0000" class="button cta" id="cta" onclick="try {
+    fbq('track', 'AddToCart', {
+      content_ids: ['0000'],
+      content_type: 'book',
+      content_name: 'Book 0000',
+      value: 0.1,
+      currency: 'USD'
+    });
+  } catch(e){} try{ttq.track('ClickButton');}catch(e){}">👉 Continue Reading 👈</a>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

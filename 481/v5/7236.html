@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The One</title>
+    <link rel="icon" href="data:image/ico;base64,aWNv">
+    <link rel="apple-touch-icon" href="data:image/ico;base64,aWNv">
+    <meta name="ad.size" content="width=0,height=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <style>
+      * {padding: 0;margin: 0;box-sizing: border-box;}
+      body {}
+      .img-box {position: relative;}
+      .img {display: block;width: 100%;height: auto;}
+      .mask {position: absolute;bottom: 0;left: 0;width: 100%;height: 30%;background-image: linear-gradient(rgba(255, 255, 255, 0),  rgb(255, 255, 255, 90%), rgb(255 255 255), #ffffff);} 
+      .title {padding-left: 1.2rem;padding-right: 1.2rem;font-size: 1.8rem;font-weight: 500;color: #333;margin-bottom:10px;margin-top: -70px;position: relative;}
+      .desc {padding-left: 1.2rem;padding-right: 1.2rem;font-family: Georgia, sans-serif; font-size:20px;font-weight: 400;color: #333;line-height: 1.3rem;text-align: justify;padding-bottom: 0.5rem;}
+      .desc i {display: block;height: 0.6rem;}
+      .button:active {opacity: 0.8;}
+
+      /* Sticky CTA container — transparent background */
+      .bottom-box {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;   /* centers the button nicely */
+        padding: 0.55rem 0.34rem;
+        background: transparent;   /* removed white background */
+        z-index: 9999;
+        box-shadow: none;          /* no shadow either */
+      }
+
+      .button {
+          display: block;
+          background: #230a51;
+          border-radius: 1.5rem;
+          margin: 0 auto;
+          font-size: 0.9rem;
+          font-weight: bold;
+          padding: 0rem 3.4rem;
+          color: #FFFFFF;
+          text-align: center;
+          line-height: 2.59rem;
+          text-decoration: none;
+          border-width: 0;
+        }
+
+      /* Chapter visibility (no <p> required; preserves line breaks) */
+      .chapter{display:none;white-space: pre-wrap;}
+      .chapter.active{display:block}
+
+      /* Fix the bar to the top */
+      .top-nav{
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: var(--top-nav-h);
+        z-index: 10000;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        font-family: Georgia, sans-serif;
+      }
+
+      /* Layout inside the bar */
+      .top-nav__inner{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 10px 7px 10px;
+        gap: 12px;
+        align-items: center;   /* <— ensures full vertical centering */
+        height: 100%;
+      }
+
+      .top-nav__left{ display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+
+      .app-icon {
+          width: 1.7rem;
+          height: 1.7rem;
+          background-image: url(assets/app_icon_smaller_for_web1.png);
+          background-size: cover;
+      }
+      .nav-title{
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #333;
+        font-family: Helvetica;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .top-nav__btn{
+        display: inline-block;
+        font-size: 12px; font-weight: 400; line-height: 1;
+        padding: 7px 10px;
+        font-family: helvetica;
+        letter-spacing: 1px;
+        color: #fff; text-decoration: none;
+        background: #5c4489; border-radius: 999px; border: 1px solid rgba(0,0,0,0.05);
+      }
+      /* Add a subtle light sweep animation */
+.top-nav__btn {
+  position: relative;
+  overflow: hidden; /* clip the shine inside the button */
+}
+
+/* the moving light strip */
+.top-nav__btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%; /* start off to the left */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg); /* gives it a nice angled streak */
+  animation: shine 2s infinite;
+}
+
+/* keyframes for the movement */
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+    </style>
+
+    <script>var time=null;function setRem(){try{let t=0||document.documentElement.clientWidth||document.body.clientWidth,e=20;document.getElementsByTagName('html')[0].style.fontSize=t/e+'px'}catch(t){}}setRem();window.onresize=function(){window&&(setRem(),clearTimeout(time),(time=setTimeout(()=>{setRem()},1e3)))};</script>
+    
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D43OQNBC77U40Q0I7570');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+
+<!-- Meta Pixel Code (keep in <head>) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1318169879492323');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1318169879492323&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<script defer>
+(function(){
+  // --- book_id from filename only ---
+  function getBookIdFromFilename() {
+    const path = location.pathname.replace(/\/+$/, '');
+    const last = path.split('/').pop() || '';
+    const core = last.includes('.') ? last.split('.')[0] : last;
+    return /^[A-Za-z0-9_-]+$/.test(core) ? core : '';
+  }
+
+  // --- Normalize platform (Meta/TikTok variants) ---
+  function normalizePlatform(val) {
+    const p = (val || '').toLowerCase();
+    if (['fb','facebook','instagram','ig','messenger','audience_network','audiencenetwork'].includes(p)) return 'facebook';
+    if (p === 'tiktok' || p === 'tt') return 'tiktok';
+    return p || 'unknown';
+  }
+
+  // --- Gather campaign params from page URL ---
+  function getCampaignParams() {
+    const src = new URLSearchParams(location.search);
+    return {
+      channel:  normalizePlatform(src.get('site_source_name')),
+      campaign: src.get('campaign_id') || 'unknown_campaign',
+      feature:  src.get('adset_id')    || 'unknown_adset',
+      stage:    src.get('ad_id')       || 'unknown_ad'
+    };
+  }
+
+  // --- Quick check to avoid duplicate appends ---
+  function hasParam(href, name){
+    return href.indexOf(name + '=') !== -1;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const bookId = getBookIdFromFilename();
+    const c = getCampaignParams();
+
+    document.querySelectorAll('a[href*="sparke.app.link"]').forEach(a => {
+      let href = a.getAttribute('href') || '';
+      if (!href.includes('sparke.app.link')) return;
+
+      // 1) Update encoded deeplink_path book id: ...deeplink_path=book%2F<id>...
+      if (bookId) {
+        href = href.replace(/(deeplink_path=book%2F)([^%&]+)/, (_, p1) => p1 + encodeURIComponent(bookId));
+      }
+
+      // 2) Build params to append (always with "&")
+      const pairs = [];
+      if (bookId && !hasParam(href, 'book_id')) pairs.push('book_id=' + encodeURIComponent(bookId));
+      if (c.channel  && !hasParam(href, '~channel'))  pairs.push('~channel='  + encodeURIComponent(c.channel));
+      if (c.campaign && !hasParam(href, '~campaign')) pairs.push('~campaign=' + encodeURIComponent(c.campaign));
+      if (c.feature  && !hasParam(href, '~feature'))  pairs.push('~feature='  + encodeURIComponent(c.feature));
+      if (c.stage    && !hasParam(href, '~stage'))    pairs.push('~stage='    + encodeURIComponent(c.stage));
+
+      if (pairs.length) {
+        href += (href.endsWith('&') ? '' : '&') + pairs.join('&');
+      }
+
+      a.setAttribute('href', href);
+
+      // 3) Inject or update onclick for AddToCart tracking with correct book_id
+      const baseOnclick = `
+        try {
+          fbq('track', 'AddToCart', {
+            content_ids: ['${bookId || 'unknown'}'],
+            content_type: 'book',
+            content_name: 'Book ${bookId || 'unknown'}',
+            value: 0.1,
+            currency: 'USD'
+          });
+        } catch(e) {}
+        try { ttq.track('ClickButton'); } catch(e) {}
+      `.trim();
+
+      // If the link already has an onclick, preserve it and prepend ours
+      const existing = a.getAttribute('onclick');
+      if (existing && !existing.includes("fbq('track'")) {
+        a.setAttribute('onclick', baseOnclick + '; ' + existing);
+      } else if (!existing) {
+        a.setAttribute('onclick', baseOnclick);
+      } else {
+        // If existing onclick already contains placeholders, update them
+        let updated = existing
+          .replace(/content_ids:\s*\['[^']*'\]/, `content_ids: ['${bookId}']`)
+          .replace(/content_name:\s*'Book [^']*'/, `content_name: 'Book ${bookId}'`);
+        a.setAttribute('onclick', updated);
+      }
+    });
+  });
+})();
+</script>
+
+
+</head>
+<body>
+  
+<a href="https://sparke.app.link/lp1%24ios_deepview=false&%24deeplink_path=book%2F0000" class="top-nav-link" onclick="try {
+    fbq('track', 'AddToCart', {
+      content_ids: ['0000'],
+      content_type: 'book',
+      content_name: 'Book 0000',
+      value: 0.1,
+      currency: 'USD'
+    });
+  } catch(e){} try{ttq.track('ClickButton');}catch(e){}">
+
+<nav class="top-nav" role="navigation" aria-label="Download bar">
+  <div class="top-nav__inner">
+    <div class="top-nav__left">
+      <span class="app-icon" aria-hidden="true"></span>
+      <span class="nav-title">Download the entire book</span>
+    </div>
+    <div class="top-nav__btn">Download</div>
+  </div>
+</nav>
+</a>
+<div style="position: relative;">
+<div class="img-box">
+<img id="image" data-img="" class="img" src="assets/horsecouple1.jpg" />
+<div class="mask"></div>
+</div>
+<h1 class="title">The One</h1>
+<div class="desc">
+<div class="chapter-index" data-chapter="1"></div>
+<div id="chapter1" class="chapter active">
+## Chapter 1
+
+Maerilee
+
+The dog treat trembles in my hand, faint pulses of magic swirling around it like threads of silver. I close my eyes, focusing on the barrier I’m trying to create. The energies stretch from my fingertips, encasing the treat in an invisible shield, or at least what I hope is an invisible shield. My breath slows as I concentrate, willing the magic to hold steady. A faint hum tickles the back of my mind. My magic is attempting to do what it’s supposed to but deep down, I can feel how weak it is, how flimsy the barrier must be.
+
+I open my eyes, my gaze flicking to my dog, Duchess, curled up in a ball on my bed. Her small body rises and falls softly as she sleeps, completely unaware of the challenge I’m facing.
+
+The barrier needs to be perfect. If I can’t even manage this, what hope do I have of fortifying the one protecting our kingdom?
+
+“Just focus, Maerilee,” I murmur to myself. My fingers flex, sending another ripple of energy through the shield. It looks solid enough, a faint shimmer around the treat.
+
+Suddenly, Duchess stirs. I glance up as her nose twitches, nostrils flaring as she catches the scent of the treat. My heart sinks.
+
+“No, no, no,” I whisper, watching as Duchess’s little black eyes blink open. She lifts her head, giving a lazy yawn before hopping off the bed. Her tiny paws pad across the floor as she heads straight for me, or rather, the treat in front of me.
+
+“Stay back, Duchess,” I warn softly, though I know it’s useless. I have something she wants and she’s determined to go after it.
+
+Her nose pokes at the invisible barrier, her little pink tongue darting out to taste the air. I sit up straighter, holding my breath. This is the moment. If the barrier holds, Duchess won’t be able to—
+
+She walks right through it.
+
+My jaw drops as she simply passes through the shimmering magic, the protective shield crumbling like dust. She doesn’t even notice the weak flicker of power. Before I can react, she snatches the treat in her mouth, tail wagging furiously, and trots off proudly.
+
+“Duchess!” I groan, collapsing onto the floor, defeated. She prances out of the room like she’s just conquered a mighty foe, while I sit here, a mess of frustration and failure.
+
+This is hopeless. I’ll never be able to help strengthen the kingdom’s barrier if I can’t even master a small barrier spell for a dog treat.
+
+As if on cue, someone knocks at my door. I sit up quickly, trying to compose myself, though I can still feel the sting of embarrassment heating my cheeks. The door opens slightly, and Akin steps into the room just as Duchess struts out, tail wagging with her prize.
+
+“Good to see Duchess is well-fed,” he comments with a grin, clearly amused at the scene. His dark eyes flick to me, concern immediately replacing the humor when he notices my posture, slumped on the floor.
+
+“I was practicing,” I mutter, sitting up straighter and brushing my hair out of my face. “It didn’t exactly go as planned.”
+
+Akin steps fully into the room, closing the door behind him. He looks down at me with that familiar, steady gaze, the one that never seems to waver, even when everything around us is falling apart. He’s always so sure of himself, always so capable. I feel a pang of jealousy in my chest before I can push it down.
+
+“You’ll get it,” he says, his voice low and reassuring. “But right now, your parents want to see you.”
+
+I nod, feeling a tight knot form in the pit of my stomach. “Now?”
+
+“Now,” he confirms with a solemn nod. “It sounded important.”
+
+Of course, it’s important. Everything is important these days. I stand up, dusting off my gown, and catch a glimpse of myself in the mirror. My long whitish hair, tinged with lavender, is slightly tangled, and my silver eyes seem a little dimmer than usual. I smooth my hair down with a sigh and follow Akin out of the room.
+
+As we walk through the palace halls, I can’t help but glance at him from the corner of my eye. He walks with such purpose, his tall, broad frame radiating strength. I’ve known Akin my whole life, but there’s always been this distance between us, one that feels more like a wall now than ever before. He’s my bodyguard, yes, but sometimes it feels like something more. Or maybe it’s just me.
+
+We reach the doors to my parents’ chamber, and Akin gives me a small nod before stepping back. I take a deep breath, preparing myself for whatever they’re going to say. I push open the doors and step into the familiar warmth of the room.
+
+My mother, Queen Kimalissa, sits near the window, looking out over the kingdom. The soft light filtering in through the glass highlights the weariness in her face. Every day, the weight of the kingdom’s failing barrier seems to press harder on her, making her look more and more fragile. It breaks my heart to see her like this.
+
+My father, King Fratino, stands beside her, his tall frame tense, though he manages to offer me a small smile as I enter. His moon-touched skin glows faintly, a reminder of the power he holds. It’s a power that comes so naturally to him, unlike me. I don’t even know if I have a ‘One,’ let alone the ability to do what’s needed for our kingdom.
+
+“Maerilee,” my mother says, turning to face me with an expression that immediately makes my stomach drop. It’s the look she gives when she’s about to ask something of me that I’m not going to like.
+
+“Mother, Father,” I greet them with a small curtsy, trying to keep my voice steady.
+
+“We’ve been talking,” my father begins, glancing at my mother before continuing. “Given the current state of things, we’ve decided it’s time to take more decisive action in finding your One.”
+
+I blink, anxiety rippling through me. “Decisive action?”
+
+My mother sighs, walking toward me with a grace that belies her exhaustion. “We’ve sent out invitations to the surrounding kingdoms,” she says softly. “To all eligible noblemen.”
+
+My heart skips a beat, a mix of anger and embarrassment flaring up inside me. “Eligible for what?”
+
+“For you,” my father says bluntly, his voice firm. “We’re hosting a month-long ball, Maerilee. In the hopes of fostering peace, yes, but mainly to help you find your One.”
+
+The words hang in the air between us, and for a moment, I can’t speak. They’ve invited noblemen, strangers from rival kingdoms, to come here and parade themselves around, all in the hope that one of them might be my One? I feel a surge of frustration rising inside me, but I bite my tongue.
+
+I know why they’re doing this. I know how important it is but it still stings. Once again, I’m faced with my own failures.
+
+“I see,” I say, my voice tighter than I intended.
+
+“Maerilee, we understand how difficult this must be for you,” my mother says, her eyes pleading. “But the barrier is weakening every day, and we don’t have much time. If you find your One, if you can unlock the power that comes with it, you can help restore it.”
+
+I swallow hard, the weight of her words pressing down on me. I know she’s right. The barrier is crumbling, and with it, our kingdom’s protection. I can see it in the way my mother’s once-vibrant magic has dimmed, the way her strength seems to slip away a little more each day. If I don’t do something, if I don’t find my One, Altinna could fall to invasion.
+
+Still, that doesn’t make it any easier to hear.
+
+“I understand,” I finally say, my voice quiet but steady. “I’ll do whatever is necessary.”
+
+My mother’s expression softens, relief flickering in her eyes. “Thank you, Maerilee. I know this isn’t easy.”
+
+“No, it’s not,” I admit, looking between her and my father. “But if this is what’s needed, I’ll attend the ball. I’ll meet these noblemen. I’ll try to find my One.”
+
+As the words leave my mouth, a strange mix of dread and determination settles over me. I’ve spent so long searching, waiting for some sign that I even have a One. But what if this ball changes nothing? What if none of these men are the one I’m supposed to bond with?
+
+What if I’m destined to fail?
+
+But I push those thoughts aside, forcing myself to focus on the task ahead. I have to try for Altinna.
+
+I’ll find my One. I have to.
+
+My powers depend on it. My future depends on it. When I find my One, I’ll have full access to the powers I innately possess. After our binding ceremony, my wings will come in, and I’ll be complete, whole. It’s what I’ve been waiting for my whole life. 
+
+As I turn to leave the room, my mother’s voice stops me.
+
+“Maerilee,” she says softly. “No matter what happens, we’re proud of you.”
+
+I nod, unable to trust myself to speak. Akin is waiting just outside, his expression unreadable as he watches me approach. He doesn’t ask what happened. He doesn’t need to. He already knows.
+
+“Let’s go,” I say quietly, embarrassment flooding me. “I’d very much like to be alone now.”
+
+## Chapter 2
+
+Maerilee
+
+I stand in front of the mirror, assessing my reflection. The lavender gown clings perfectly to my frame, the soft fabric shimmering with every movement. It’s a beautiful dress, hand-sewn with threads of silver that match the pale glow of my hair, but all I can think about is how much I wish I didn’t have to wear it.
+
+I’m not looking forward to this grand spectacle to parade me around in front of foreign nobles, all in the hopes of finding my One. The thought alone makes me clench my fists, the material of my skirt crinkling under my hands. I smooth it out with a shaky breath.
+
+I can do this. I have to do this.
+
+The weight of expectation is heavy on my shoulders as I turn away from the mirror, heading toward the door where Akin waits. He’s dressed in formal attire, his expression as unreadable as ever.
+
+"Are you ready?" he asks.
+
+I nod, though my heart is pounding in my chest. "As ready as I’ll ever be."
+
+He offers a slight smile but doesn’t say anything more. He guides me through the palace corridors, the sound of our footsteps echoing off the marble floors. My palms are slick with nervousness, and I try to wipe them discreetly on my gown, but Akin notices.
+
+"You look beautiful," he assures me, his voice low but steady.
+
+I glance at him, surprised by the compliment. He rarely says things like that.
+
+"Thank you,” I whisper, too stunned to say much else.
+
+We reach the grand staircase leading down to the ballroom, and my stomach flips. The doors below are already open, and I can hear the distant murmur of voices, the music, the clinking of glasses. The grand chandelier is glowing brightly, casting light over the elegantly dressed fae who have gathered from every corner of Haebradia. This is it.
+
+Akin gives me one last look. “I’ll be nearby if you need me.”
+
+I nod, swallowing hard as I take my place at the top of the staircase. The herald stands beside me, poised and ready to announce my arrival. His deep voice booms across the ballroom, cutting through the noise below.
+
+“Her Highness, Princess Maerilee of Altinna.”
+
+As if on cue, every head turns toward me. The room goes quiet, the murmurs dying down into a hush as I take my first step down the staircase. My gown trails softly behind me, the lavender fabric catching the light, making me feel ethereal.
+
+All eyes are on me, noblemen and women from every kingdom, fae of every type and color. I can see the glittering wings of the Sylvan fae, who get their wings whether they’re bound or not, the horns of the Briarwood folk, the towering forms of the Stonekin. The tension in the room is palpable, a mix of curiosity and expectation as they watch me descend. They all know tonight’s purpose. They’re all wondering if I’ll find my One tonight.
+
+The pressure is suffocating.
+
+As I reach the bottom step, I brace myself for a feeling. I’ve been told that when I meet my One, I’ll feel it immediately. My mother always spoke of a pull, a connection so strong that it’s undeniable. She felt it the moment she laid eyes on my father. She said it was like a magnetic force, drawing them together in an instant.
+
+So as I step into the ballroom and the crowd parts slightly, I wait for that feeling. I scan the faces in the room, searching for a spark, a sign that one of them is him.
+
+But nothing happens.
+
+There’s no rush of energy, no magnetic pull. Just the overwhelming sense of being watched by hundreds of strangers, each one silently judging me. I can feel the weight of their gazes, some curious, others assessing. I try to smile, to maintain the composure that’s expected of me, but inside, a gnawing sense of panic begins to build.
+
+What if none of them are him? What if I’m destined to be a powerless, flightless fae for the rest of my life? 
+
+The ballroom is grand, the walls lined with gold filigree, and the chandeliers overhead cast a warm, golden glow over everything. Musicians play softly in the corner, the delicate notes of a harp weaving through the air. Fae of every creed and color mingle, their fine clothes shimmering as they move.
+
+I feel out of place among them, like a piece of a puzzle that doesn’t quite fit. My magic flickers weakly inside me, a constant reminder that I’m not like them. Not yet.
+
+* * *
+
+Akin
+
+I stand at the edge of the ballroom, blending into the shadows cast by the ornate pillars. My eyes never leave Maerilee, though I make sure to stay unobtrusive, just as I always do. I’m not meant to be noticed tonight. No one is supposed to see me here. This is her night, not mine.
+
+She looks radiant, as always, in her lavender gown. The way the fabric catches the light and shimmers as she moves is enough to steal anyone’s breath. But it’s not the gown or the way her hair gleams under the chandeliers that holds my attention. It’s her.
+
+She’s nervous as she scans the crowd, and from where I stand, I can see the exact moment when that nervousness deepens into something darker. She’s searching for her One. I know it. I’ve been dreading this moment since the day her parents announced the ball.
+
+I let out a breath I hadn’t realized I was holding when I see the look of consternation on her face. She’s scanning the crowd, hoping, waiting for the spark, the connection her mother always talks about. But it’s not there. Not yet.
+
+I should feel anxious for her, but all I feel is relief.
+
+Relief that she hasn’t found him. That she hasn’t locked eyes with some stranger across the room and felt that pull, that undeniable bond that will tie her to another for the rest of her life. That will tie her to someone who isn’t me.
+
+The second I acknowledge that, I’m angry at myself for it.
+
+I know better. I’ve always known better. Maerilee finding her One is what’s best for Altinna. The kingdom needs her at her full power, and she can’t manifest it alone. Her One, whoever he is, will be the key to unlocking that. And I want that for her. I want the kingdom to be safe, to thrive. I want Maerilee to have the strength she needs to protect the kingdom.
+
+But wanting that means losing her. And I don’t know how to reconcile the two. She’ll fly off with some foreign prince or dignitary, and I’ll be reassigned, likely. Only the royals in our kingdom are granted the gift of flight. I’ll be no good to her then. 
+
+I’ve been by Maerilee’s side for as long as I can remember. I remember when she was just a little girl, full of wild energy, running barefoot through the palace gardens while I tried to keep up with her. She was always faster than me back then, laughing over her shoulder as I chased her through the roses and up the old oak tree that grew near the palace gates.
+
+We weren’t supposed to climb that tree, of course. It was forbidden, but that didn’t stop her. It never stopped her.
+
+One day, she fell from one of the branches, scraping her knee on the way down. She was crying, sitting in the dirt with her dress torn, and I rushed over to her, panicked. I was ready to run for help, but she grabbed my arm and pulled me down next to her.
+
+“I’m okay,” she said, through tears and hiccups. “It doesn’t even hurt that bad.”
+
+She wiped at her face furiously, and I could see the stubborn pride in her even then. She hated crying. Hated showing weakness. I sat with her, unsure of what to do, and then she grabbed my hand.
+
+“You can’t tell anyone, okay? Promise.”
+
+I promised. Of course, I promised. I would’ve promised her anything.
+
+From that day forward, it was always Maerilee and me. Somewhere along the way, things shifted. She stopped being just the princess I was sworn to protect, and she became something more.
+
+I don’t know when it happened. Maybe it was gradual, or maybe it was all at once. But one day, I looked at her, and she wasn’t just the girl with scraped knees and a fierce determination to prove herself. She was everything. And I realized, painfully, that I loved her.
+
+It’s a love I know I can never have, not the way I want. She’s the future queen of Altinna, and her destiny is tied to another. The entire kingdom depends on her finding her One, on the bond that will give her the strength to maintain the magical barrier that keeps us all safe.
+
+I understand that. I’ve accepted it. But that doesn’t stop my heart from breaking a little more every time I’m near her.
+
+And now, watching her in this ballroom, knowing what’s at stake, I feel like I’m being torn in two. Part of me wants her to find him, to feel that connection and finally be at peace with her powers, with her future. But the selfish part of me hopes she never does.
+<div class="bottom-box">
+<a href="https://sparke.app.link/lp1%24ios_deepview=false&%24deeplink_path=book%2F0000" class="button cta" id="cta" onclick="try {
+    fbq('track', 'AddToCart', {
+      content_ids: ['0000'],
+      content_type: 'book',
+      content_name: 'Book 0000',
+      value: 0.1,
+      currency: 'USD'
+    });
+  } catch(e){} try{ttq.track('ClickButton');}catch(e){}">👉 Continue Reading 👈</a>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

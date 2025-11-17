@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spare of the Alpha</title>
+    <link rel="icon" href="data:image/ico;base64,aWNv">
+    <link rel="apple-touch-icon" href="data:image/ico;base64,aWNv">
+    <meta name="ad.size" content="width=0,height=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <style>
+      * {padding: 0;margin: 0;box-sizing: border-box;}
+      body {}
+      .img-box {position: relative;}
+      .img {display: block;width: 100%;height: auto;}
+      .mask {position: absolute;bottom: 0;left: 0;width: 100%;height: 30%;background-image: linear-gradient(rgba(255, 255, 255, 0),  rgb(255, 255, 255, 90%), rgb(255 255 255), #ffffff);} 
+      .title {padding-left: 1.2rem;padding-right: 1.2rem;font-size: 1.8rem;font-weight: 500;color: #333;margin-bottom:10px;margin-top: -70px;position: relative;}
+      .desc {padding-left: 1.2rem;padding-right: 1.2rem;font-family: Georgia, sans-serif; font-size:20px;font-weight: 400;color: #333;line-height: 1.3rem;text-align: justify;padding-bottom: 0.5rem;}
+      .desc i {display: block;height: 0.6rem;}
+      .button:active {opacity: 0.8;}
+
+      /* Sticky CTA container — transparent background */
+      .bottom-box {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;   /* centers the button nicely */
+        padding: 0.55rem 0.34rem;
+        background: transparent;   /* removed white background */
+        z-index: 9999;
+        box-shadow: none;          /* no shadow either */
+      }
+
+      .button {
+          display: block;
+          background: #230a51;
+          border-radius: 1.5rem;
+          margin: 0 auto;
+          font-size: 0.9rem;
+          font-weight: bold;
+          padding: 0rem 3.4rem;
+          color: #FFFFFF;
+          text-align: center;
+          line-height: 2.59rem;
+          text-decoration: none;
+          border-width: 0;
+        }
+
+      /* Chapter visibility (no <p> required; preserves line breaks) */
+      .chapter{display:none;white-space: pre-wrap;}
+      .chapter.active{display:block}
+
+      /* Fix the bar to the top */
+      .top-nav{
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: var(--top-nav-h);
+        z-index: 10000;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        font-family: Georgia, sans-serif;
+      }
+
+      /* Layout inside the bar */
+      .top-nav__inner{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 10px 7px 10px;
+        gap: 12px;
+        align-items: center;   /* <— ensures full vertical centering */
+        height: 100%;
+      }
+
+      .top-nav__left{ display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+
+      .app-icon {
+          width: 1.7rem;
+          height: 1.7rem;
+          background-image: url(assets/app_icon_smaller_for_web1.png);
+          background-size: cover;
+      }
+      .nav-title{
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #333;
+        font-family: Helvetica;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .top-nav__btn{
+        display: inline-block;
+        font-size: 12px; font-weight: 400; line-height: 1;
+        padding: 7px 10px;
+        font-family: helvetica;
+        letter-spacing: 1px;
+        color: #fff; text-decoration: none;
+        background: #5c4489; border-radius: 999px; border: 1px solid rgba(0,0,0,0.05);
+      }
+      /* Add a subtle light sweep animation */
+.top-nav__btn {
+  position: relative;
+  overflow: hidden; /* clip the shine inside the button */
+}
+
+/* the moving light strip */
+.top-nav__btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%; /* start off to the left */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg); /* gives it a nice angled streak */
+  animation: shine 2s infinite;
+}
+
+/* keyframes for the movement */
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+    </style>
+
+    <script>var time=null;function setRem(){try{let t=0||document.documentElement.clientWidth||document.body.clientWidth,e=20;document.getElementsByTagName('html')[0].style.fontSize=t/e+'px'}catch(t){}}setRem();window.onresize=function(){window&&(setRem(),clearTimeout(time),(time=setTimeout(()=>{setRem()},1e3)))};</script>
+    
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D43OQNBC77U40Q0I7570');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+
+<!-- Meta Pixel Code (keep in <head>) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1318169879492323');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1318169879492323&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<script defer>
+(function(){
+  // --- book_id from filename only ---
+  function getBookIdFromFilename() {
+    const path = location.pathname.replace(/\/+$/, '');
+    const last = path.split('/').pop() || '';
+    const core = last.includes('.') ? last.split('.')[0] : last;
+    return /^[A-Za-z0-9_-]+$/.test(core) ? core : '';
+  }
+
+  // --- Normalize platform (Meta/TikTok variants) ---
+  function normalizePlatform(val) {
+    const p = (val || '').toLowerCase();
+    if (['fb','facebook','instagram','ig','messenger','audience_network','audiencenetwork'].includes(p)) return 'facebook';
+    if (p === 'tiktok' || p === 'tt') return 'tiktok';
+    return p || 'unknown';
+  }
+
+  // --- Gather campaign params from page URL ---
+  function getCampaignParams() {
+    const src = new URLSearchParams(location.search);
+    return {
+      channel:  normalizePlatform(src.get('site_source_name')),
+      campaign: src.get('campaign_id') || 'unknown_campaign',
+      feature:  src.get('adset_id')    || 'unknown_adset',
+      stage:    src.get('ad_id')       || 'unknown_ad'
+    };
+  }
+
+  // --- Quick check to avoid duplicate appends ---
+  function hasParam(href, name){
+    return href.indexOf(name + '=') !== -1;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const bookId = getBookIdFromFilename();
+    const c = getCampaignParams();
+
+    document.querySelectorAll('a[href*="sparke.app.link"]').forEach(a => {
+      let href = a.getAttribute('href') || '';
+      if (!href.includes('sparke.app.link')) return;
+
+      // 1) Update encoded deeplink_path book id: ...deeplink_path=book%2F<id>...
+      if (bookId) {
+        href = href.replace(/(deeplink_path=book%2F)([^%&]+)/, (_, p1) => p1 + encodeURIComponent(bookId));
+      }
+
+      // 2) Build params to append (always with "&")
+      const pairs = [];
+      if (bookId && !hasParam(href, 'book_id')) pairs.push('book_id=' + encodeURIComponent(bookId));
+      if (c.channel  && !hasParam(href, '~channel'))  pairs.push('~channel='  + encodeURIComponent(c.channel));
+      if (c.campaign && !hasParam(href, '~campaign')) pairs.push('~campaign=' + encodeURIComponent(c.campaign));
+      if (c.feature  && !hasParam(href, '~feature'))  pairs.push('~feature='  + encodeURIComponent(c.feature));
+      if (c.stage    && !hasParam(href, '~stage'))    pairs.push('~stage='    + encodeURIComponent(c.stage));
+
+      if (pairs.length) {
+        href += (href.endsWith('&') ? '' : '&') + pairs.join('&');
+      }
+
+      a.setAttribute('href', href);
+
+      // 3) Inject or update onclick for AddToCart tracking with correct book_id
+      const baseOnclick = `
+        try {
+          fbq('track', 'AddToCart', {
+            content_ids: ['${bookId || 'unknown'}'],
+            content_type: 'book',
+            content_name: 'Book ${bookId || 'unknown'}',
+            value: 0.1,
+            currency: 'USD'
+          });
+        } catch(e) {}
+        try { ttq.track('ClickButton'); } catch(e) {}
+      `.trim();
+
+      // If the link already has an onclick, preserve it and prepend ours
+      const existing = a.getAttribute('onclick');
+      if (existing && !existing.includes("fbq('track'")) {
+        a.setAttribute('onclick', baseOnclick + '; ' + existing);
+      } else if (!existing) {
+        a.setAttribute('onclick', baseOnclick);
+      } else {
+        // If existing onclick already contains placeholders, update them
+        let updated = existing
+          .replace(/content_ids:\s*\['[^']*'\]/, `content_ids: ['${bookId}']`)
+          .replace(/content_name:\s*'Book [^']*'/, `content_name: 'Book ${bookId}'`);
+        a.setAttribute('onclick', updated);
+      }
+    });
+  });
+})();
+</script>
+
+
+</head>
+<body>
+  
+<a href="https://sparke.app.link/lp1%24ios_deepview=false&%24deeplink_path=book%2F0000" class="top-nav-link" onclick="try {
+    fbq('track', 'AddToCart', {
+      content_ids: ['0000'],
+      content_type: 'book',
+      content_name: 'Book 0000',
+      value: 0.1,
+      currency: 'USD'
+    });
+  } catch(e){} try{ttq.track('ClickButton');}catch(e){}">
+
+<nav class="top-nav" role="navigation" aria-label="Download bar">
+  <div class="top-nav__inner">
+    <div class="top-nav__left">
+      <span class="app-icon" aria-hidden="true"></span>
+      <span class="nav-title">Download the entire book</span>
+    </div>
+    <div class="top-nav__btn">Download</div>
+  </div>
+</nav>
+</a>
+<div style="position: relative;">
+<div class="img-box">
+<img id="image" data-img="" class="img" src="assets/scen2_abd_3.jpg" />
+<div class="mask"></div>
+</div>
+<h1 class="title">Spare of the Alpha</h1>
+<div class="desc">
+<div class="chapter-index" data-chapter="1"></div>
+<div id="chapter1" class="chapter active">
+## Chapter 1
+
+Aviva
+
+The wind hasn’t yet swept last autumn’s leaves off the forest floor. Soft, pale green tufts of spring grass poke out in heaps as I crouch behind a large bramble bush, the earthy scent of the early blooms all around us momentarily stealing my senses. 
+
+But only briefly. Ten year old Shoshannah smells like adrenaline and the pancakes with blueberry syrup she had for breakfast as her soft red hair whips across my cheeks, her body rigid and bright green eyes focused on the sparse trees ahead of us. 
+
+Lora, six, fidgets on my other side. “Aviva,” she hisses, tugging on the sleeve of my tunic. “I have to pee!”
+
+“Shut up, Lora,” Shosh whispers, her arm flexed as she draws back her arrow, which looks massive against the child-sized bow I whittled for her as a Solstice gift. 
+
+“Breathe in,” I whisper against the rim of my little sister’s ear. She does, holding her breath. “Line up. Release–”
+
+The arrow whizzes past our hideout and spins through the air. A squeak echoes through the forest before it falls silent again. 
+
+“What’d she get!?” Lora bounces upright, squirming from foot to foot as she tries to peer over the bush. 
+
+“A squirrel,” Shosh frowns, her eyes meeting mine. “This is boring, Aviva. I want to shoot an elk.”
+
+I haul her to her feet by the collar of her sweater–which used to be mine as a child and has seen better days. “You can’t bring down an elk with a bow that small. When you can shift, you can go on the big hunts with me. This is just practice anyway.” I motion to the three rabbits hanging from my belt. “It’s enough for supper already.”
+
+“Aviva!” Lora whines as she dances around. “I’m going to pee my pants again–”
+
+“Okay, okay, okay.” I gently clip a disappointed Shosh on the underside of her chin before guiding Lora to a thicket of alder trees, collecting the squirrel along the way.
+
+Shosh follows behind, lazily swinging her bow. “But you got to hunt deer and elk and all kinds of things at my age.”
+
+“Times were different back then,” I grunt, holding Lora upright as she attempts to do her business in the cover of the bushes. She gets distracted by a shiny beetle on one of the trees and nearly sends us both toppling over. “Lora, pay attention. You’re going to pee on your shoes.”
+
+“Times weren’t that different,” Shosh argues, sighing dramatically. 
+
+“I assure you that they were. There, see? It wasn’t that much of an emergency, was it?” I yank Lora’s leggings up and dust the leaves and dirt from her homespun dress and wool jacket. 
+
+“But when you were my age–”
+
+“When I was your age,” I cut in, giving my sister a sharp look. She frowns at me, but her cheeks go pink as I continue, “I had to hunt to put food on the table for the whole tribe. Everyone who could walk was out in the woods scavenging for anything they could find. You’re lucky you get to spend the summer learning to hunt instead of wasting all of your arrows and blistering your fingers just to come home with a fledgling missing its hind quarters because you shot them off.”
+
+“Did you do that?” Lora giggles, and I nod, playfully sticking out my tongue at her. 
+
+“It’s all I had to eat for days, too.”
+
+“I wanna play with the bow now!” Lora grabs for the bow, but Shosh yanks it out of her tiny hands. 
+
+“It’s not a toy, Lora. And it’s mine!”
+
+I rise to my knees and plant my hands on my hips, watching the two girls tussle over the shitty little bow I made from thin, roping alder branches. Shosh gives Lora a look that rattles me to my core, however. 
+
+“Wipe that scowl off your face,” I tell her, and not in the least bit kindly. “You look like Mercy right now.” 
+
+Shosh sees red at the mention of our eldest, and least fun, sister. “I do not look like Mercy.”
+
+“Well, you’re acting like her.” I peer up at the sky, at the sun starting to creep back toward the horizon. “We’ve got an hour until we need to head back to the village. We’re going to head back now.”
+
+Both girls pout and fuss about it but I’m used to it. Ever since the last of the snow melted, I’ve been taking Shoshannah and Lora out in the woods to learn how to hunt. Lora is mostly here for moral support, even if she’s a bit loud and slows us down with her pockets full of rocks and twigs, but in a few years she’ll be in Shoshannah’s shoes, out here with a bow that looks like it belongs to one of her dolls. 
+
+Shosh takes hunting very seriously. She’s keenly aware of her surroundings and has sharp senses that will blossom into something deadly over the next decade until she comes into her wolf powers. 
+
+But she wants more. And more, and more. Unhappy with the three rabbits and the squirrel she nabbed today, she continues to pout and hiss under her breath as I try to keep the girls on track toward our village. 
+
+“One day,” she mumbles, sniffling, “I’m going to get a golden elk, and I’ll be the best hunter in all of the land. Better than you, Aviva.”
+
+“Well, you’d be the first hunter in over a hundred years to snare a golden elk.” I give her a little nudge, smiling down at her. “You’d better keep–”
+
+The wind changes course, and I smell… something foreign. Sweet, dark, heavy and hard to describe. 
+
+Except I know that scent. Musk and leather. Fire and parchment. 
+
+Whiskey. 
+
+A wolf.
+
+A male. 
+
+I grab the girls and toss them in the shelter of two large cottonwood trees. “Do not move,” I whisper, but Lora teeters to the side, her rocks falling out of her pockets. I lunge for her, losing my grip on Shosh’s collar, and the little devil jumps out from behind the tree with her bow outstretched and an arrow primed and ready. 
+
+The word, “No,” doesn’t even have time to leave my lips before the arrow darts through the air, sure and straight. 
+
+A sharp yelp echoes through the forest, bouncing from tree to tree, followed by a low, rattling growl. 
+
+“Fuck, fuck, fuck!” I hiss, shoving the girls behind me as a rustling sound fills my ears. There’s a small clearing only a few yards from us, down a hill where the spring grass bleeds into a swiftly moving creek. The creek bed is lined with bushes, all tangled and covered in bright green leaves. How Shoshannah saw the impossibly large, dark brown wolf stopping to take a drink from the creek before I did is beyond me. 
+
+“I got a bear!” she gasps. 
+
+“That’s not a fucking bear,” I reply under my breath, and push both girls behind me. I shift. My clothing and weapons are fashioned to fit my body in both forms. My knife belt becomes a halter that fits securely over one shoulder, looping over my back and belly. My bow still rests on my back despite it being totally useless without thumbs, but I digress. It doesn’t matter now, not when the wolf is lumbering out of the bushes, gasping and snarling in pain. 
+
+What was once my dress–secured by loops and string, covers a good portion of my bright red fur, the same color as my hair, and just as thick, curly, and untamable–now falls over my back and billows in the wind. I’m a smaller wolf, for sure, but compared to the beast starting to charge me, I’m honestly just fucking toast at this point. 
+
+I lunge forward, stomping on my front legs, baring my teeth and growling like I’ve gone completely feral. Lora screams. I doubt she’s seen the wolf charging up the hill toward us yet. I know I look scary as hell right now, though. 
+
+But her scream stops the wolf. He skids to a halt, his ears pinned to the top of his head, Shosh’s arrow sticking from his shoulder. Blue eyes meet mine before he peers over my shoulders at the two young girls I’m guarding with my life. 
+
+I’ll fight to the death for them. I will paint this clearing with his blood before he gets within a foot of them. That’s a promise. 
+
+I snarl again, edging a step closer, all of my fur standing on end. 
+
+He steps back. 
+
+“Aviva?” Shosh whimpers. Lora chokes on hiccups somewhere behind me. 
+
+I take another step, and the wolf continues to retreat until I’ve pushed him back down the hill toward the bushes and the creek bed. It’s a stalemate now. I’m not going to move or stop snarling until he leaves. He lowers his head in submission–a slight bob to show me he isn’t going to harm us–but I’m not anywhere close to believing that. I watch, teeth bared, as he turns his massive head and bites down on the arrow with a grunt, ripping it free of his shoulder. Blood splatters, and behind me, the girls are still trying to muffle their fear. 
+
+I keep my eyes on the wolf, on the stranger. He smells so unfamiliar. He’s not from our pack, Endova. I know that for sure. He’s not from Navvan, either, and definitely not from Teshka, which is over a hundred miles south of here, on the sea. 
+
+He starts to turn back to us. I lunge, snarling and growling loudly, and his ears prick forward, then slowly fold back to lay flat once again. 
+
+“Aviva!” Lora cries. 
+
+The wolf turns from us after another long once over of my face, of my eyes, and hobbles away, splashing through the creek and eventually out of sight. 
+
+I shift back to my human form and tie my dress back in place, my hands shaking as I adjust my knife belt and draw an arrow from my quiver, slinging my bow over my front. “Go, now,” I tell the girls, stepping into the boots I’d leapt out of moments ago. I pick up my socks, stuffing them in my belt. “Shosh, move it.”
+
+“I’m sorry!” she bellows, tears running down her pink stained cheeks. 
+
+My heart quakes as I roughly grab both girls and haul them against me, holding them tight. Lora and Shosh wrap their tiny arms around me as I look over my shoulder at the creek, at the woods beyond, everything caught in the glare of the setting sun. 
+
+* * *
+
+“Where have you been?” Mercy scowls as I brush past her into the narrow kitchen of our hovel built into the side of a hill, like most of the buildings in Endova. The earthen walls keep the house warm in the winter and cool in the summer and protect us from the biting wind and torrential rains, as well. 
+
+I set the dead animals on the butcher block, ignoring her. She grabs my arm. 
+
+“I’m talking to you!”
+
+“I took Shoshannah hunting.”
+
+“Bah!” She gives me a little shove, knocking my hip bones into the wooden table that houses the butcher block. “It’s useless, you know. She’s a girl, Aviva.”
+
+“So am I.” I start skinning the rabbits. Three, and perfectly white. Shosh and Lora will have new mittens for when the weather starts to turn again. 
+
+“You’d be better off staying here instead of running off into the woods every chance you get. Your husband isn’t going to allow you to shift all day and ignore your duties at home.”
+
+“I’m not married yet, Mercy.”
+
+She crosses her arms over her breasts, scowling at me. Her dark brown, glossy hair is swept back away from her impossibly beautiful face. She’s tall and lithe. Graceful. Lovely. But her soul is rotten, and she’s the biggest bitch I’ve ever met in my life. “You will be after this year’s Harvest Festival. Hardan of Navvan is going to give father six goats for you.”
+
+I wipe my bloody hands on my dress, turning to her. “And to think I’m only worth four. He must really like me.”
+
+She scoffs, looking down her nose at me. “You’re not worth the filthy clothes on your back.” She snatches the rabbits off the block before I can stop her.
+
+“Hey!”
+
+“Get cleaned up. We’re supposed to be in the meeting hall in twenty minutes.”
+
+I whirl toward her as she walks away with the rabbits. “Why?”
+
+“Because we have guests.” She smirks at me over her shoulder. “From Silverhide. The Alpha has come to call, and he brought gifts.” Her smirk turns rancid as her beautiful smile cracks. “Do not get in my way.”
+
+## Chapter 2
+
+Ryan
+
+“What happened to you?” Andrew asks as I walk back to where he’s waiting with a few wolves and men in their human forms, all of them carrying goods or pulling carts with our tents and what I hope are peace offerings for our new neighbors. 
+
+Andrew’s light brown hair nearly touches his shoulders now compared to the short cropped hairstyle he used to wear in Crescent Falls. His dark eyes, the color of coal, are brighter, though. Happier. More at ease. 
+
+I look my lead warrior, my meager forces commander, up and down as I walk up to the group. The left sleeve of my long sleeve shirt–handmade from linen spun and sewn by hand–is stained with blood. I look down at it and shrug. “I met some friends.”
+
+“Friends?” Jacob, who used to run my garage, chuckles. 
+
+I smirk as I rest my hands on my hips and scan the small caravan of men and wolves who’ve been traveling with me for the better part of the day. We left the new territory of Silverhide this morning, before dawn, hoping to reach Endova by dusk. 
+
+“We’re nearly there,” I tell the group, tilting my head toward the muddy, not-so-well-beaten trail. “It’s clear.”
+
+“I dunno,” Andrew teases, looking me up and down. “You sure we’re not going to run into these new friends of yours?”
+
+I don’t pay him any mind as the group starts walking again, the carts bumping over puddles of mud and rocks. 
+
+I fall into step behind them, nursing the sharp ache in my shoulder. It’s just a muscle wound, thank the Goddess. Whoever put an arrow through my shoulder is a terrible shot. 
+
+But judging by the wolf I’d encountered, it was likely one of the girls in her company. 
+
+My pack left for Eastonia two years ago. We made it in one piece. The journey hadn’t been easy for the second wave of mostly women and young children once we left the Roguelands and the packed, dirt roads we’d traveled on, and the numerous villages we’d been able to stay in on our way. 
+
+But once my pack set foot in the valley we now call home… well, it’s been the best thing I’ve ever done. 
+
+We miss the modern conveniences from time to time. Television isn’t a thing here, obviously. My Uncle Ryatt’s impressive powers somehow fuel the lights we picked up in the Roguelands and installed through the small village we constructed over the last two years and somehow allow us things like hot, running water. 
+
+But it hasn’t been totally comfortable. We nearly starved that first winter. I had to return to the Roguelands to buy cattle, seeds, and extra supplies that next spring. My pack spread out, starting farms, raising animals and planting gardens, but we didn’t have anything to trade or use to barter with our only neighbors when their only communal event–The Harvest Festival–came around. 
+
+They also wanted absolutely nothing to do with us. All but Jerrod, the patriarch of the Endova pack, and the closest tribe to our village at only thirty miles away. 
+
+He sent some of his tribe to help when an illness swept through our village. His hunters showed us the best hunting spots in our little sliver of the Deadland, and what creatures to avoid. 
+
+Because there are creatures out here. Stuff out of nightmares, honestly. Stuff that even the fanatic movie directors back in Crescent Falls couldn’t cook up in their wildest dreams. 
+
+Andrew falls into step with me as the first lights of the village of Endova glisten over the softly rolling hills at the base of the forest. “Are you still going to Moonrise next month?”
+
+“I have to,” I reply dryly, rolling my aching shoulder with a wince. “My parents are visiting. My brother, too, with his sons. James will be in charge while I’m gone.”
+
+Andrew nods. “Sydney will want to see the village. What you’ve done is pretty impressive–”
+
+“What we’ve all done,” I correct, glancing at him. Like James, I’ve known Andrew since I was a kid. His dad is one of my dad’s generals, but he broke with our born pack to join Silverhide when I started it. Most of my pack members came to me in that way. Warrior training buddies. College friends. Guys I met during drunken, riotous nights at the bars. Eventually, people started finding their mates, bringing women into the mix. More people started showing up at the gates to meet me, to gauge whether they wanted to join. Soon, I had a hundred members, all sharing a common desire. 
+
+Live freely. Be outside in nature. Get back to our roots. 
+
+What better way to do that than by nearly starving to death or being eaten by not-so-mythical creatures in some far off land? 
+
+Jacob motions for the wolves pulling the carts with our supplies for what will be a three day stay to pull off to the side in a grassy clearing surrounded by trees just outside of the village. “We’ll set up camp here,” he shouts to me. “You go ahead!”
+
+I nod, stepping out of the way of another passing cart. 
+
+Andrew, who I’ve tasked with learning the customs of the strange tribes who’ve inhabited the Deadlands since what I assume must be the dawn of time, falls into step beside me. They’ve lived in relative peace here, fending for themselves against all odds. When Ryatt offered me this opportunity, I expected there to be nothing here. No grass. No trees. Just miles and miles of rolling, barren… nothing. It had been like that during our first days traveling to the center of the Deadlands, well past the ancient settlements of what was once a great, thriving metropolis. Ella told me the Firestone Witches used to have cities all over the place, but the Deadlands fell to some great blight way back in history I’ve failed to study. 
+
+The barren land eventually gave way to thick forests that surrounded rich valleys of grass and wheat. Bushes covered with berries grow all over the higher hills, and the woods are full of elk, deer, and other small creatures. 
+
+The hunting has been my favorite aspect of this move so far. Everyone enjoys it. We can spend our entire days hunting or out working with our hands, building whatever we need, farming, and gathering at night to eat the spoils of our hunts and hard work in the fields. 
+
+It’s almost enough to blur the memories that still haunt me at night. 
+
+Andrew and I follow the group who didn’t stay to set up camp into the village, walking between what looks like two small hills. 
+
+But they’re not hills. All of the buildings in Endova are either built into hillsides, or completely covered in dirt. You can walk on top of them and not know an entire house lies beneath. A fire that never seems to go out even in the worst weather burns at the center of the village. People dressed in homespun in bright, rich colors stop to look at us as we pass into the center of the village where laundry still hangs on lines roping from house to house, and a few shops are shutting down for the night. 
+
+The villagers give us our space as Andrew pulls me aside, the rest of our group continuing toward the largest building of them all, the only one not covered by earth. It’s two stories tall and made with thick, dark stone. The meeting hall. Not the pack house. There is no Alpha here. 
+
+In the shadow of one of the hill houses, he hands me a fresh shirt. “You’re bleeding all over the place.”
+
+“Will the elders really care that much? They know what we’re up against out there in the forest.” I shrug out of my shirt regardless, wincing as blood trickles down my arm through a bandage roughly and hastily wrapped around my shoulder. It’ll heal–slowly. I possess none of Sydney’s gifts. While I’m able to heal more quickly than a human, all this moving around isn’t helping.
+
+“They care about a lot more than you realize.”
+
+“Which is why I brought gifts, right?”
+
+Andrew nods. “They will barter with you, offering you gifts in return. You have to accept everything. It’s an affront if you don’t.”
+
+“Everything?” I chuckle.
+
+“Everything, seriously.” He wads up my bloody shirt and tosses it in the cart loaded with gifts for the tribe. Meat from a recent hunt. Spring berries. Some of our stash of last year's grain harvest. And a half barrel of the strawberry-rhubarb wine Dahlia, James’s mate, made. 
+
+But the most precious gift is the incredible pelt that catches the light of the fire as the cart passes us. It shines like liquid gold as the men near the entrance of the meeting hall. “Let’s get this over with, then,” I grumble, shaking out my arm. 
+
+Andrew follows me into the meeting hall, which is swarming with bodies and music. A hush falls over the crowd, some of which are standing, and others are seated at several long tables toward the walls. The scent of wine and mead fill the air as people part to allow us to enter, and soon the only sound to be heard over my steady heartbeat are the cart wheels bumping over the uneven stone tiles. 
+
+A group of elderly men stands toward the head of the room. Jerrod, their patriarch, is impossible to miss. Tall, broad, with a long, black beard and small green eyes, he turns to me, his mouth stretching into a warm, welcoming smile. “Alpha Ryan,” he says in a thick accent, bowing his head. “It’s an honor.”
+
+“The honor is mine,” I tell him, bowing in return. Sure, I’m technically the Alpha King… of my own people. A hundred of them. These people don’t care. “I’ve brought gifts to thank you for your hospitality and allowing us to join your spring hunt.” I motion for the cart to be brought closer. The wolf pulling it comes to stop, panting slightly. 
+
+“Poor boy. Hurry, unfasten him.” Jerrod snaps his pudgy fingers, and two men come running up to his side. “Have this pup brought round some clothes, food, and wine.”
+
+“He’s fine,” I assure him, but Andrew elbows me hard in the arm. I grunt in pain as my wound aches. The wolf is led away, and I glare at Andrew as I motion toward the cart. “Meat, grain, berries, and wine–”
+
+Someone gasps, then shouts ring out in their rough, hard to understand accents. 
+
+“Is that…?”
+
+I notice a woman pointing a finger at the cart, at the pelt rolled up and sitting in the back. 
+
+“Oh,” I smile, walking around to fetch it. I’m rather proud of this pelt, honestly. I’ve never seen a more beautiful creature in my life, and honestly, it almost felt like a sin to hunt and kill it, but after three weeks tracking it, I had to come back with something. I lift the pelt into my arms. “An elk hide, I believe. I’ve never seen one this color–”
+
+“My Goddess,” Jerrod says, his eyes going wide. “A golden elk?”
+
+A commotion erupts as people jostle toward us, trying to get a better view. I look at Andrew in confusion, but he shrugs, scratching his head as I’m surrounded. Several hands reach out to stroke the pelt, followed by murmurs of shock and awe. 
+
+For a moment, I wonder if I’ve done something wrong. 
+
+But Jerrod steps forward. 
+
+“Uh, here,” I say, shoving the pelt into his arms. He nearly drops it. 
+
+The crowd goes quiet as Jerrod runs his meaty hand over the pelt. Is he… crying? 
+
+A glimmer of red catches my attention in the far corner of the room. Red, thick, curly hair inlaid with… seashells? 
+
+Dark brown eyes meet mine in a glare. I glare back, the wound on my arm singing in pain.
+
+Well, well, well. If it isn’t the little red wolf who looked like she was ready to rip my head off earlier today. 
+
+“This is for us?” Jerrod asks, stealing my attention away from the beautiful, furious looking young woman trying to melt into the wall. 
+
+“It’s for you, Jerrod,” I tell him. 
+
+His eyes go even wider, if that’s even possible. 
+
+“For this, I give you my daughter.” He snaps his fingers, and people start moving. 
+
+“I…. What?”
+
+## Chapter 3
+
+Aviva
+
+The meeting hall is crowded from wall to wall. I hug one of the walls, my back pressed flat against it as I try to blend in with the dark stone. Everyone is merry as they walk between tables laden with food and drink. Everyone in attendance has worn their finest fabrics and beads. Many of the single, of age, young women have truly gone all out, in fact. 
+
+I cross my arms under my less-than-ample breasts and tap my nails against the long gold chains looping around my neck, inlaid with multicolored beads of turquoise and amethyst. 
+
+The necklace is one of the few things I have left of my mother except for Shoshannah and Lora. Mercy didn’t want the necklace because turquoise is a stone rather than a gleaming gem, and amethyst “washes her out,” or so she says. In fact, she didn’t want much of mother’s things at all when she died six years ago, a few days after Lora came into the world. Her dresses were taken apart and refashioned. Her knickknacks were gone in a matter of hours. She simply… disappeared, like mist into the ether. 
+
+I run my fingertips over the necklace and continue scanning the crowd at the thought of my mother. Mercy and Lora look like her with their dark brown hair that never seems to tangle, and her big, green eyes. Where Shosh and I got our dark eyes and insanely temperamental red hair, I have no idea, but we stick out like sore thumbs. 
+
+A young blonde woman wearing a pale yellow woven dress and golden bangles on each wrist bumps into me. “Gods, there you are!” She shoves a goblet of wine into my hand and kisses me roughly on each cheek. “I didn’t think you’d come tonight, but I heard Matilda tell Rochel that she heard Miriam saying that she saw Mercy basically dragging you here by your hair!”
+
+I roll my eyes to the ceiling and laugh. “Mercy didn’t drag me anywhere, I assure you, but I was forced to come, yes.”
+
+“Did she dress you?” Freya is her name, and she’s my closest friend. My only friend, if I’m being honest. Her glacier blue eyes sweep over the frumpy red dress tied at the waist with a leather belt. “It’s huge on you!”
+
+“I’m pretty sure it’s a bed sheet,” I grumble into my wine before taking a huge drink. The wine is sweet and full, landing like aged honey on my tongue. Freya picks at the short hem of her own dress. Compared to her, I’m dressed like one of the elders who is long past their prime hunting days and has settled into a life of sitting around and bickering with the younger folk. Showing skin isn’t considered crass by any means. Hell, there’s several men walking around with their shirts off right now despite the slight early spring chill in the air outside. Freya’s legs are on full display as she steps beside me and rests her back against the wall. 
+
+Most of the clothes we wear are made to be functional while shifting to prevent tearing. Everything is made by hand, of course, woven on looms. Shredding dresses apart every time I left the house would be entirely wasteful. 
+
+But if I were to shift now, I'd get tangled in this beast of a dress. I’d suffocate, likely, strangling myself in the fabric. 
+
+“You’re awfully quiet,” Freya smirks, nudging my shoulder. “Cannon is looking over here, you know. I think he’s hoping you’ll look back at him.”
+
+“Cannon is looking at you,” I correct, giving her a nudge back. “Anyway, Mercy reminded me that my father means to sell me to the highest bidder a few months from now when the tribes meet for the Harvest Festival. So far, I’m worth roughly… six goats. I’m practically off the market. I’m not sure anyone can compete with that kind of bride price.”
+
+Freya snorts a laugh. “Speaking of Mercy.” Her eyes slide to mine as she tilts her head toward my graceful sister, who is laughing prettily as she entertains a group of our warriors. Her coy smile and fluttering eyelashes hide the sour glint to every word that leaves her lips. 
+
+“Her dress is beautiful,” Freya sighs, and she’s right. She’s right, because I was the one who made it… for myself. “She’s hoping to catch the attention of the Alpha of Silverhide, isn’t she?”
+
+“She’s stretching it out with her massive–”
+
+The main door to the meeting hall opens, sending a rush of night air into the space. I can’t see over the crowd, but I know the Alpha has arrived based on the excited and curious murmurs drifting through the air. 
+
+I settle back against the wall with a sigh. 
+
+Freya stops trying to catch a glimpse of him and turns back to me. “I’m shocked your father allowed him to come here after all the rumors swirling about him.”
+
+I arch my brow. “What rumors?”
+
+Freya beams with excitement at the notion that she has gossip to spread to me. “You didn’t hear? He went to Navvan to try to introduce himself, and their elders wouldn’t allow him into the village, claiming he was cursed.”
+
+“Cursed?” I tip back my wine, shaking my head. “Cursed, how?” I don’t know much about this Alpha other than that he’s related to Alpha King Ryatt in some way and comes from a far off land called Crescent… something. I don’t know, and I don’t really care. We’re far enough removed from the Roguelands that word about the happenings in Eastonia reaches us weeks, if not months, after things happen. 
+
+This Alpha simply showed up deciding he was going to settle here.  
+
+“I heard,” Freya hisses over a rush of fresh murmurs, “from my grandmother, who heard this directly from our priestess’s mouth, mind you, that the priestesses in Navvan said the Alpha has a stone heart.”
+
+“A stone heart? That seems bothersome and inconvenient–”
+
+Freya grabs my arm. “I heard that he has a stone heart because he murdered his own mate! That's why he’s here in the Deadlands. He got thrown out of his old territory by the king himself.”
+
+I frown at her. “Freya, do you know how ridiculous that sounds?”
+
+She shrugs. “It’s what I heard. Grandma said he reeks of a wolf who’s fallen out of the Goddess’s favor, and therefore the Navvan wouldn’t allow him to even speak to their patriarch.” She shakes her head. “Can you imagine, Aviva? Killing your own mate?”
+
+“I can’t.” I can’t because the idea of finding a mate is so far from my mind that it feels foreign and strange. I don’t know anyone who’s ever found their supposed fated mate. A bond destined in the stars by the Goddess. I don’t think it’s real. In fact, I think it’s a fairy tale. We don’t mate for love. Not in the tribal lands, at least. Women come of age and are married off, sought for their skills and physical attributes, and are married to members of other tribes to prevent inbreeding. 
+
+There’s so few of us in the Deadlands. I’m pretty much related to everyone in Endova in some way, shape, or form. 
+
+So, my fate is marrying Hardan, who I’m hopefully not related to, and living in his tribe for the rest of my life. 
+
+I haven’t put much thought into marrying. I’ve done all I can to prevent it from happening, actually, but as the daughter of the patriarch, I’m pretty much a princess without a fancy dress and crown of jewels on my head. 
+
+But because of Mercy, I’m generally overlooked. I’m okay with that. 
+
+“Look, there he is!” Freya says with a nudge, pointing her finger through the crowd.
+
+I look out over the crowd and spot…. No. I blink, then glare at the impossibly tall, broad man towering over my father. His stormy blue eyes meet mine in a glare as well and I find them… too fucking familiar. 
+
+Then I see the blood soaking through his fresh, light gray shirt. A wound, I realize with a twisting sensation in my stomach, that’s on his shoulder. 
+
+“That’s him!” Freya hisses excitedly, shaking me so hard I nearly drop my wine. The freshwater clam shell beads woven throughout the two small braids framing my face clink together, but I haven’t dropped my gaze from the Alpha, and he hasn’t even blinked. 
+
+The crowd rushes toward him again and then all I can see is the top of his head. 
+
+“What are they freaking out about?” Freya stands on her toes to try to see over the crowd. Her eyes go wide and she gasps. 
+
+“What?” I ask, standing on my toes now. 
+
+A glint of gold. The Alpha is handing my father a pelt of pure–gold. “This is for you,” he says in a low, steady voice. My stomach twists as I watch the Alpha thrust a golden elk pelt into my father’s arms like it’s nothing. Like it means nothing. 
+
+“For this,” Father chokes, “I give you my daughter–”
+
+Another excited gasp ripples through the crowd. Out of the corner of my eye I see Mercy start making her way through the crowd looking smug, her cat-like eyes creased as she passes a group of young women who look particularly disappointed. 
+
+How did he get a golden elk? How the fuck–
+
+“Aviva?” Father booms. “Where is Aviva?”
+
+My blood runs cold. I back into the wall again, praying to meet a doorway by some miracle, but I’m met with hard stone instead. 
+
+Mercy stops in her tracks, her eyes narrowing into slits. “Aviva?” she hisses, her cheeks turning red with sudden fury. 
+
+Then I’m being grabbed. An older man yanks on my arm, and I make the mistake of yelping in surprise. Father looks right at me, smiling widely. “There she is. Alpha Ryan, my daughter–”
+
+“No!” I shout, yanking my arm back. 
+
+The entire room goes so silent I can hear my own heartbeat. 
+
+I look up at Alpha Ryan. What an odd name. It sounds unfinished. And he–he doesn’t look like any of us. I’ve never seen anyone as tall or as broad. I know beneath the fabric of his shirt he’s wholly, utterly built. Built like a stone temple, able to withstand wind and rain and foes coming to collect. Solid muscle. 
+
+He stares at my father in disbelief. “I’m sorry, I think I didn’t understand–”
+
+“My daughter, Aviva,” Father takes my arm and pulls me toward them. Digging in my heels doesn’t stop my body from moving over the uneven stone. “For the pelt. You have given me a gift worth more than I have to offer in return–”
+
+“I don’t need anything–” Alpha Ryan grunts as the blond man standing at his side elbows him sharply in the side. It’s a movement that doesn’t go unnoticed, at least to me. 
+
+“My daughter, Aviva. She is older, yes, at twenty-two, but she is able to bear children. She is strong, fit, and a skilled hunter. She will help fill your tables and carry on your lineage.”
+
+“Father, let me go,” I hiss. 
+
+He ignores me, continuing, “A wife from my tribe is my gift to you, Alpha.” And with that, he practically throws me against Alpha Ryan, and cheers from the crowd around us split the air into pieces. 
+
+Alpha Ryan catches me, steadying me with a hand on my shoulder before quickly letting me go. 
+
+He’s warm. Heat radiates from him like I’m standing beside a fire. The Alpha looks down at me in shock, then frowns, but the man beside him whispers in his ear in their strange dialect. They speak our language but faster, with a heavy, lifted accent. I hear the stranger say, “You can’t refuse,” and I know my fate is sealed when Alpha Ryan sighs and tears his gaze from mine. 
+
+He turns back to my father, who shakes his hand. 
+
+And I am betrothed to the Alpha of… whatever pack he comes from. Silverhide. That’s it. 
+
+“A toast,” Father exclaims as my heart beats out of rhythm. A new goblet of wine is thrust into my hand, the deep red liquid spilling over the rim. “To Alpha Ryan, of the pack Silverhide, and my daughter, Aviva. May your union be fruitful.”
+
+“May your union be fruitful,” the crowd echoes. 
+
+Standing side by side with Alpha Ryan, I scan the crowd, my face flushed and pale. I catch Freya's gaze. She gapes at me, her eyes nearly popping out of her head. A few young women our age crowd her, whispering enthusiastically. Word will spread in minutes about this, I’m sure. Anyone who missed this moment will know the details of how I was traded for… well, I can admit being given away in marriage in exchange for a golden elk pelt is the highest of compliments. Despite everything, I feel more than a little smug when my gaze lands on Mercy, who’s simmering with fury at the edge of the crowd, leaning her hip against one of the tables laden with food. 
+
+“We’ll hold the ceremony in four nights, on the full moon,” Father says to us even though I’m trying to find the quickest, easiest route out of here. “Can you stay the extra day? It’s just a hand-fasting, since our traditions dictate binding ceremonies take place on the Harvest Moon, during the festival this fall.”
+
+“Oh, uh, sure,” Alpha Ryan grunts, then drains his wine. 
+
+Father squints, then gasps, grabbing the Alpha’s arm. “Alpha, you’re injured? Who did this to you?”
+
+Panic catches in my lungs, making it impossible to breathe. I hold the Alpha’s gaze as his eyes slide to meet mine. Father will have Mercy whip the breath out of Shosh, I already know it. 
+
+But Alpha Ryan holds my gaze, one of his dark brows lifting ever so slightly as he… smirks. 
+
+“It might be a good thing your daughter is a skilled hunter,” he says in his low, steady voice that sends a shiver of warmth licking down my spine. “I’m accident prone, apparently.”
+<div class="bottom-box">
+<a href="https://sparke.app.link/lp1%24ios_deepview=false&%24deeplink_path=book%2F0000" class="button cta" id="cta" onclick="try {
+    fbq('track', 'AddToCart', {
+      content_ids: ['0000'],
+      content_type: 'book',
+      content_name: 'Book 0000',
+      value: 0.1,
+      currency: 'USD'
+    });
+  } catch(e){} try{ttq.track('ClickButton');}catch(e){}">👉 Continue Reading 👈</a>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

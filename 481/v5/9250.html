@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>One Weekend With The Billionaire</title>
+    <link rel="icon" href="data:image/ico;base64,aWNv">
+    <link rel="apple-touch-icon" href="data:image/ico;base64,aWNv">
+    <meta name="ad.size" content="width=0,height=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <style>
+      * {padding: 0;margin: 0;box-sizing: border-box;}
+      body {}
+      .img-box {position: relative;}
+      .img {display: block;width: 100%;height: auto;}
+      .mask {position: absolute;bottom: 0;left: 0;width: 100%;height: 30%;background-image: linear-gradient(rgba(255, 255, 255, 0),  rgb(255, 255, 255, 90%), rgb(255 255 255), #ffffff);} 
+      .title {padding-left: 1.2rem;padding-right: 1.2rem;font-size: 1.8rem;font-weight: 500;color: #333;margin-bottom:10px;margin-top: -70px;position: relative;}
+      .desc {padding-left: 1.2rem;padding-right: 1.2rem;font-family: Georgia, sans-serif; font-size:20px;font-weight: 400;color: #333;line-height: 1.3rem;text-align: justify;padding-bottom: 0.5rem;}
+      .desc i {display: block;height: 0.6rem;}
+      .button:active {opacity: 0.8;}
+
+      /* Sticky CTA container — transparent background */
+      .bottom-box {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;   /* centers the button nicely */
+        padding: 0.55rem 0.34rem;
+        background: transparent;   /* removed white background */
+        z-index: 9999;
+        box-shadow: none;          /* no shadow either */
+      }
+
+      .button {
+          display: block;
+          background: #230a51;
+          border-radius: 1.5rem;
+          margin: 0 auto;
+          font-size: 0.9rem;
+          font-weight: bold;
+          padding: 0rem 3.4rem;
+          color: #FFFFFF;
+          text-align: center;
+          line-height: 2.59rem;
+          text-decoration: none;
+          border-width: 0;
+        }
+
+      /* Chapter visibility (no <p> required; preserves line breaks) */
+      .chapter{display:none;white-space: pre-wrap;}
+      .chapter.active{display:block}
+
+      /* Fix the bar to the top */
+      .top-nav{
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: var(--top-nav-h);
+        z-index: 10000;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        font-family: Georgia, sans-serif;
+      }
+
+      /* Layout inside the bar */
+      .top-nav__inner{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 10px 7px 10px;
+        gap: 12px;
+        align-items: center;   /* <— ensures full vertical centering */
+        height: 100%;
+      }
+
+      .top-nav__left{ display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+
+      .app-icon {
+          width: 1.7rem;
+          height: 1.7rem;
+          background-image: url(assets/app_icon_smaller_for_web1.png);
+          background-size: cover;
+      }
+      .nav-title{
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #333;
+        font-family: Helvetica;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .top-nav__btn{
+        display: inline-block;
+        font-size: 12px; font-weight: 400; line-height: 1;
+        padding: 7px 10px;
+        font-family: helvetica;
+        letter-spacing: 1px;
+        color: #fff; text-decoration: none;
+        background: #5c4489; border-radius: 999px; border: 1px solid rgba(0,0,0,0.05);
+      }
+      /* Add a subtle light sweep animation */
+.top-nav__btn {
+  position: relative;
+  overflow: hidden; /* clip the shine inside the button */
+}
+
+/* the moving light strip */
+.top-nav__btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%; /* start off to the left */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg); /* gives it a nice angled streak */
+  animation: shine 2s infinite;
+}
+
+/* keyframes for the movement */
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+    </style>
+
+    <script>var time=null;function setRem(){try{let t=0||document.documentElement.clientWidth||document.body.clientWidth,e=20;document.getElementsByTagName('html')[0].style.fontSize=t/e+'px'}catch(t){}}setRem();window.onresize=function(){window&&(setRem(),clearTimeout(time),(time=setTimeout(()=>{setRem()},1e3)))};</script>
+    
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D43OQNBC77U40Q0I7570');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+
+<!-- Meta Pixel Code (keep in <head>) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1318169879492323');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1318169879492323&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<script defer>
+(function(){
+  // --- book_id from filename only ---
+  function getBookIdFromFilename() {
+    const path = location.pathname.replace(/\/+$/, '');
+    const last = path.split('/').pop() || '';
+    const core = last.includes('.') ? last.split('.')[0] : last;
+    return /^[A-Za-z0-9_-]+$/.test(core) ? core : '';
+  }
+
+  // --- Normalize platform (Meta/TikTok variants) ---
+  function normalizePlatform(val) {
+    const p = (val || '').toLowerCase();
+    if (['fb','facebook','instagram','ig','messenger','audience_network','audiencenetwork'].includes(p)) return 'facebook';
+    if (p === 'tiktok' || p === 'tt') return 'tiktok';
+    return p || 'unknown';
+  }
+
+  // --- Gather campaign params from page URL ---
+  function getCampaignParams() {
+    const src = new URLSearchParams(location.search);
+    return {
+      channel:  normalizePlatform(src.get('site_source_name')),
+      campaign: src.get('campaign_id') || 'unknown_campaign',
+      feature:  src.get('adset_id')    || 'unknown_adset',
+      stage:    src.get('ad_id')       || 'unknown_ad'
+    };
+  }
+
+  // --- Quick check to avoid duplicate appends ---
+  function hasParam(href, name){
+    return href.indexOf(name + '=') !== -1;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const bookId = getBookIdFromFilename();
+    const c = getCampaignParams();
+
+    document.querySelectorAll('a[href*="sparke.app.link"]').forEach(a => {
+      let href = a.getAttribute('href') || '';
+      if (!href.includes('sparke.app.link')) return;
+
+      // 1) Update encoded deeplink_path book id: ...deeplink_path=book%2F<id>...
+      if (bookId) {
+        href = href.replace(/(deeplink_path=book%2F)([^%&]+)/, (_, p1) => p1 + encodeURIComponent(bookId));
+      }
+
+      // 2) Build params to append (always with "&")
+      const pairs = [];
+      if (bookId && !hasParam(href, 'book_id')) pairs.push('book_id=' + encodeURIComponent(bookId));
+      if (c.channel  && !hasParam(href, '~channel'))  pairs.push('~channel='  + encodeURIComponent(c.channel));
+      if (c.campaign && !hasParam(href, '~campaign')) pairs.push('~campaign=' + encodeURIComponent(c.campaign));
+      if (c.feature  && !hasParam(href, '~feature'))  pairs.push('~feature='  + encodeURIComponent(c.feature));
+      if (c.stage    && !hasParam(href, '~stage'))    pairs.push('~stage='    + encodeURIComponent(c.stage));
+
+      if (pairs.length) {
+        href += (href.endsWith('&') ? '' : '&') + pairs.join('&');
+      }
+
+      a.setAttribute('href', href);
+
+      // 3) Inject or update onclick for AddToCart tracking with correct book_id
+      const baseOnclick = `
+        try {
+          fbq('track', 'AddToCart', {
+            content_ids: ['${bookId || 'unknown'}'],
+            content_type: 'book',
+            content_name: 'Book ${bookId || 'unknown'}',
+            value: 0.1,
+            currency: 'USD'
+          });
+        } catch(e) {}
+        try { ttq.track('ClickButton'); } catch(e) {}
+      `.trim();
+
+      // If the link already has an onclick, preserve it and prepend ours
+      const existing = a.getAttribute('onclick');
+      if (existing && !existing.includes("fbq('track'")) {
+        a.setAttribute('onclick', baseOnclick + '; ' + existing);
+      } else if (!existing) {
+        a.setAttribute('onclick', baseOnclick);
+      } else {
+        // If existing onclick already contains placeholders, update them
+        let updated = existing
+          .replace(/content_ids:\s*\['[^']*'\]/, `content_ids: ['${bookId}']`)
+          .replace(/content_name:\s*'Book [^']*'/, `content_name: 'Book ${bookId}'`);
+        a.setAttribute('onclick', updated);
+      }
+    });
+  });
+})();
+</script>
+
+
+</head>
+<body>
+  
+<a href="https://sparke.app.link/lp1%24ios_deepview=false&%24deeplink_path=book%2F0000" class="top-nav-link" onclick="try {
+    fbq('track', 'AddToCart', {
+      content_ids: ['0000'],
+      content_type: 'book',
+      content_name: 'Book 0000',
+      value: 0.1,
+      currency: 'USD'
+    });
+  } catch(e){} try{ttq.track('ClickButton');}catch(e){}">
+
+<nav class="top-nav" role="navigation" aria-label="Download bar">
+  <div class="top-nav__inner">
+    <div class="top-nav__left">
+      <span class="app-icon" aria-hidden="true"></span>
+      <span class="nav-title">Download the entire book</span>
+    </div>
+    <div class="top-nav__btn">Download</div>
+  </div>
+</nav>
+</a>
+<div style="position: relative;">
+<div class="img-box">
+<img id="image" data-img="" class="img" src="assets/scen3_abd_1.jpg" />
+<div class="mask"></div>
+</div>
+<h1 class="title">One Weekend With Tthe Billionaire</h1>
+<div class="desc">
+<div class="chapter-index" data-chapter="1"></div>
+<div id="chapter1" class="chapter active">
+## Chapter 1
+
+I turn off the hot water and place the last of the breakfast dishes into the dishwasher, giving the kitchen one last glance to make sure I didn’t miss anything. Jeff has already left for work, but if I’ve missed a dish, I’ll have to wash it by hand. He doesn’t like it when I miss something.
+
+Satisfied that all of the dishes are in the dishwasher, I put the soap in the compartment and push the start button. It’s not a big machine, but then, only two of us live in our tiny apartment for now. Jeff has made no secret that he hopes to have children soon. I’m not sure I’m ready. I’m not sure we are ready.
+
+Once the dishwasher is purring, I start to wipe down the counters and the stove. They are already clean. I constantly wipe down the surfaces in the kitchen because I have nothing better to do. Jeff has also made it clear that he doesn’t want his wife to have a job, even though he knows we could use the money. He has been at the financial advising firm for almost two years now. Meriweather and Associates is a great place to work, but I’m not sure that Jeff is as good at his job as he lets on. He has never gotten a raise, and a few times, he has come home late, drunk, angry that those “assholes” at work just don’t understand him. I think on those days he’s gotten in trouble for messing up his accounts.
+
+I can’t think about that, though. Most of the time, our life is comfortable. We live a pretty meager life in the largest city in the country, but no one knows that our existence is so pitiful. Jeff spends most of his salary on appearances, and we have a lot of credit card debt as well. His boss, Braxton Merriweather, is a billionaire. He throws lavish parties and invites people from his company to join him. Jeff never misses a chance because he wants to be a part of that world, even though we really are not. We come from a small town in the midwestern part of the country, thousands of miles from here. Worlds from here.
+
+During the day, once the apartment is spotlessly clean, I go out to the market and get the ingredients to fix Jeff a nice meal. Today, I’ll get something extra special, even though my allowance for the month is almost gone. It is a special day, after all. Today is our two year anniversary.
+
+I wonder if Jeff remembers. He didn’t say anything this morning. We woke up when his alarm went off, had sex like we do every morning, and then he got ready for work, heading out the door before 8:00 so that he can make all of the connecting trains he has to in order to get to the office by nine. I will do the shopping, keep the apartment clean, secretly work on my art that Jeff does not know I’m still working on, and have dinner ready when he gets home, which will probably be around 7:00. He likes to leave work late so that Mr. Merriweather thinks that he is working hard, even though I am guessing everyone knows he isn’t actually working late when he stays late. He is usually watching X rated videos on his phone. Jeff watches those on the train as well. He watches them all the time and then asks me to try to do the things in the videos, even though I don’t like it. Sometimes… I don’t like Jeff.
+
+He’s different now than he was when we started dating. But then, that was almost nine years ago, when we were only sophomores in high school. We both had dreams of coming to the big city. I wanted to be an artist, and he wanted to be a huge financial planner and own his own company. We both graduated from college, his degree in finance, mine in art, got married, and moved to the big city to pursue our dreams.
+
+Except… as soon as this ring went on my finger, Jeff changed, and now, the only dreams I get to chase are his.
+
+I try to push those thoughts aside as I get ready to go out to the market. It’s a warm spring day, but I wear my jacket. Jeff says it’s important to make sure that every part of me is covered when I go out in public. He says I have a nice figure, and he doesn’t want to have to knock someone’s teeth out because of wandering eyes--especially mine. Jeff has never hurt me before, but I believe him when he threatens that he might.
+
+I get my pocketbook and my phone and the keys to the apartment, thinking I might get steak, even though it’s expensive. It’s one of Jeff’s favorites. I haven’t gotten him a gift for our anniversary, but I did get him a card. I hope that he likes it. I doubt he has gotten me anything, but that’s okay. I won’t make a fuss.
+
+“Good morning, Julia!” our next door neighbor, Mrs. Muller, says as I go out into the hallway. She is coming inside with a shopping bag. I assume she’s just getting back from the market. “How are you, dear?”
+
+She is a nice older woman. I really like her. I think of her as a grandmother of sorts. Sometimes, we have coffee together. “I’m good, thank you. How are you and Mr. Muller?” Her husband is a retired postal worker, and she used to teach dance. She still has the graceful movements of a ballerina.
+
+“Good, good,” she says with a smile. “It’s a bit warm out there today. You probably don’t need your jacket.” She looks at me suspiciously.
+
+I smile. “I tend to get chilly,” I say dismissively. “See you later.” I head for the stairs, giving her a little wave. We live on the fifth floor. I don’t mind going down the stairs, but coming up is tiring. We have a working elevator, but Jeff doesn’t like for me to take it. He says that getting lazy could make me lose my figure, and he wouldn’t like that one bit.
+
+I am almost to the market when my phone rings in my pocket. I pull it out, thinking it might be my sister or my mother. They text me every day to see how I am doing in the big city. They worry about me. It’s not either of them, though. It’s Jeff.
+
+“Party tonight,” he says. “Merriweather just got a huge account, and he's celebrating.” I stop in the middle of the sidewalk, a wave of disappointment washing over me, thinking that means we won’t be spending our anniversary together. I have gone to a few of the parties Mr. Merriweather throws, but not many. Jeff says he doesn’t want to make the other men at his office jealous by showing them how beautiful his wife is. I secretly think he is just embarrassed that I am not as polished as the wives of the other men who work in his office.
+
+“Meet me at Merriweather Towers at seven. Wear your silver dress.”
+
+I stare at my phone. I am invited to the party. Someone bumps into me from behind, jostling me. I apologize. I am in the way. He makes a face at me and keeps walking.
+
+Stepping aside, I text Jeff back, “Okay.” I have no idea how to get to Merriweather Towers, the apartment buildings Mr. Merriweather owns, but I will figure it out. It sounds like this is an important party or else Jeff wouldn’t want me there. I hope this means he was involved with landing the account and that maybe he will finally be in better standing at work.
+
+Realizing I have no reason to head to the market now, I turn back to the apartment, nervous about the party but hopeful that things are finally headed in the right direction because I’m not sure how much more of this meager existence I can take.
+
+## Chapter 2
+
+I am a hands-on supervisor. That’s how my father ran this company, and that’s how I’ve always ran it, too, since I took over as Chief Executive Officer five years ago. At twenty-seven, I was the youngest CEO in the history of our company, which my great-great-grandfather started over a hundred years ago, but my degrees in finance and business from major universities, as well as my tutelage under my father, had more than prepared me to take over. And I’ve done an outstanding job, increasing our revenue and taking on new clients at a quick rate.
+
+That’s why I hate failure.
+
+As I gaze out through my glass windows at the crowd of employees moving quickly between offices and cubicles, my eyes fall on one face. Jeff Thompson, Vice-President of Finance for our largest branch. How he came to be a VP, I am not sure. In the two years that he has worked here, he has done nothing to impress me. In fact, he fails at almost every task I assign him. I should probably fire him.
+
+The only reason I haven’t is because I have a memory from the Christmas party I cannot shake. Jeff Thompson, standing off to the side of the crowd, next to a stunning woman in a long red gown. She was probably the most beautiful woman I’ve ever seen, and ever since that night, five months ago, I haven’t been able to get her out of my head.
+
+I can only assume she was his wife. He never introduced me to her. She looked… uncomfortable. Out of place. Like she didn’t want to be there. Maybe she didn’t want to be with him. I wanted to go to her then, to see if there was a way I could make her more comfortable, as the host, of course. But I was constantly bombarded with other people needing my attention, and I never did make it over to her. I never got a chance to introduce myself or meet her.
+
+Over the weeks and months that followed, I assured myself it was just as well. She was likely his wife, after all. Jeff does wear a wedding ring. He has no pictures in his office that would clue me in as to whether or not the gorgeous woman with the caramel colored hair and the olive skin, with bright green eyes and full red lips was his wife. Since I have been doing my damndest to put her out of my mind, I saw no point in bringing it up to him either.
+
+And then… there was the Earst and Hanks account. It had been assigned to Thompson to try and acquire it. How such an important acquisition came to be assigned to him is unbeknownst to me. I’ve been wanting to get my hands on this huge account for many years. I checked in on it yesterday to find it was about to slip through Thompson’s fingers. Luckily, I was able to rearrange my schedule to work on the account myself, and through some miracle, I was able to salvage it. In looking over the work Thompson put into it, I was appalled at what he’d done, or really, what he hadn’t done. It was absolutely grounds for firing him.
+
+But I had something else in mind instead. I know how much this job means to him, and I want to know how far he’ll go to keep it.
+
+I’ve already announced to the company earlier that morning that we will be having a party at Merriweather Towers this evening to celebrate the acquisition. I’ll be sure to have my assistant, Cindy Garza, tell Thompson to bring his wife along. She has reported he’d arched an eyebrow when she’d delivered the message, but he’d nodded and reached for his phone. Cindy didn’t question what I was up to. One of the reasons she’s been my assistant all of these years is because she never questions me. My guess would be she already knows, though, why I am handling the situation the way that I am. She is usually a step ahead of even me.
+
+I try to go about my work, but it’s difficult. I have one eye on Thompson as he slacks off, watching something on his phone. I have heard from others that he is a porn addict. I’m guessing if I did a search on his work computer, I’d have enough proof to fire him over just that. But I don’t ask for the search. Not yet. He does very little work throughout the day while I am constantly answering my phone working with clients and helping my assistants handle their accounts. It irritates me to see a man do next to nothing and earn what I know he is earning.
+
+He deserves to be fired, and I am all about handing out people’s just deserts.
+
+Unless, of course, he’s willing to bargain with me. Then, he might get one more chance.
+
+His wife has to be willing, too, though, because I don’t view her as his property. If she is also willing, he might have a chance to save his job. Otherwise, Jeff Thompson will be packing up his items from his office tomorrow, and my dreams of a beautiful woman dressed in red will remain only dreams.
+
+It is getting late in the afternoon, and I need to get heading to the towers to make sure everything is in order for the celebration. I have watched Thompson do next to nothing all day, and I am seething as I grab my jacket and my attaché case to leave for the evening. It’s almost five o’clock, and I have been in the office since before 8:00.
+
+“Cindy, send for my car,” I say as I head out of my office.
+
+“Yes, sir.”
+
+“You are coming tonight?” I ask her.
+
+“Of course, sir,” she says. “I’ll need to head home and get changed. I can hardly wear this.” Cindy laughs. It is a running joke between us that it isn’t fair that I expect women to wear nice gowns to my get-togethers while most of the men can get by in their office attire.
+
+“I’ll be changing, too,” I assure her.
+
+“I know you will be, sir,” she says. No matter how many times I tell her she doesn’t need to call me sir, she does it anyway.
+
+“See you there, Cindy. Thank you for your hard work today.”
+
+“It’s my pleasure,” she says with a smile that tells me she means it. I believe in treating my employees well so they work hard. That’s how Cindy sees it. She works hard so that she can be rewarded and help the company. My eyes travel to Thompson. He has done next to nothing and is making a lot more money than a lot of the people that work here. That has to change.
+
+He looks up from his phone and is startled to see me staring at him. He fumbles with the device and sets it down then begins to type on his computer, looking at me from time to time. I continue to stare at him, hoping he understands that I see him. I see everything he is doing, and everything he is not doing, and it’s time to answer for his actions.
+
+## Chapter 3
+
+Taking a cab to Merriweather Towers is expensive, but in my silver dress, I am afraid to take the subway. I’m afraid I might get harassed. So I splurge on the taxicab ride. On the way home, Jeff will be with me, so I won’t have to worry about anyone bothering me.
+
+I am wearing a silver wrap around my shoulders. Not because I am cold, but because Jeff doesn’t like it when I show too much skin. As I get out of the cab, paying the driver, and tucking my handbag under my arm, I am reminded of the Christmas party I attended here last December. I had worn a red dress I’d bought just for the occasion. I remembered thinking I looked pretty nice, but Jeff was out of sorts all night because he did not like the amount of cleavage I was showing. It didn’t seem like a lot to me. In comparison to some of the other women at the party, it was practically nothing, but we did not have a very good time at the party because he was so angry all night long.
+
+I hope he doesn’t mind this dress. He asked me to wear it, after all. The bodice has thin straps, and it shows the tops of my breasts, almost as much as the red dress, but I brought the shawl, just in case.
+
+I am nervous walking into the building. I have sent Jeff a few texts to keep him apprised of my location, but he has not answered any of them. I send him another one, letting him know I’ve arrived. I don’t know where to go once I walk inside. I look around and listen for the sounds of a party, but it’s a large building, and I don’t hear anything.
+
+I see a man behind the counter. He’s on the phone, so I walk over and wait for him to finish. He glances at me and then does a double-take, hanging up the phone quickly. “Yes, miss?” he says, looking below my neck and not in my eyes. I pull the shawl around me a little better. “How can I help you?”
+
+“I’m looking for the party for Merriweather and Associates,” I explain. “My husband is waiting for me there, but I can’t get him to answer my texts.”
+
+“What’s the name?” he asks me.
+
+I am already nervous, and the question confuses me. Does he want to know my name or my husbands? I say, “Thompson,” and he nods, checking a list.
+
+“Julia?” he asks me.
+
+“Yes, that’s me,” I tell him with a smile.
+
+“Sure, sure. Go on up to the thirty-fifth floor,” he says. “That’s where the party is happening.”
+
+“Thank you.” I smile warmly at him and then head to the elevator, pushing the correct button and waiting for the doors to close.
+
+I wonder why I am the only one arriving right now. Jeff said to be here at 7:00, and it’s only five past. Since most people don’t want to be early or exactly on time, I was assuming a lot of people would be getting here at the same time as me, but that isn’t the case, so I am puzzled.
+
+When the doors open at the thirty-fifth floor, it is clear to me that the party has started before 7:00. I am confused and step out into the full swing of people drinking, talking, even some dancing. Trays of drinks and snacks are coming by on the hands of waiters and waitresses dressed in matching uniforms. I look around for Jeff but don’t see him anywhere. I don’t know many other people who work in his office because he hasn’t introduced me to any of them. I look at faces, trying to determine if I recognize any of them, but I don’t.
+
+Until my eyes land on the striking face of a man just a few years older than me, with piercing blue eyes and dark hair. I recognize him immediately and have to look away. Braxton Merriweather, the Chief Executive Officer of Jeff’s company, one of the richest men in the world and the most eligible bachelor in our city, which is saying something. My face turns red just looking at him, he’s so handsome. To think, he had been looking at me! Of course, that’s probably because I am lost and look it.
+
+I spin around a few more times, praying I can find Jeff soon. I am about to give up and pull my phone out one more time when I see my husband leaning against a wall with a drink in his hand, talking to a couple of other guys. They are laughing and carrying on, and it’s clear he’s had lots of drinks. I am wondering what time the party actually started and why he didn’t want me to be there on time.
+
+Since I will not be able to ask him any of those questions without making him angry, and I definitely don’t want to make him angry, I swallow my agitation down and make my way across the room to him, hoping he is in a good mood. I don’t like it when Jeff is upset. It never ends well for me.
+
+## Chapter 4
+
+She was late. She’d missed the dinner I’d provided for my work associates and their guests. I wonder why she hadn’t arrived on time like everyone else, but then, when I see her step through the door, frazzled, looking anxiously around for her husband, who is standing across the room, leaning against the wall, talking to some of the other people from our team who do not perform well, I understand that Thompson probably didn’t even invite her to the dinner.
+
+She rushes over to him, and he stands up straight, looking annoyed, like she’s interrupted some important work discussion. I pretend to listen to the woman standing next to me, one of the presidents of the marketing department who is talking about an account I could care less about, but my eyes are on her, the beautiful woman who is unfortunately attached to that sleaze, Jeff Thompson.
+
+I watch as they step away from the others, as Jeff grabs her elbow and pulls her close, a little too violently for my liking. I see her face and know that she wants to say something to him about how she’s being treated but is afraid to. I watch as they step outside onto the balcony. I watch--and then I excuse myself and walk closer to where they have disappeared, positioning myself close enough to the door that I can hear what they are saying, though they won’t be able to see me through the frosted glass barrier between the balcony and the room.
+
+“I called you several times,” she says, her voice pleading, pained.
+
+“Well, excuse the hell out of me for having a life!” Jeff shoots back, clearly letting his anger get the best of him. “What are you wearing, anyway?”
+
+“The silver dress, like you said,” she replies. I can’t see her, but I can picture her looking down at her gown, inspecting it. She looked gorgeous to me from across the room earlier. What problem good this jackass possibly have with her gown.
+
+“I don’t remember it being so low cut,” he says. “Half of your breasts are sticking out!”
+
+She is silent for a moment and then offers, “I brought this wrap.”
+
+“You look like an old woman!” he shouts back at her. “Look, I don’t have time for this, all right? I invited you because I was expressly asked to; some of the other wives wanted to meet you or some bullshit. I’ve done my duty. You’re here. I’m going back out to drink with my friends. Maybe you should just… go.”
+
+“Go?” I hear the agony in her voice, the pain of his abrupt dismissal, as if she has been cast off by someone she loves deeply. How did such a beautiful woman ever develop feelings for this self-absorbed pig?
+
+“Or stay out here if you want to. Just don’t embarrass me, all right? My job is hard enough as it is without you looking like a whore in front of all of my bosses and work associates.”
+
+He stomps off, coming back toward the door. I am pretending to listen to the conversation happening around me and do not look at him, though I am tempted to put my foot out and trip him--then we’ll see who is embarrassed. Since my eyes are not on Thompson as he slinks by, I don’t know if he has noticed me standing there or not, but I doubt it. He is usually only aware of himself.
+
+Once he is back with his buddies, I excuse myself from the conversation and step outside.
+
+It is dark out now, the lights from the city and the stars providing some illumination that meets the figure near the railing who is far enough away from the light filtering through the door and window, as well as the weak light on the wall by the door, that she is mostly in shadow.
+
+I can hear that she is weeping before I even get within a few feet of her. She does not seem to have noticed that she isn’t alone anymore. I don’t want to embarrass her or bother her, but I feel her pain stabbing me in my own heart. I cannot understand Jeff Thompson, how such a shallow, idiotic man could be married to such a beautiful creature and treat her the way that he does, but it makes me angry in a way I cannot describe.
+
+I take another step closer and she hears me then, swiping at her cheeks and pulling her wrap around her shoulders before she even turns her head. I’m not sure if she’ll recognize me or even how well she can see me now that I am also away from the light, but when her eyes meet mine, I am fairly certain she knows who I am.
+
+“Are you all right?” I ask her, my voice gentle.
+
+She nods, clears her throat. “Yes. I’m so sorry. I didn’t mean to….” She stops talking, not sure what to say. “I’m fine.”
+
+“You don’t seem fine,” I remind her as I step up closer to her. “Is there anything I can do?”
+
+“Oh, no! Really, I’m fine. I just wanted to get some fresh air.”
+
+I take a whiff of the fumes from the city, the cars below us doing nothing to make the air fresh and then look at her, arching an eyebrow.
+
+She actually cracks a smile at me. “Well, maybe not fresh. But… not stuffy. Not that the people inside are stuffy--or that the party is stuffy. Only that….” She groans and looks away from me, shaking her head. “I don’t know what I’m trying to say.”
+
+“That’s all right,” I assure her. Then, waiting for her to look at me again, I offer her my hand. “I’m Braxton.”
+
+“I know,” she says, a small smile pulling at the corner of her mouth. “I recognize you. I’m Julia Thompson.”
+
+“I know,” I say back, getting her perfectly sculpted eyebrows to rise. “I’ve been waiting to meet you.”
+
+## Chapter 5
+
+Braxton Merriweather is standing in front of me--and he knew my name. I can hardly believe my ears. I blink at him a few times, wondering why it is he knows who I am, why it is he’s come to speak to me.
+
+I know that Jeff was angry when I arrived. That wasn’t his fault, though. That was my fault. I was out of sorts, and he had every right to be cross with me. Still, people who didn’t understand the situation might think that was Jeff’s fault, that he was being too hard on me.
+
+I want to ask Mr. Merriweather how he knows who I am, but I am too shy to pose the question. Instead, I just stand there, staring at him, trying to process the situation. He is absolutely the best looking man I’ve ever seen in real life and probably even more handsome than most of the guys I’ve seen on TV or the movies. He is also rich beyond comprehension.
+
+Before I can say anything in response, Braxton asks, “Have you eaten any dinner yet?”
+
+I wrinkle my forehead at the question. It seems like such a strange thing to ask. “Uhm, no,” I stammer, wondering why he’s asking.
+
+“I didn’t think so,” he says. “You missed the dinner.”
+
+I continue to look at him, puzzled. “There was a….” I stop talking. Obviously, there had been a dinner, or he wouldn’t be mentioning it now.
+
+“Yes, and I hate to think of any of my guests going hungry.” Braxton looks toward the interior of the building, though we can’t really see through the frosted glass. “There are hors d'oeuvres being passed around, but that simply won’t do.” Mr. Merriweather offers me his arm. “Come along, and I’ll get you something proper to eat.”
+
+I stare at his arm for a moment, not wanting to be rude but also not wanting to be a bother. Or make Jeff even more angry since he’s already told me to stay out here. “Oh, no, that’s okay,” I assure him. “I’m fine.”
+
+“Don’t be ridiculous, Julia. You have to eat.” His arm is still crooked, extended to me.
+
+I look at his arm again and then back at his eyes. They are a bright blue that twinkles in the dim light, almost as if they are glowing, though not in an alien way. “Really….”
+
+“It won’t do to have anyone at my party go without dinner.”
+
+The way he says it, I can’t possibly turn him down. It’s like an order of some sort almost, though not in a rude way.
+
+I find myself looping my arm through his, despite the fact that I know Jeff will come undone if he finds out that I’ve gone back inside, especially with his boss. He will shout at me and tell me I am a bother to everyone. He might be right, but at the moment, I don’t feel like a bother, not to Mr. Merriweather, anyway. I feel like an invited guest whom he wants to ensure is having a nice time. It’s been so long since anyone has made me feel this way, made me feel important, I am not sure how to handle any of it.
+
+The feel of his arm on mine, even through his jacket, is electrifying. I want to wrap my other arm around his, too, and hold him close, but that would be ridiculous. Just because the handsome billionaire also happens to be thoughtful and kind, that doesn’t give me the right to latch on to him like a small child clinging to a parent in an unfamiliar situation.
+
+I glance around once we enter the building, but I don’t see Jeff anywhere. I figure he is back with his friends. Mr. Merriweather gets plenty of attention as we walk through the party. People want his attention. He is polite, but doesn’t stop walking until we reach the other side of the large room. Then, he pushes through a door I didn’t realize is even a door, and then we are in another room, and the sounds behind us fade away. I take a deep breath as I realize this is a suit--a large sitting area in front of us, and on the other side of the room, a huge four-poster bed.
+
+We are not alone, though. There is a woman there, dressed in a nice champagne colored gown. She has a friendly smile on her face.
+
+“Cindy, I have just discovered that Mrs. Thompson was not able to join us for dinner. Will you see that she’s brought the finest steak we have available as soon as possible? Freshly prepared, of course.”
+
+“Yes, Mr. Merriweather,” she says with a twinkle in her eyes.
+
+Then, he turns to me. “You do like steak, don’t you?”
+
+I nod. “Thank you.”
+
+Cindy has left the room, and we are alone. “Please, have a seat,” he says, gesturing toward the couch. I do, but he does not join me. I am nervous under his heavy stare. My shawl slips down a little, and I pull it back up. It’s not cold in here, not at all, but I remember what Jeff said about how obscene my dress is. I didn’t realize that you could see so much cleavage. I find myself looking down. I still don’t understand why my husband is so upset about this dress. When I look back up, Mr. Merriweather’s eyes are also on my chest. He looks away as soon as he sees that I am looking at him. I almost smile; unlike when some men ogle a woman’s breasts, he seems to have just been following my eyes. But even if he was not, and he was actually checking me out, I don’t mind for some reason. It doesn’t matter, after all. I am a married woman, and he is the most eligible bachelor in our city, maybe the whole country.
+
+“Can I get you a drink?” he asks me.
+
+I can’t imagine this billionaire who is used to having other people wait on him hand and foot getting me anything, but I am thirsty and could definitely use some alcohol to help me relax. “Sure…” I say.
+
+He crosses to a wet bar and comes back a moment later with a nice red wine. “This should pair nicely with your dinner.”
+
+I take the glass, and our fingers brush against each other slightly, sending shivers down my spine. I almost spill the glass. “Thank you,” I manage.
+
+Braxton Merriweather smiles at me, and I feel like my insides are catching fire.
+<div class="bottom-box">
+<a href="https://sparke.app.link/lp1%24ios_deepview=false&%24deeplink_path=book%2F0000" class="button cta" id="cta" onclick="try {
+    fbq('track', 'AddToCart', {
+      content_ids: ['0000'],
+      content_type: 'book',
+      content_name: 'Book 0000',
+      value: 0.1,
+      currency: 'USD'
+    });
+  } catch(e){} try{ttq.track('ClickButton');}catch(e){}">👉 Continue Reading 👈</a>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
